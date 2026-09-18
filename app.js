@@ -1,3 +1,125 @@
+// Retro Pixel-Art SVG Icons Catalog (CRT / 8-Bit Hardware Theme)
+const RetroIcons = {
+    crt: (cls = "w-7 h-7") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="none" shape-rendering="crispEdges">
+            <path d="M2 1h12v10H2V1zm1 1v8h10V2H3z" fill="#f59e0b"/>
+            <rect x="4" y="3" width="8" height="6" fill="#090b10"/>
+            <rect x="5" y="4" width="2" height="1" fill="#22c55e"/>
+            <rect x="6" y="5" width="2" height="1" fill="#22c55e"/>
+            <rect x="5" y="6" width="2" height="1" fill="#22c55e"/>
+            <rect x="8" y="7" width="3" height="1" fill="#4ade80"/>
+            <rect x="12" y="9" width="1" height="1" fill="#ef4444"/>
+            <rect x="6" y="11" width="4" height="2" fill="#d97706"/>
+            <rect x="4" y="13" width="8" height="2" fill="#f59e0b"/>
+        </svg>
+    `,
+    wrench: (cls = "w-4 h-4") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M10 0h2v1h-1v1h3v2h-1v1h-1v1H8v1H7v2H5v1H2v3h3v-3h1v-1h2v-2h1V8h1V7h1V6h1V4h-2V1z"/>
+        </svg>
+    `,
+    terminal: (cls = "w-4 h-4") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M1 2h14v12H1V2zm2 2v8h10V4H3z"/>
+            <rect x="4" y="5" width="2" height="1"/>
+            <rect x="5" y="6" width="2" height="1"/>
+            <rect x="4" y="7" width="2" height="1"/>
+            <rect x="7" y="7" width="3" height="1"/>
+        </svg>
+    `,
+    network: (cls = "w-4 h-4") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <rect x="6" y="1" width="4" height="4"/>
+            <rect x="1" y="11" width="4" height="4"/>
+            <rect x="11" y="11" width="4" height="4"/>
+            <rect x="7" y="5" width="2" height="4"/>
+            <rect x="3" y="8" width="10" height="1"/>
+            <rect x="2" y="9" width="2" height="2"/>
+            <rect x="12" y="9" width="2" height="2"/>
+        </svg>
+    `,
+    ticket: (cls = "w-4 h-4") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <rect x="5" y="1" width="6" height="2"/>
+            <path d="M3 3h10v12H3V3zm2 3v2h2V6H5zm3 1h4v1H8V7zm-3 3v2h2v-2H5zm3 1h4v1H8v-1z"/>
+        </svg>
+    `,
+    cli: (cls = "w-4 h-4") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M2 3h2v2H2V3zm2 2h2v2H4V5zm2 2h2v2H6V7zm-2 2h2v2H4V9zm-2 2h2v2H2v-2zm7 2h5v2H9v-2z"/>
+        </svg>
+    `,
+    chip: (cls = "w-6 h-6") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <rect x="3" y="3" width="10" height="10"/>
+            <rect x="5" y="5" width="6" height="6" fill="#090b10"/>
+            <rect x="4" y="1" width="1" height="2"/><rect x="6" y="1" width="1" height="2"/>
+            <rect x="9" y="1" width="1" height="2"/><rect x="11" y="1" width="1" height="2"/>
+            <rect x="4" y="13" width="1" height="2"/><rect x="6" y="13" width="1" height="2"/>
+            <rect x="9" y="13" width="1" height="2"/><rect x="11" y="13" width="1" height="2"/>
+            <rect x="1" y="4" width="2" height="1"/><rect x="1" y="6" width="2" height="1"/>
+            <rect x="1" y="9" width="2" height="1"/><rect x="1" y="11" width="2" height="1"/>
+            <rect x="13" y="4" width="2" height="1"/><rect x="13" y="6" width="2" height="1"/>
+            <rect x="13" y="9" width="2" height="1"/><rect x="13" y="11" width="2" height="1"/>
+        </svg>
+    `,
+    floppy: (cls = "w-5 h-5") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M1 1h11l3 3v11H1V1zm2 2v4h8V3H3zm2 7v4h6v-4H5z"/>
+        </svg>
+    `,
+    star: (cls = "w-4 h-4") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M7 1h2v3h2v2h3v2h-2v2h1v3h-3v-2H8v2H5v-3h1V8H4V6h3V4h2V1H7z"/>
+        </svg>
+    `,
+    lock: (cls = "w-8 h-8") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M5 2h6v4h2v9H3V6h2V2zm2 2v2h2V4H7zm-2 5v4h6V9H5zm2 1h2v2H7v-2z"/>
+        </svg>
+    `,
+    video: (cls = "w-10 h-10") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M1 2h14v12H1V2zm2 2v8h10V4H3zm3 2l5 2-5 2V6z"/>
+        </svg>
+    `,
+    check: (cls = "w-5 h-5") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M13 3l2 2-8 9-5-5 2-2 3 3 6-7z"/>
+        </svg>
+    `,
+    cross: (cls = "w-5 h-5") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M2 2h3v2h2v2h2V4h2V2h3v3h-2v2h-2v2h2v2h2v3h-3v-2h-2v-2H7v2H5v2H2v-3h2v-2h2V9H4V7H2V2z"/>
+        </svg>
+    `,
+    info: (cls = "w-5 h-5") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M7 1h2v2H7V1zm0 3h2v6H7V4zm0 8h2v2H7v-2z"/>
+        </svg>
+    `,
+    chevronDown: (cls = "w-3.5 h-3.5") => `
+        <svg class="${cls} flex-shrink-0 transition-transform duration-200" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M3 6h10l-5 5-5-5z"/>
+        </svg>
+    `,
+    play: (cls = "w-3 h-3") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 8 8" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M2 1v6l5-3-5-3z"/>
+        </svg>
+    `,
+    arrowLeft: (cls = "w-3 h-3") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 8 8" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M5 1v6L2 4l3-3z"/>
+        </svg>
+    `,
+    arrowRight: (cls = "w-3 h-3") => `
+        <svg class="${cls} flex-shrink-0 inline-block" viewBox="0 0 8 8" fill="currentColor" shape-rendering="crispEdges">
+            <path d="M3 1v6l3-3-3-3z"/>
+        </svg>
+    `
+};
+
 const app = {
     currentQuiz: null,
     quizState: [],
@@ -61,10 +183,30 @@ const app = {
         }
     },
 
+    _typewriterInterval: null,
+
+    initTypewriter: function() {
+        const target = document.getElementById('retro-title');
+        if (!target) return;
+        const text = "FORMATION EN OPÉRATEUR INFORMATIQUE";
+        let i = 0;
+        target.textContent = '';
+        if (this._typewriterInterval) clearInterval(this._typewriterInterval);
+        this._typewriterInterval = setInterval(() => {
+            if (i < text.length) {
+                target.textContent += text.charAt(i);
+                i++;
+            } else {
+                clearInterval(this._typewriterInterval);
+                this._typewriterInterval = null;
+            }
+        }, 40);
+    },
+
     renderHome: function() {
         // Deselect nav items
         document.querySelectorAll('[id^="nav-"]').forEach(el => {
-            el.classList.remove('bg-sky-500/10', 'text-sky-300', 'shadow-[inset_3px_0_0_#0ea5e9]');
+            el.classList.remove('bg-emerald-500/20', 'text-emerald-300', 'bg-sky-500/10', 'text-sky-300', 'shadow-[inset_3px_0_0_#0ea5e9]');
             el.classList.add('text-slate-400');
         });
 
@@ -73,60 +215,186 @@ const app = {
             document.getElementById('sidebar-overlay').classList.add('hidden');
         }
 
-        let html = `
-        <div class="max-w-7xl mx-auto p-5 lg:p-12 pb-24 animate-[fadeIn_0.3s_ease-out]">
-            <div class="mb-14 text-center max-w-3xl mx-auto mt-6">
-                <div class="inline-flex items-center justify-center p-4 bg-sky-500/10 rounded-3xl mb-6 shadow-inner border border-sky-500/20 hover:scale-105 transition-transform duration-300">
-                    <svg class="w-16 h-16 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                </div>
-                <h1 class="text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-5 leading-tight">Bienvenue sur <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-violet-500">IT Campus</span></h1>
-                <p class="text-lg text-slate-400 leading-relaxed font-medium">Le portail de formation technique nouvelle génération. Sélectionnez un module ci-dessous pour démarrer votre apprentissage.</p>
-            </div>
+        const schoolModule = itCampusData.modules.find(m => m.id === 'm3') || itCampusData.modules[0];
+        const otherModules = itCampusData.modules.filter(m => m.id !== schoolModule.id);
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        `;
-
-        itCampusData.modules.forEach(mod => {
-            let totalLessons = 0;
-            let availableLessons = 0;
+        const getModuleStats = (mod) => {
+            let total = 0;
+            let available = 0;
             let firstLessonId = null;
-
             mod.phases.forEach(p => {
-                totalLessons += p.lessons.length;
+                total += p.lessons.length;
                 p.lessons.forEach(l => {
-                    if (l.status === 'available') availableLessons++;
+                    if (l.status === 'available') available++;
                     if (!firstLessonId && l.status === 'available') firstLessonId = l.id;
                 });
             });
-            
             if (!firstLessonId && mod.phases.length > 0 && mod.phases[0].lessons.length > 0) {
                 firstLessonId = mod.phases[0].lessons[0].id;
             }
+            return { total, available, firstLessonId };
+        };
 
-            const iconSvg = mod.id === 'm1' 
-                ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>'
-                : mod.id === 'm2'
-                ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>'
-                : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477-4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>';
+        const schoolStats = getModuleStats(schoolModule);
 
-            const themeColor = mod.id === 'm1' ? 'sky' : mod.id === 'm2' ? 'violet' : 'emerald';
+        let html = `
+        <div class="max-w-6xl mx-auto p-4 sm:p-8 lg:p-10 pb-24">
+            <!-- Retro System Status Banner -->
+            <div class="mb-10 text-center max-w-3xl mx-auto">
+                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-zinc-900 border-2 border-zinc-700 text-zinc-400 text-[10px] sm:text-[11px] font-arcade mb-6 shadow-[3px_3px_0px_#000]">
+                    <span class="text-amber-400">●</span>
+                    <span class="text-zinc-200">SYS.READY</span>
+                    <span class="text-zinc-600">|</span>
+                    <span class="text-emerald-400">STAGE 01</span>
+                    <span class="text-zinc-600">|</span>
+                    <span class="text-amber-400">PROMO 2025-2026</span>
+                </div>
+
+                <!-- Animated Pixel Typewriter Title -->
+                <h1 class="font-pixel text-3xl sm:text-5xl lg:text-6xl font-bold tracking-normal mb-5 text-amber-400 pixel-title-shadow leading-tight min-h-[3.6rem] flex items-center justify-center flex-wrap">
+                    <span id="retro-title"></span><span id="retro-cursor" class="animate-pixel-cursor text-amber-300 inline-block ml-1">█</span>
+                </h1>
+
+                <!-- Retro Mission Briefing Dialogue Box -->
+                <div class="bg-zinc-900 border-2 border-zinc-700 p-5 sm:p-6 shadow-[4px_4px_0px_0px_#000] text-left max-w-3xl mx-auto mt-4">
+                    <div class="font-arcade text-[9px] sm:text-[10px] text-amber-400 mb-2.5 flex items-center justify-between border-b border-zinc-800 pb-2">
+                        <span>[ MISSION BRIEFING // CAMPUS IT ]</span>
+                        <span class="text-emerald-400 flex items-center gap-1">${RetroIcons.play('w-2.5 h-2.5')} READY</span>
+                    </div>
+                    <p class="text-zinc-300 text-sm sm:text-base leading-relaxed font-mono">
+                        Acquérez les compétences d'intervention sur poste client : dépannage matériel & logiciel, diagnostic sous PowerShell, gestion de tickets d'assistance et administration des réseaux locaux.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-zinc-800 font-mono text-xs">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300"><span class="text-amber-400">${RetroIcons.wrench('w-3.5 h-3.5')}</span> Support N1/N2</span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300"><span class="text-cyan-400">${RetroIcons.terminal('w-3.5 h-3.5')}</span> Windows & Linux</span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300"><span class="text-emerald-400">${RetroIcons.network('w-3.5 h-3.5')}</span> Réseau Local</span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300"><span class="text-amber-400">${RetroIcons.ticket('w-3.5 h-3.5')}</span> GLPI Helpdesk</span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300"><span class="text-blue-400">${RetroIcons.cli('w-3.5 h-3.5')}</span> PowerShell CLI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 1 : MAIN QUEST (Module École m3) -->
+            <div class="mb-12">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-emerald-400">${RetroIcons.crt('w-7 h-7')}</span>
+                        <h2 class="font-pixel text-2xl sm:text-3xl text-emerald-400 tracking-wide pixel-title-shadow uppercase">
+                            Quête Principale • Formation École
+                        </h2>
+                    </div>
+                    <span class="font-arcade text-[9px] sm:text-[10px] px-2.5 py-1 bg-emerald-950 border-2 border-emerald-500 text-emerald-400 shadow-[2px_2px_0px_#000]">
+                        MAIN QUEST
+                    </span>
+                </div>
+
+                <!-- Main Quest Pixel Card -->
+                <div class="bg-zinc-900 border-2 border-emerald-500/80 p-6 sm:p-8 pixel-card cursor-pointer" onclick="app.renderModuleDetails('${schoolModule.id}')">
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-2 mb-3 font-arcade text-[10px]">
+                                <span class="px-2 py-0.5 bg-emerald-500 text-zinc-950 font-bold border border-emerald-400">
+                                    CURSUS OFFICIEL
+                                </span>
+                                <span class="px-2 py-0.5 bg-zinc-950 text-zinc-300 border border-zinc-700">
+                                    ${schoolModule.phases.length} STAGE(S)
+                                </span>
+                                <span class="px-2 py-0.5 bg-zinc-950 text-zinc-300 border border-zinc-700">
+                                    ${schoolStats.total} COURS
+                                </span>
+                            </div>
+
+                            <h3 class="font-pixel text-2xl sm:text-3xl text-zinc-100 mb-3 tracking-wide flex items-center gap-2.5">
+                                ${RetroIcons.crt('w-6 h-6 text-emerald-400')}
+                                <span>${schoolModule.title}</span>
+                            </h3>
+                            
+                            <p class="text-zinc-400 text-sm leading-relaxed mb-6 max-w-2xl font-mono">
+                                ${schoolModule.description || "Retrouvez ici l'ensemble des cours dispensés en formation, les synthèses de promotion, les supports officiels de cours et les fiches de révision pour les examens."}
+                            </p>
+
+                            <!-- 8-Bit Progress bar -->
+                            <div class="max-w-md mb-6">
+                                <div class="font-arcade text-[9px] text-zinc-400 mb-1.5 flex justify-between">
+                                    <span>STAGE PROGRESSION</span>
+                                    <span class="text-emerald-400 font-bold">100% DISPO</span>
+                                </div>
+                                <div class="w-full h-3 bg-zinc-950 border border-zinc-700 p-0.5 flex gap-1">
+                                    <div class="h-full bg-emerald-500 flex-1"></div>
+                                    <div class="h-full bg-emerald-500 flex-1"></div>
+                                    <div class="h-full bg-emerald-500 flex-1"></div>
+                                    <div class="h-full bg-emerald-500 flex-1"></div>
+                                </div>
+                            </div>
+
+                            <!-- Quest Stages Preview -->
+                            <div class="flex flex-wrap gap-2">
+                                ${schoolModule.phases.map((p, idx) => `
+                                    <div class="px-3 py-1.5 bg-zinc-950 border border-zinc-700 text-zinc-300 font-mono text-xs flex items-center gap-2">
+                                        <span class="text-emerald-400 font-arcade text-[9px]">S0${idx+1}</span>
+                                        <span>${p.title}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="lg:w-64 flex-shrink-0 flex flex-col justify-center">
+                            <button class="pixel-btn w-full py-4 px-6 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-arcade text-xs font-bold border-2 border-emerald-300 flex items-center justify-center gap-2 pointer-events-none">
+                                ${RetroIcons.play('w-3.5 h-3.5 text-zinc-950')}
+                                <span>START MISSION</span>
+                            </button>
+                            <div class="text-center font-arcade text-[9px] text-zinc-500 mt-2">[ PRESS TO ENTER ]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2 : SECONDARY TRAINING GROUNDS -->
+            <div class="mb-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-amber-400">${RetroIcons.chip('w-7 h-7 text-amber-400')}</span>
+                    <h2 class="font-pixel text-2xl sm:text-3xl text-amber-400 tracking-wide pixel-title-shadow uppercase">
+                        Chantiers & Ateliers Pratiques
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        `;
+
+        otherModules.forEach((mod) => {
+            const stats = getModuleStats(mod);
+            const isM1 = mod.id === 'm1';
+            const badgeLabel = isM1 ? 'STAGE 01 • WORKSHOP' : 'STAGE 02 • WORKSHOP';
+            const accentBorder = isM1 ? 'hover:border-amber-500/80' : 'hover:border-cyan-500/80';
+            const accentColor = isM1 ? 'text-amber-400' : 'text-cyan-400';
+            const btnBg = isM1 ? 'bg-amber-500 hover:bg-amber-400 border-amber-300' : 'bg-zinc-800 hover:bg-zinc-700 border-zinc-600';
+            const btnText = isM1 ? 'text-zinc-950' : 'text-zinc-200';
+            const modIcon = isM1 ? RetroIcons.wrench('w-5 h-5 text-amber-400') : RetroIcons.network('w-5 h-5 text-cyan-400');
 
             html += `
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-${themeColor}-500/50 transition-all duration-300 group flex flex-col h-full shadow-lg hover:shadow-${themeColor}-500/10 hover:-translate-y-1 relative cursor-pointer" onclick="app.renderModuleDetails('${mod.id}')">
-                    <div class="absolute inset-0 bg-gradient-to-br from-${themeColor}-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="h-2 w-full bg-gradient-to-r from-${themeColor}-600 to-${themeColor}-400"></div>
-                    <div class="p-8 flex flex-col flex-1 relative z-10">
-                        <div class="w-16 h-16 rounded-2xl bg-${themeColor}-500/10 text-${themeColor}-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-${themeColor}-500 group-hover:text-white transition-all duration-300 shadow-inner">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">${iconSvg}</svg>
-                        </div>
-                        <h2 class="text-xl font-bold text-slate-100 mb-3 leading-snug">${mod.title}</h2>
-                        <div class="flex flex-col gap-3 text-sm text-slate-400 mb-8 mt-auto font-medium">
-                            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg> ${mod.phases.length} Phases d'apprentissage</div>
-                            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477-4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg> ${totalLessons} Leçons détaillées</div>
-                        </div>
-                        <button class="w-full py-3.5 px-4 bg-slate-950 border border-slate-700 group-hover:border-${themeColor}-500/50 group-hover:bg-${themeColor}-600 text-slate-300 group-hover:text-white rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-sm group-hover:shadow-md pointer-events-none">
-                            Explorer le module
-                            <svg class="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                <div class="bg-zinc-900 border-2 border-zinc-700 ${accentBorder} p-6 pixel-card flex flex-col h-full cursor-pointer relative" onclick="app.renderModuleDetails('${mod.id}')">
+                    <div class="flex items-center justify-between mb-3 font-arcade text-[9px]">
+                        <span class="px-2 py-0.5 bg-zinc-950 ${accentColor} border border-zinc-700">
+                            ${badgeLabel}
+                        </span>
+                        <span class="text-zinc-500 font-mono">
+                            ${stats.total} LEÇONS
+                        </span>
+                    </div>
+
+                    <h3 class="font-pixel text-xl sm:text-2xl text-zinc-100 mb-2 tracking-wide flex items-center gap-2.5">
+                        ${modIcon}
+                        <span>${mod.title}</span>
+                    </h3>
+                    
+                    <p class="text-zinc-400 text-xs font-mono leading-relaxed mb-6">
+                        Ateliers pratiques, cas de dépannage réels et travaux dirigés pour forger vos réflexes techniques.
+                    </p>
+
+                    <div class="mt-auto pt-4 border-t border-zinc-800 flex items-center justify-between font-mono">
+                        <span class="font-arcade text-[9px] text-zinc-500">${mod.phases.length} PHASES</span>
+                        <button class="pixel-btn px-4 py-2 ${btnBg} ${btnText} font-arcade text-[10px] font-bold border-2 pointer-events-none flex items-center gap-1.5">
+                            ${RetroIcons.play('w-3 h-3')} EXPLORER
                         </button>
                     </div>
                 </div>
@@ -134,24 +402,22 @@ const app = {
         });
 
         html += `
+                </div>
             </div>
         </div>
-        <style>
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(10px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        </style>
         `;
 
         document.getElementById('main-content').innerHTML = html;
         document.getElementById('main-content').scrollTop = 0;
+
+        // Launch retro typewriter
+        this.initTypewriter();
     },
 
     renderModuleDetails: function(moduleId) {
         // Deselect nav items
         document.querySelectorAll('[id^="nav-"]').forEach(el => {
-            el.classList.remove('bg-sky-500/10', 'text-sky-300', 'shadow-[inset_3px_0_0_#0ea5e9]');
+            el.classList.remove('bg-emerald-500/20', 'text-emerald-300', 'bg-sky-500/10', 'text-sky-300', 'shadow-[inset_3px_0_0_#0ea5e9]');
             el.classList.add('text-slate-400');
         });
 
@@ -163,26 +429,18 @@ const app = {
         const mod = itCampusData.modules.find(m => m.id === moduleId);
         if (!mod) return;
 
-        const themeColor = mod.id === 'm1' ? 'sky' : mod.id === 'm2' ? 'violet' : 'emerald';
-        const iconSvg = mod.id === 'm1' 
-            ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>'
-            : mod.id === 'm2'
-            ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>'
-            : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477-4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>';
-
         let html = `
-        <div class="max-w-7xl mx-auto p-5 lg:p-12 pb-24 animate-[fadeIn_0.3s_ease-out]">
-            <button onclick="app.renderHome()" class="mb-8 flex items-center gap-2 text-slate-400 hover:text-white transition-colors group">
-                <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                Retour à l'accueil
+        <div class="max-w-6xl mx-auto p-4 sm:p-8 lg:p-10 pb-24">
+            <button onclick="app.renderHome()" class="pixel-btn mb-8 px-4 py-2 bg-zinc-900 border-2 border-zinc-700 text-zinc-300 hover:text-white font-arcade text-[10px] flex items-center gap-2 group w-fit">
+                ${RetroIcons.arrowLeft('w-3 h-3')} RETOUR ACCUEIL
             </button>
             
-            <div class="mb-12">
-                <div class="inline-flex items-center justify-center p-3 bg-${themeColor}-500/10 rounded-2xl mb-4 shadow-inner border border-${themeColor}-500/20">
-                    <svg class="w-10 h-10 text-${themeColor}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">${iconSvg}</svg>
+            <div class="mb-10 bg-zinc-900 border-2 border-zinc-700 p-6 shadow-[4px_4px_0px_#000]">
+                <div class="font-arcade text-[10px] text-amber-400 mb-2 flex items-center gap-2">
+                    ${RetroIcons.crt('w-4 h-4 text-amber-400')} MODULE BRIEFING
                 </div>
-                <h1 class="text-3xl lg:text-4xl font-extrabold text-white tracking-tight mb-3 leading-tight">${mod.title}</h1>
-                <p class="text-lg text-slate-400 font-medium">Sélectionnez une phase d'apprentissage pour continuer.</p>
+                <h1 class="font-pixel text-2xl sm:text-4xl font-bold text-zinc-100 tracking-wide mb-3 pixel-title-shadow leading-tight">${mod.title}</h1>
+                <p class="font-mono text-sm text-zinc-400">${mod.description || "Sélectionnez une phase d'apprentissage pour continuer l'entraînement."}</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -192,21 +450,17 @@ const app = {
             let totalLessons = phase.lessons.length;
             let availableLessons = phase.lessons.filter(l => l.status === 'available').length;
             let firstLessonId = phase.lessons.length > 0 ? phase.lessons[0].id : null;
-            
-            const phaseIcon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>';
 
             html += `
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-${themeColor}-500/50 transition-all duration-300 group flex flex-col h-full shadow-sm hover:shadow-md hover:-translate-y-1 cursor-pointer" onclick="${firstLessonId ? `app.loadLesson('${firstLessonId}')` : `app.togglePhase('phase-${itCampusData.modules.findIndex(m => m.id === mod.id)}-${pIndex}')`}">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="p-3 bg-slate-800 rounded-xl text-slate-400 group-hover:bg-${themeColor}-500/10 group-hover:text-${themeColor}-400 transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">${phaseIcon}</svg>
-                        </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md ${availableLessons > 0 ? 'bg-sky-500/10 text-sky-400 border border-sky-500/20' : 'bg-slate-800 text-slate-500 border border-slate-700'}">${availableLessons}/${totalLessons} Dispo</span>
+                <div class="bg-zinc-900 border-2 border-zinc-700 hover:border-emerald-500/80 p-6 pixel-card group flex flex-col h-full cursor-pointer relative" onclick="${firstLessonId ? `app.loadLesson('${firstLessonId}')` : `app.togglePhase('phase-${itCampusData.modules.findIndex(m => m.id === mod.id)}-${pIndex}')`}">
+                    <div class="flex items-start justify-between mb-4 font-arcade text-[9px]">
+                        <span class="px-2 py-0.5 bg-zinc-950 text-emerald-400 border border-zinc-700">STAGE 0${pIndex + 1}</span>
+                        <span class="px-2 py-0.5 bg-zinc-800 text-zinc-300 border border-zinc-700">${availableLessons}/${totalLessons} DISPO</span>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-200 mb-2 group-hover:text-white transition-colors">${phase.title}</h3>
-                    <p class="text-sm text-slate-500 mt-auto pt-4 border-t border-slate-800/50 flex items-center justify-between">
-                        Commencer la phase
-                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform text-${themeColor}-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    <h3 class="font-pixel text-xl font-bold text-zinc-100 mb-2 group-hover:text-amber-300 transition-colors">${phase.title}</h3>
+                    <p class="font-mono text-xs text-zinc-400 mt-auto pt-4 border-t border-zinc-800 flex items-center justify-between">
+                        <span>Démarrer le stage</span>
+                        <span class="text-amber-400 font-arcade text-[10px] flex items-center gap-1">${RetroIcons.play('w-2.5 h-2.5')}</span>
                     </p>
                 </div>
             `;
@@ -233,33 +487,57 @@ const app = {
         
         itCampusData.modules.forEach((mod, mIndex) => {
             const moduleId = `module-${mod.id}`;
+            const isSchool = mod.id === 'm3';
+            const isM1 = mod.id === 'm1';
+            
+            const modIcon = isSchool 
+                ? RetroIcons.crt('w-4 h-4 text-emerald-400 mr-2 flex-shrink-0')
+                : (isM1 ? RetroIcons.wrench('w-3.5 h-3.5 text-amber-400 mr-2 flex-shrink-0') : RetroIcons.network('w-3.5 h-3.5 text-cyan-400 mr-2 flex-shrink-0'));
+
+            const btnClass = isSchool
+                ? 'bg-emerald-950/40 hover:bg-emerald-900/40 border-2 border-emerald-500/70 text-emerald-200 pixel-btn'
+                : 'bg-zinc-900 hover:bg-zinc-800 border-2 border-zinc-800 text-zinc-300 pixel-btn';
+            const badgeSchool = isSchool
+                ? `<span class="px-1.5 py-0.5 bg-emerald-500 text-zinc-950 font-arcade text-[8px] font-bold mr-2 flex-shrink-0">ÉCOLE</span>`
+                : '';
+
             html += `
             <div class="mb-3">
-                <button class="w-full flex items-center justify-between p-3.5 text-left font-bold text-slate-200 hover:text-white bg-slate-900/50 hover:bg-slate-800 rounded-xl border border-slate-800 transition-colors group shadow-sm focus:outline-none" onclick="app.toggleModule('${moduleId}')">
-                    <span class="truncate pr-2 text-[13px] leading-tight flex-1">${mod.title}</span>
-                    <svg id="icon-${moduleId}" class="w-5 h-5 text-slate-500 group-hover:text-sky-400 transition-transform duration-300 flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                <button class="w-full flex items-center justify-between p-3 text-left hover:text-white border transition-colors group shadow-sm focus:outline-none ${btnClass}" onclick="app.toggleModule('${moduleId}')">
+                    <div class="flex items-center min-w-0 pr-2 flex-1 font-pixel text-sm tracking-wide">
+                        ${modIcon}
+                        ${badgeSchool}
+                        <span class="truncate leading-tight">${mod.title}</span>
+                    </div>
+                    <div id="icon-${moduleId}" class="text-zinc-500 group-hover:text-amber-400 transition-transform duration-200 flex-shrink-0 ml-2">
+                        ${RetroIcons.chevronDown('w-3.5 h-3.5')}
+                    </div>
                 </button>
-                <div id="${moduleId}" class="hidden flex-col mt-2 pl-4 space-y-2 border-l-2 border-slate-800/80 ml-4">
+                <div id="${moduleId}" class="hidden flex-col mt-2 pl-3 space-y-1.5 border-l-2 border-zinc-800 ml-3">
             `;
             mod.phases.forEach((phase, pIndex) => {
                 const phaseId = `phase-${mIndex}-${pIndex}`;
                 html += `
                     <div>
-                        <button class="w-full flex items-center justify-between p-2.5 text-left text-[13px] font-semibold text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-colors rounded-lg group focus:outline-none" onclick="app.togglePhase('${phaseId}')">
-                            <span class="truncate pr-3">${phase.title}</span>
-                            <svg id="icon-${phaseId}" class="w-4 h-4 text-slate-500 group-hover:text-slate-300 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <button class="w-full flex items-center justify-between p-2 text-left text-xs font-mono text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60 transition-colors group focus:outline-none" onclick="app.togglePhase('${phaseId}')">
+                            <span class="truncate pr-2">${phase.title}</span>
+                            <div id="icon-${phaseId}" class="text-zinc-500 group-hover:text-zinc-300 transition-transform duration-200 flex-shrink-0">
+                                ${RetroIcons.chevronDown('w-3 h-3')}
+                            </div>
                         </button>
-                        <div id="${phaseId}" class="hidden flex-col pl-4 py-1.5 space-y-1 border-l border-slate-700/50 ml-2 mt-1">
+                        <div id="${phaseId}" class="hidden flex-col pl-3 py-1 space-y-1 border-l border-zinc-700/60 ml-2 mt-0.5">
                 `;
                 phase.lessons.forEach(lesson => {
                     const isAvailable = lesson.status === 'available';
-                    const badgeClass = isAvailable ? 'bg-sky-500/20 text-sky-400 border border-sky-500/20 shadow-[0_0_8px_rgba(14,165,233,0.15)]' : 'bg-slate-800 text-slate-500 border border-slate-700/50';
-                    const badgeText = isAvailable ? 'Dispo' : 'À venir';
+                    const badgeClass = isAvailable ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/60 font-arcade' : 'bg-zinc-950 text-zinc-600 border border-zinc-800 font-arcade';
+                    const badgeContent = isAvailable 
+                        ? 'READY' 
+                        : `<span class="inline-flex items-center gap-1">${RetroIcons.lock('w-2.5 h-2.5')} LOCK</span>`;
                     
                     html += `
-                            <button onclick="app.loadLesson('${lesson.id}')" id="nav-${lesson.id}" class="w-full text-left p-2 rounded-md text-[12px] text-slate-400 hover:text-slate-200 hover:bg-slate-800/80 transition-all flex items-start justify-between group focus:outline-none">
-                                <span class="truncate mr-2 flex-1 pt-0.5">${lesson.title.split(' ')[0]} ${lesson.title.split(' ').slice(1).join(' ')}</span>
-                                <span class="text-[9px] px-1.5 py-0.5 rounded uppercase font-extrabold whitespace-nowrap tracking-wider ${badgeClass}">${badgeText}</span>
+                            <button onclick="app.loadLesson('${lesson.id}')" id="nav-${lesson.id}" class="w-full text-left p-2 text-xs text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 transition-all flex items-start justify-between group focus:outline-none font-mono">
+                                <span class="truncate mr-2 flex-1 pt-0.5">${lesson.title}</span>
+                                <span class="text-[8px] px-1 py-0.5 uppercase tracking-wider ${badgeClass}">${badgeContent}</span>
                             </button>
                     `;
                 });
@@ -333,8 +611,8 @@ const app = {
         });
         const activeNav = document.getElementById(`nav-${lessonId}`);
         if (activeNav) {
-            activeNav.classList.remove('text-slate-400');
-            activeNav.classList.add('bg-sky-500/10', 'text-sky-300', 'shadow-[inset_3px_0_0_#0ea5e9]');
+            activeNav.classList.remove('text-zinc-400', 'text-slate-400');
+            activeNav.classList.add('bg-zinc-800', 'text-emerald-400', 'border-l-2', 'border-emerald-500');
             
             const parentPhase = activeNav.closest('[id^="phase-"]');
             if (parentPhase && parentPhase.classList.contains('hidden')) {
@@ -362,12 +640,11 @@ const app = {
             contentHtml = currentLesson.content;
         } else {
             contentHtml = `
-            <div class="bg-slate-900 border-2 border-dashed border-slate-700/50 rounded-2xl p-12 text-center shadow-sm max-w-3xl mx-auto">
-                <div class="w-20 h-20 bg-slate-800/50 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-10 h-10 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5L18.5 7H20"></path></svg>
-                </div>
-                <h3 class="text-2xl font-bold text-slate-200 mb-4">Module en cours de rédaction</h3>
-                <p class="text-slate-400 max-w-md mx-auto text-lg">Le contenu, la vidéo et le quiz seront bientôt ajoutés par le formateur. Restez à l'écoute !</p>
+            <div class="bg-zinc-900 border-2 border-dashed border-zinc-700 p-12 text-center max-w-3xl mx-auto shadow-[4px_4px_0px_#000]">
+                <div class="text-zinc-600 mb-4 flex justify-center">${RetroIcons.lock('w-12 h-12 text-zinc-600')}</div>
+                <div class="font-arcade text-xs text-zinc-500 mb-2">[ STAGE LOCKED ]</div>
+                <h3 class="font-pixel text-2xl font-bold text-zinc-200 mb-3">STAGE EN COURS DE DÉVELOPPEMENT</h3>
+                <p class="text-zinc-400 font-mono max-w-md mx-auto text-sm">Le contenu, la vidéo et le quiz seront bientôt débloqués par le formateur.</p>
             </div>
             `;
         }
@@ -376,55 +653,54 @@ const app = {
         if (currentLesson.status === 'available' && currentLesson.videoUrl) {
             videoHtml = `
             <iframe src="${currentLesson.videoUrl}" class="w-full h-full absolute inset-0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <div class="absolute top-4 right-4 z-10 hidden group-hover:block animate-[fadeIn_0.2s_ease-out]">
-                <a href="${currentLesson.videoUrl.replace('/embed/', '/watch?v=')}" target="_blank" class="bg-slate-900/90 hover:bg-slate-800 text-white px-3 py-2 rounded-lg backdrop-blur-md border border-slate-700/50 flex items-center gap-2 text-sm font-bold transition-all shadow-lg hover:shadow-rose-500/20">
-                    <svg class="w-5 h-5 text-rose-500" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                    Regarder sur YouTube
+            <div class="absolute top-3 right-3 z-10 hidden group-hover:block">
+                <a href="${currentLesson.videoUrl.replace('/embed/', '/watch?v=')}" target="_blank" class="pixel-btn bg-zinc-900 text-white px-3 py-1.5 border border-zinc-700 flex items-center gap-2 text-xs font-arcade transition-all">
+                    ${RetroIcons.play('w-3 h-3 text-red-500')} YOUTUBE
                 </a>
             </div>
             `;
         } else {
             videoHtml = `
-            <div class="text-center p-8 absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 to-slate-950">
-                <div class="w-20 h-20 bg-slate-800 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(14,165,233,0.3)] transition-all duration-500 group-hover:bg-sky-500/10 border border-slate-700 group-hover:border-sky-500/30">
-                    <svg class="w-10 h-10 text-slate-500 group-hover:text-sky-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                </div>
-                <h3 class="text-2xl font-bold text-slate-200 mb-2 group-hover:text-white transition-colors">Vidéo du cours à venir</h3>
-                <p class="text-slate-400 max-w-md mx-auto text-sm">Le support vidéo interactif sera bientôt disponible pour cette section.</p>
+            <div class="text-center p-8 absolute inset-0 flex flex-col items-center justify-center bg-zinc-950 font-arcade">
+                <div class="text-zinc-700 mb-4 flex justify-center">${RetroIcons.video('w-12 h-12 text-zinc-600')}</div>
+                <div class="text-xs text-zinc-500 mb-2">[ VIDEO STANDBY ]</div>
+                <h3 class="text-base text-zinc-300 mb-2">SUPPORT VIDÉO À VENIR</h3>
+                <p class="text-zinc-500 max-w-md mx-auto text-xs font-mono">Le flux vidéo interactif sera activé pour cette leçon.</p>
             </div>`;
         }
 
         let html = `
-        <div class="max-w-5xl mx-auto p-5 lg:p-12 pb-24 animate-[fadeIn_0.3s_ease-out]">
+        <div class="max-w-5xl mx-auto p-4 sm:p-8 lg:p-10 pb-24">
             <!-- Header -->
-            <div class="mb-10">
-                <div class="flex flex-wrap items-center gap-3 mb-5">
-                    <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-xs font-bold uppercase tracking-wider border border-slate-700">${currentModule.title.split(' : ')[0]}</span>
-                    <span class="px-3 py-1 bg-violet-500/10 text-violet-400 rounded-md text-xs font-bold uppercase tracking-wider border border-violet-500/20">${currentPhase.title.split(' : ')[0]}</span>
-                    ${currentLesson.quiz && currentLesson.quiz.length > 0 ? `<a href="#quiz-container" class="ml-auto px-4 py-1.5 bg-sky-500/10 text-sky-400 rounded-full text-sm font-bold border border-sky-500/20 hover:bg-sky-500 hover:text-white transition-colors flex items-center gap-2 shadow-sm"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg> Faire le quiz</a>` : ''}
+            <div class="mb-8">
+                <div class="flex flex-wrap items-center gap-2 mb-4 font-arcade text-[9px] sm:text-[10px]">
+                    <button onclick="app.renderModuleDetails('${currentModule.id}')" class="pixel-btn px-2.5 py-1 bg-zinc-900 text-zinc-300 hover:text-amber-300 border border-zinc-700 shadow-[2px_2px_0px_#000] flex items-center gap-1.5 cursor-pointer">
+                        ${RetroIcons.arrowLeft('w-2.5 h-2.5')} ${currentModule.title.split(' : ')[0]}
+                    </button>
+                    <span class="px-2.5 py-1 bg-zinc-900 text-emerald-400 border border-zinc-700 shadow-[2px_2px_0px_#000]">${currentPhase.title.split(' : ')[0]}</span>
+                    ${currentLesson.quiz && currentLesson.quiz.length > 0 ? `<a href="#quiz-container" class="ml-auto pixel-btn px-3 py-1 bg-amber-500 text-zinc-950 font-arcade text-[9px] sm:text-[10px] font-bold border border-amber-300 flex items-center gap-1.5">${RetroIcons.chevronDown('w-3 h-3 text-zinc-950')} QUIZ</a>` : ''}
                 </div>
-                <h1 class="text-3xl lg:text-4xl font-extrabold text-white tracking-tight mb-6 leading-tight">${currentLesson.title}</h1>
+                <h1 class="font-pixel text-2xl sm:text-4xl font-bold text-zinc-100 tracking-wide mb-5 pixel-title-shadow leading-tight">${currentLesson.title}</h1>
                 
                 ${currentLesson.objective ? `
-                <div class="bg-gradient-to-r from-slate-900 to-slate-900/50 border-l-4 border-sky-500 p-6 rounded-r-xl shadow-md border-y border-r border-slate-800">
-                    <h3 class="text-sky-400 font-bold mb-2 flex items-center gap-2 text-sm uppercase tracking-wider">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        Objectif d'apprentissage
+                <div class="bg-zinc-900 border-2 border-amber-500/70 p-5 shadow-[3px_3px_0px_#000]">
+                    <h3 class="text-amber-400 font-arcade text-xs mb-2 flex items-center gap-2 uppercase tracking-wider">
+                        ${RetroIcons.cli('w-3.5 h-3.5 text-amber-400')} Objectif d'apprentissage
                     </h3>
-                    <p class="text-slate-300 leading-relaxed text-lg">${currentLesson.objective}</p>
+                    <p class="text-zinc-300 font-mono leading-relaxed text-sm sm:text-base">${currentLesson.objective}</p>
                 </div>
                 ` : ''}
             </div>
 
             <!-- Video Section -->
-            <div class="mb-12">
-                <div class="w-full aspect-video bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden flex items-center justify-center shadow-2xl relative group">
+            <div class="mb-10">
+                <div class="w-full aspect-video bg-zinc-950 border-2 border-zinc-700 shadow-[4px_4px_0px_0px_#000] overflow-hidden flex items-center justify-center relative group">
                     ${videoHtml}
                 </div>
             </div>
 
             <!-- Content Area -->
-            <div class="mb-16">
+            <div class="mb-14 font-mono text-zinc-300 leading-relaxed">
                 ${contentHtml}
             </div>
 
@@ -433,9 +709,9 @@ const app = {
             </div>
 
             <!-- Navigation Buttons -->
-            <div class="flex items-center justify-between pt-8 border-t border-slate-800">
-                ${prevLesson ? `<button onclick="app.loadLesson('${prevLesson.id}')" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 font-semibold transition-all hover:shadow-lg flex items-center gap-3 hover:-translate-x-1 focus:outline-none"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> <span class="hidden sm:inline">Phase précédente</span></button>` : '<div></div>'}
-                ${nextLesson ? `<button onclick="app.loadLesson('${nextLesson.id}')" class="px-6 py-3.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold shadow-[0_4px_14px_0_rgba(14,165,233,0.39)] hover:shadow-[0_6px_20px_rgba(14,165,233,0.23)] hover:sky-500 transition-all flex items-center gap-3 hover:translate-x-1 focus:outline-none"><span class="hidden sm:inline">Phase suivante</span> <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>` : '<div></div>'}
+            <div class="flex items-center justify-between pt-6 border-t-2 border-zinc-800">
+                ${prevLesson ? `<button onclick="app.loadLesson('${prevLesson.id}')" class="pixel-btn px-4 sm:px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border-2 border-zinc-700 text-zinc-300 font-arcade text-[10px] font-bold flex items-center gap-2 focus:outline-none">${RetroIcons.arrowLeft('w-3.5 h-3.5')} <span class="hidden sm:inline">Précédent</span></button>` : '<div></div>'}
+                ${nextLesson ? `<button onclick="app.loadLesson('${nextLesson.id}')" class="pixel-btn px-4 sm:px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-arcade text-[10px] font-bold border-2 border-emerald-300 flex items-center gap-2 focus:outline-none"><span class="hidden sm:inline">Suivant</span> ${RetroIcons.arrowRight('w-3.5 h-3.5 text-zinc-950')}</button>` : '<div></div>'}
             </div>
         </div>
         `;
@@ -481,20 +757,16 @@ const app = {
             });
             
             container.innerHTML = `
-                <div class="bg-slate-900 border border-slate-700 rounded-2xl p-8 md:p-12 text-center shadow-2xl relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-b from-sky-500/10 to-transparent"></div>
-                    <div class="relative z-10">
-                        <div class="w-20 h-20 bg-sky-500/20 text-sky-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
-                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-                        </div>
-                        <h3 class="text-3xl font-extrabold text-white mb-2">Quiz terminé !</h3>
-                        <p class="text-slate-400 mb-8 font-medium">Vous avez complété l'évaluation de cette leçon.</p>
-                        <div class="text-6xl font-black text-sky-400 mb-8 drop-shadow-[0_0_15px_rgba(14,165,233,0.5)]">${score} / ${state.questions.length}</div>
-                        <button onclick="app.loadLesson('${state.lessonId}')" class="px-8 py-3.5 bg-sky-600 hover:bg-sky-500 text-white rounded-xl font-bold shadow-[0_4px_14px_0_rgba(14,165,233,0.39)] hover:shadow-[0_6px_20px_rgba(14,165,233,0.23)] transition-all flex items-center justify-center gap-2 mx-auto">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-                            Recommencer le quiz
-                        </button>
+                <div class="bg-zinc-900 border-2 border-amber-500 p-8 sm:p-12 text-center shadow-[6px_6px_0px_0px_#000] relative">
+                    <div class="font-arcade text-xs sm:text-sm text-amber-400 mb-2 tracking-widest flex items-center justify-center gap-2">
+                        ${RetroIcons.star('w-4 h-4 text-amber-400')} STAGE CLEAR ${RetroIcons.star('w-4 h-4 text-amber-400')}
                     </div>
+                    <h3 class="font-pixel text-3xl sm:text-4xl font-bold text-zinc-100 mb-2 tracking-wide">Quiz terminé !</h3>
+                    <p class="text-zinc-400 font-mono text-sm mb-6">Évaluation enregistrée pour cette session.</p>
+                    <div class="font-arcade text-4xl sm:text-5xl text-emerald-400 mb-8 font-bold">${score} / ${state.questions.length} XP</div>
+                    <button onclick="app.loadLesson('${state.lessonId}')" class="pixel-btn px-8 py-3.5 bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-zinc-950 font-arcade text-xs font-bold border-2 border-amber-300 flex items-center justify-center gap-2 mx-auto">
+                        ${RetroIcons.play('w-3.5 h-3.5 text-zinc-950')} RECOMMENCER
+                    </button>
                 </div>
             `;
             return;
@@ -504,58 +776,54 @@ const app = {
         let optionsHtml = '';
         
         if (q.type === 'single' || q.type === 'multiple') {
-            optionsHtml = `<div class="space-y-3 mt-8">`;
+            optionsHtml = `<div class="space-y-3 mt-6">`;
             q.options.forEach((opt, idx) => {
                 const type = q.type === 'single' ? 'radio' : 'checkbox';
                 const name = `quiz_q${state.currentIndex}`;
                 optionsHtml += `
-                    <label class="flex items-start gap-4 p-5 border-2 border-slate-700/50 rounded-xl cursor-pointer hover:bg-slate-800/80 hover:border-slate-600 transition-all has-[:checked]:bg-sky-900/20 has-[:checked]:border-sky-500/50 group">
-                        <input type="${type}" name="${name}" value="${idx}" class="mt-0.5 w-5 h-5 accent-sky-500 flex-shrink-0" onchange="app.handleQuizSelection()">
-                        <span class="text-slate-200 font-medium group-has-[:checked]:text-sky-100 leading-relaxed">${opt.text}</span>
+                    <label class="flex items-start gap-3.5 p-4 border-2 border-zinc-700 bg-zinc-950/60 cursor-pointer hover:bg-zinc-800/80 hover:border-zinc-500 transition-all has-[:checked]:bg-zinc-800 has-[:checked]:border-amber-400 group pixel-card">
+                        <input type="${type}" name="${name}" value="${idx}" class="mt-1 w-4 h-4 accent-amber-400 flex-shrink-0" onchange="app.handleQuizSelection()">
+                        <span class="text-zinc-300 font-mono text-sm group-has-[:checked]:text-amber-200 leading-relaxed">${opt.text}</span>
                     </label>
                 `;
             });
             optionsHtml += `</div>`;
         } else if (q.type === 'text') {
             optionsHtml = `
-                <div class="mt-8">
-                    <input type="text" id="quiz_text_input" class="w-full bg-slate-950 border-2 border-slate-700/50 rounded-xl px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 focus:bg-slate-900 transition-all font-medium text-lg shadow-inner" placeholder="Saisissez votre réponse ici..." oninput="app.handleQuizSelection()">
+                <div class="mt-6">
+                    <input type="text" id="quiz_text_input" class="w-full bg-zinc-950 border-2 border-zinc-700 px-4 py-3 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-amber-400 font-mono text-base shadow-inner" placeholder="Saisissez votre réponse ici..." oninput="app.handleQuizSelection()">
                 </div>
             `;
         }
 
         container.innerHTML = `
-            <div class="bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
-                <div class="bg-slate-800/80 px-6 py-4 flex items-center justify-between border-b border-slate-700">
-                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                        <div class="bg-violet-500/20 p-2 rounded-lg text-violet-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        Validation des connaissances
-                    </h3>
-                    <span class="bg-slate-900 text-sky-400 border border-slate-700 px-3 py-1 rounded-md text-sm font-bold shadow-inner">
-                        Question ${state.currentIndex + 1} / ${state.questions.length}
+            <div class="bg-zinc-900 border-2 border-zinc-700 shadow-[4px_4px_0px_0px_#000] overflow-hidden flex flex-col">
+                <div class="bg-zinc-950 px-6 py-3.5 flex items-center justify-between border-b-2 border-zinc-700 font-arcade text-xs">
+                    <span class="text-amber-400 flex items-center gap-2">
+                        ${RetroIcons.star('w-3.5 h-3.5 text-amber-400')} ÉVALUATION
+                    </span>
+                    <span class="bg-zinc-900 text-zinc-300 border border-zinc-700 px-2.5 py-1 text-[10px]">
+                        QUESTION ${state.currentIndex + 1} / ${state.questions.length}
                     </span>
                 </div>
                 
                 <!-- Progress bar -->
-                <div class="w-full bg-slate-800 h-1.5">
-                    <div class="bg-sky-500 h-1.5 transition-all duration-500" style="width: ${((state.currentIndex) / state.questions.length) * 100}%"></div>
+                <div class="w-full bg-zinc-950 h-2 border-b border-zinc-800">
+                    <div class="bg-amber-400 h-full transition-all duration-300" style="width: ${((state.currentIndex) / state.questions.length) * 100}%"></div>
                 </div>
                 
                 <div class="p-6 md:p-8">
-                    <h4 class="text-xl text-slate-100 font-bold leading-relaxed">${q.question}</h4>
-                    ${q.type === 'multiple' ? '<p class="text-sky-400 text-sm font-bold mt-2 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Plusieurs réponses possibles</p>' : ''}
+                    <h4 class="font-pixel text-xl sm:text-2xl text-zinc-100 leading-snug tracking-wide">${q.question}</h4>
+                    ${q.type === 'multiple' ? `<p class="text-emerald-400 text-xs font-mono mt-2 font-bold flex items-center gap-1.5">${RetroIcons.info('w-3.5 h-3.5 text-emerald-400')} Plusieurs réponses possibles</p>` : ''}
                     
                     ${optionsHtml}
                     
-                    <div id="quiz-feedback" class="mt-8 hidden animate-[fadeIn_0.3s_ease-out]"></div>
+                    <div id="quiz-feedback" class="mt-8 hidden font-mono text-sm"></div>
                     
-                    <div class="mt-8 pt-6 border-t border-slate-800/80 flex justify-end">
-                        <button id="quiz-submit-btn" onclick="app.submitQuizAnswer()" class="px-8 py-3 bg-slate-800 text-slate-500 rounded-xl font-bold cursor-not-allowed transition-all border border-slate-700/50" disabled>Valider la réponse</button>
-                        <button id="quiz-next-btn" onclick="app.nextQuizQuestion()" class="hidden px-8 py-3 bg-sky-600 hover:bg-sky-500 text-white rounded-xl font-bold shadow-[0_4px_14px_0_rgba(14,165,233,0.39)] hover:shadow-[0_6px_20px_rgba(14,165,233,0.23)] transition-all flex items-center gap-2">
-                            Question suivante
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <div class="mt-8 pt-6 border-t-2 border-zinc-800 flex justify-end gap-3">
+                        <button id="quiz-submit-btn" onclick="app.submitQuizAnswer()" class="pixel-btn px-6 py-3 bg-zinc-800 text-zinc-500 font-arcade text-xs border-2 border-zinc-700 cursor-not-allowed transition-all" disabled>VALIDER</button>
+                        <button id="quiz-next-btn" onclick="app.nextQuizQuestion()" class="hidden pixel-btn px-6 py-3 bg-amber-500 hover:bg-amber-400 text-zinc-950 font-arcade text-xs font-bold border-2 border-amber-300 transition-all flex items-center gap-2">
+                            <span>SUIVANT</span> ${RetroIcons.arrowRight('w-3 h-3 text-zinc-950')}
                         </button>
                     </div>
                 </div>
@@ -579,12 +847,12 @@ const app = {
         
         if (hasSelection) {
             btn.disabled = false;
-            btn.classList.remove('bg-slate-800', 'text-slate-500', 'cursor-not-allowed', 'border-slate-700/50');
-            btn.classList.add('bg-emerald-600', 'hover:bg-emerald-500', 'text-white', 'border-emerald-500', 'shadow-[0_4px_14px_0_rgba(16,185,129,0.39)]');
+            btn.classList.remove('bg-zinc-800', 'text-zinc-500', 'cursor-not-allowed', 'border-zinc-700');
+            btn.classList.add('bg-amber-500', 'hover:bg-amber-400', 'text-zinc-950', 'border-amber-300');
         } else {
             btn.disabled = true;
-            btn.classList.add('bg-slate-800', 'text-slate-500', 'cursor-not-allowed', 'border-slate-700/50');
-            btn.classList.remove('bg-emerald-600', 'hover:bg-emerald-500', 'text-white', 'border-emerald-500', 'shadow-[0_4px_14px_0_rgba(16,185,129,0.39)]');
+            btn.classList.add('bg-zinc-800', 'text-zinc-500', 'cursor-not-allowed', 'border-zinc-700');
+            btn.classList.remove('bg-amber-500', 'hover:bg-amber-400', 'text-zinc-950', 'border-amber-300');
         }
     },
 
@@ -602,7 +870,7 @@ const app = {
         const nextBtn = document.getElementById('quiz-next-btn');
         nextBtn.classList.remove('hidden');
         if (state.currentIndex === state.questions.length - 1) {
-            nextBtn.innerHTML = `Voir les résultats <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+            nextBtn.innerHTML = `<span class="flex items-center gap-2">Voir les résultats ${RetroIcons.star('w-4 h-4 text-zinc-950')}</span>`;
         }
 
         if (q.type === 'single') {
@@ -618,11 +886,11 @@ const app = {
             });
             
             feedbackHtml = `
-                <div class="p-5 rounded-xl ${isCorrect ? 'bg-emerald-900/20 border-2 border-emerald-500/50' : 'bg-rose-900/20 border-2 border-rose-500/50'}">
-                    <strong class="flex items-center gap-2 mb-2 ${isCorrect ? 'text-emerald-400' : 'text-rose-400'} text-lg">
-                        ${isCorrect ? '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Bonne réponse !' : '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Pas tout à fait...'}
+                <div class="p-5 ${isCorrect ? 'bg-emerald-950/40 border-2 border-emerald-500' : 'bg-rose-950/40 border-2 border-rose-500'} pixel-card">
+                    <strong class="flex items-center gap-2.5 mb-2 ${isCorrect ? 'text-emerald-400' : 'text-rose-400'} font-arcade text-xs">
+                        ${isCorrect ? `${RetroIcons.check('w-5 h-5 text-emerald-400')} BONNE RÉPONSE !` : `${RetroIcons.cross('w-5 h-5 text-rose-400')} PAS TOUT À FAIT...`}
                     </strong>
-                    <p class="text-slate-300 font-medium leading-relaxed">${opt.feedback}</p>
+                    <p class="text-zinc-300 font-mono text-sm leading-relaxed">${opt.feedback}</p>
                 </div>
             `;
         } else if (q.type === 'multiple') {
@@ -639,14 +907,14 @@ const app = {
                 else if (selected.includes(i) && !o.isCorrect) label.classList.add('border-rose-500', 'bg-rose-900/20');
                 
                 if (selected.includes(i) || o.isCorrect) {
-                    details += `<div class="mt-3"><strong class="${o.isCorrect ? 'text-emerald-400' : 'text-rose-400'}">${o.text}</strong><br><span class="text-slate-300">${o.feedback}</span></div>`;
+                    details += `<div class="mt-3 font-mono text-xs"><strong class="${o.isCorrect ? 'text-emerald-400' : 'text-rose-400'}">[${o.isCorrect ? '✓' : '✗'}] ${o.text}</strong><br><span class="text-zinc-300">${o.feedback}</span></div>`;
                 }
             });
             
             feedbackHtml = `
-                <div class="p-5 rounded-xl ${isCorrect ? 'bg-emerald-900/20 border-2 border-emerald-500/50' : 'bg-slate-900/80 border-2 border-slate-700/80'}">
-                    <strong class="flex items-center gap-2 mb-2 ${isCorrect ? 'text-emerald-400' : 'text-amber-400'} text-lg">
-                        ${isCorrect ? '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Excellente réponse !' : '<svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg> Voici les explications :'}
+                <div class="p-5 ${isCorrect ? 'bg-emerald-950/40 border-2 border-emerald-500' : 'bg-zinc-900 border-2 border-amber-500'} pixel-card">
+                    <strong class="flex items-center gap-2.5 mb-2 ${isCorrect ? 'text-emerald-400' : 'text-amber-400'} font-arcade text-xs">
+                        ${isCorrect ? `${RetroIcons.check('w-5 h-5 text-emerald-400')} EXCELLENTE RÉPONSE !` : `${RetroIcons.info('w-5 h-5 text-amber-400')} VOICI LES EXPLICATIONS :`}
                     </strong>
                     ${details}
                 </div>
@@ -661,11 +929,11 @@ const app = {
             else input.classList.add('border-rose-500', 'bg-rose-900/10', 'text-rose-300');
             
             feedbackHtml = `
-                <div class="p-5 rounded-xl ${isCorrect ? 'bg-emerald-900/20 border-2 border-emerald-500/50' : 'bg-rose-900/20 border-2 border-rose-500/50'}">
-                    <strong class="flex items-center gap-2 mb-2 ${isCorrect ? 'text-emerald-400' : 'text-rose-400'} text-lg">
-                        ${isCorrect ? '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Bonne réponse !' : '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Pas tout à fait...'}
+                <div class="p-5 ${isCorrect ? 'bg-emerald-950/40 border-2 border-emerald-500' : 'bg-rose-950/40 border-2 border-rose-500'} pixel-card">
+                    <strong class="flex items-center gap-2.5 mb-2 ${isCorrect ? 'text-emerald-400' : 'text-rose-400'} font-arcade text-xs">
+                        ${isCorrect ? `${RetroIcons.check('w-5 h-5 text-emerald-400')} BONNE RÉPONSE !` : `${RetroIcons.cross('w-5 h-5 text-rose-400')} PAS TOUT À FAIT...`}
                     </strong>
-                    <p class="text-slate-300 font-medium leading-relaxed">${q.feedback}</p>
+                    <p class="text-zinc-300 font-mono text-sm leading-relaxed">${q.feedback}</p>
                 </div>
             `;
         }
@@ -679,5 +947,8 @@ const app = {
         this.renderQuizStep();
     }
 };
+
+window.app = app;
+window.RetroIcons = RetroIcons;
 
 document.addEventListener('DOMContentLoaded', () => app.init());

@@ -11,17 +11,28 @@
             theme: {
                 extend: {
                     colors: {
-                        // Using slate, sky and violet built-in colors
+                        retro: {
+                            dark: '#0c0e14',
+                            panel: '#131620',
+                            card: '#191d2b',
+                            border: '#2a3147',
+                            amber: '#f59e0b',
+                            green: '#22c55e',
+                            cyan: '#06b6d4',
+                        }
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace']
+                        mono: ['Fira Code', 'monospace'],
+                        pixel: ['"Pixelify Sans"', 'system-ui', 'sans-serif'],
+                        arcade: ['"Press Start 2P"', 'monospace'],
+                        vt: ['"VT323"', 'monospace']
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&family=Pixelify+Sans:wght@400;600;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <style>
         /* Custom scrollbar */
         ::-webkit-scrollbar {
@@ -29,14 +40,14 @@
             height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0f172a; /* slate-950 */
+            background: #0c0e14;
         }
         ::-webkit-scrollbar-thumb {
-            background: #334155; /* slate-700 */
-            border-radius: 4px;
+            background: #27272a;
+            border-radius: 0px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #475569; /* slate-600 */
+            background: #3f3f46;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -44,33 +55,117 @@
         pre, code, .font-mono {
             font-family: 'Fira Code', monospace;
         }
+        .font-pixel {
+            font-family: 'Pixelify Sans', system-ui, sans-serif;
+        }
+        .font-arcade {
+            font-family: 'Press Start 2P', monospace;
+        }
+        .font-vt {
+            font-family: 'VT323', monospace;
+        }
+        @keyframes blinkCursor {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+        .animate-pixel-cursor {
+            animation: blinkCursor 0.8s infinite;
+        }
+        /* Retro physical push button */
+        .pixel-btn {
+            box-shadow: 3px 3px 0px #000;
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+        }
+        .pixel-btn:hover {
+            transform: translate(1px, 1px);
+            box-shadow: 2px 2px 0px #000;
+        }
+        .pixel-btn:active {
+            transform: translate(3px, 3px);
+            box-shadow: 0px 0px 0px #000;
+        }
+        /* Retro pixel card shadow */
+        .pixel-card {
+            box-shadow: 4px 4px 0px 0px #000;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .pixel-card:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0px 0px #000;
+        }
+        /* 3D Pixel text shadow */
+        .pixel-title-shadow {
+            text-shadow: 3px 3px 0px #000, 5px 5px 0px #18181b;
+        }
+        /* Subtle CRT scanline overlay */
+        .crt-scanlines {
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.18) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-300 h-screen flex overflow-hidden selection:bg-sky-500 selection:text-white">
+<body class="bg-[#0c0e14] text-zinc-300 h-screen flex overflow-hidden selection:bg-amber-400 selection:text-zinc-950">
+
+    <!-- Subtle CRT Scanlines Texture -->
+    <div class="crt-scanlines fixed inset-0 z-50 pointer-events-none opacity-30"></div>
 
     <!-- Mobile Header -->
-    <div class="lg:hidden absolute top-0 left-0 right-0 h-16 bg-slate-900 border-b border-slate-800 flex items-center justify-between px-4 z-30">
-        <button onclick="app.renderHome()" class="font-bold text-slate-100 flex items-center gap-2 hover:text-sky-400 transition-colors cursor-pointer focus:outline-none">
-            <svg class="w-6 h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-            IT Campus
+    <div class="lg:hidden absolute top-0 left-0 right-0 h-16 bg-zinc-900 border-b-2 border-zinc-800 flex items-center justify-between px-4 z-30">
+        <button onclick="app.renderHome()" class="font-pixel text-xl text-amber-400 flex items-center gap-2.5 hover:text-amber-300 transition-colors cursor-pointer focus:outline-none pixel-title-shadow group">
+            <span class="inline-block transform group-hover:scale-110 transition-transform">
+                <svg class="w-7 h-7 flex-shrink-0" viewBox="0 0 16 16" fill="none" shape-rendering="crispEdges">
+                    <path d="M2 1h12v10H2V1zm1 1v8h10V2H3z" fill="#f59e0b"/>
+                    <rect x="4" y="3" width="8" height="6" fill="#090b10"/>
+                    <rect x="5" y="4" width="2" height="1" fill="#22c55e"/>
+                    <rect x="6" y="5" width="2" height="1" fill="#22c55e"/>
+                    <rect x="5" y="6" width="2" height="1" fill="#22c55e"/>
+                    <rect x="8" y="7" width="3" height="1" fill="#4ade80"/>
+                    <rect x="12" y="9" width="1" height="1" fill="#ef4444"/>
+                    <rect x="6" y="11" width="4" height="2" fill="#d97706"/>
+                    <rect x="4" y="13" width="8" height="2" fill="#f59e0b"/>
+                </svg>
+            </span>
+            <span>IT CAMPUS</span>
         </button>
-        <button id="mobile-menu-btn" class="p-2 text-slate-400 hover:text-slate-100 rounded-md transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        <button id="mobile-menu-btn" class="pixel-btn p-2 bg-zinc-950 border-2 border-zinc-700 text-amber-400 hover:text-amber-300 transition-colors focus:outline-none" title="Menu">
+            <svg class="w-5 h-5" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="2" y="3" width="12" height="2"/>
+                <rect x="2" y="7" width="12" height="2"/>
+                <rect x="2" y="11" width="12" height="2"/>
+            </svg>
         </button>
     </div>
 
     <!-- Sidebar Overlay (Mobile) -->
-    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-20 hidden transition-opacity opacity-0"></div>
+    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-20 hidden transition-opacity opacity-0"></div>
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="bg-slate-900 border-r border-slate-800 w-80 flex-shrink-0 h-full flex flex-col transition-transform duration-300 ease-in-out z-30 fixed lg:relative transform -translate-x-full lg:translate-x-0 pt-16 lg:pt-0">
-        <div class="h-16 flex items-center px-6 border-b border-slate-800 hidden lg:flex">
-            <button onclick="app.renderHome()" class="font-bold text-xl text-slate-100 flex items-center gap-3 hover:text-sky-400 transition-colors cursor-pointer focus:outline-none">
-                <svg class="w-7 h-7 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                IT Campus
+    <aside id="sidebar" class="bg-zinc-950 border-r-2 border-zinc-800 w-80 flex-shrink-0 h-full flex flex-col transition-transform duration-300 ease-in-out z-30 fixed lg:relative transform -translate-x-full lg:translate-x-0 pt-16 lg:pt-0">
+        <div class="h-16 flex items-center px-6 border-b-2 border-zinc-800 hidden lg:flex">
+            <button onclick="app.renderHome()" class="font-pixel text-2xl text-amber-400 flex items-center gap-3 hover:text-amber-300 transition-colors cursor-pointer focus:outline-none pixel-title-shadow group">
+                <span class="inline-block transform group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 16 16" fill="none" shape-rendering="crispEdges">
+                        <path d="M2 1h12v10H2V1zm1 1v8h10V2H3z" fill="#f59e0b"/>
+                        <rect x="4" y="3" width="8" height="6" fill="#090b10"/>
+                        <rect x="5" y="4" width="2" height="1" fill="#22c55e"/>
+                        <rect x="6" y="5" width="2" height="1" fill="#22c55e"/>
+                        <rect x="5" y="6" width="2" height="1" fill="#22c55e"/>
+                        <rect x="8" y="7" width="3" height="1" fill="#4ade80"/>
+                        <rect x="12" y="9" width="1" height="1" fill="#ef4444"/>
+                        <rect x="6" y="11" width="4" height="2" fill="#d97706"/>
+                        <rect x="4" y="13" width="8" height="2" fill="#f59e0b"/>
+                    </svg>
+                </span>
+                <span>IT CAMPUS</span>
             </button>
-            <button onclick="app.toggleDesktopSidebar()" class="text-slate-500 hover:text-slate-300 transition-colors ml-auto focus:outline-none" title="Masquer le menu">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"></path></svg>
+            <button onclick="app.toggleDesktopSidebar()" class="pixel-btn p-1.5 bg-zinc-900 hover:bg-zinc-800 border-2 border-zinc-700 text-zinc-400 hover:text-amber-400 transition-colors ml-auto focus:outline-none font-arcade text-xs" title="Masquer le menu">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                    <path d="M10 3L5 8l5 5V3z"/>
+                </svg>
             </button>
         </div>
         
@@ -82,10 +177,14 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 h-full overflow-y-auto bg-slate-950 pt-16 lg:pt-0 scroll-smooth relative" id="main-content">
+    <main class="flex-1 h-full overflow-y-auto bg-[#0c0e14] pt-16 lg:pt-0 scroll-smooth relative" id="main-content">
         <!-- Desktop Floating Toggle (hidden by default) -->
-        <button id="desktop-toggle-btn" onclick="app.toggleDesktopSidebar()" class="hidden lg:flex fixed top-4 left-4 z-40 p-2.5 bg-slate-900 border border-slate-700 rounded-lg text-slate-400 hover:text-white shadow-lg transition-all focus:outline-none opacity-0 pointer-events-none" title="Afficher le menu">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        <button id="desktop-toggle-btn" onclick="app.toggleDesktopSidebar()" class="hidden lg:flex fixed top-4 left-4 z-40 p-2.5 bg-zinc-900 border-2 border-zinc-700 text-amber-400 hover:text-amber-300 pixel-btn shadow-[3px_3px_0px_#000] transition-all focus:outline-none opacity-0 pointer-events-none" title="Afficher le menu">
+            <svg class="w-5 h-5" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="2" y="3" width="12" height="2"/>
+                <rect x="2" y="7" width="12" height="2"/>
+                <rect x="2" y="11" width="12" height="2"/>
+            </svg>
         </button>
         <!-- Content injected by JS -->
     </main>
