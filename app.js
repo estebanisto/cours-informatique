@@ -313,20 +313,6 @@ const app = {
                                 ${schoolModule.description || "Retrouvez ici l'ensemble des cours dispensés en formation, les synthèses de promotion, les supports officiels de cours et les fiches de révision pour les examens."}
                             </p>
 
-                            <!-- 8-Bit Progress bar -->
-                            <div class="max-w-md mb-6">
-                                <div class="font-arcade text-[9px] text-zinc-400 mb-1.5 flex justify-between">
-                                    <span>STAGE PROGRESSION</span>
-                                    <span class="text-emerald-400 font-bold">100% DISPO</span>
-                                </div>
-                                <div class="w-full h-3 bg-zinc-950 border border-zinc-700 p-0.5 flex gap-1">
-                                    <div class="h-full bg-emerald-500 flex-1"></div>
-                                    <div class="h-full bg-emerald-500 flex-1"></div>
-                                    <div class="h-full bg-emerald-500 flex-1"></div>
-                                    <div class="h-full bg-emerald-500 flex-1"></div>
-                                </div>
-                            </div>
-
                             <!-- Quest Stages Preview -->
                             <div class="flex flex-wrap gap-2">
                                 ${schoolModule.phases.map((p, idx) => `
@@ -367,9 +353,16 @@ const app = {
             const badgeLabel = isM1 ? 'STAGE 01 • WORKSHOP' : 'STAGE 02 • WORKSHOP';
             const accentBorder = isM1 ? 'hover:border-amber-500/80' : 'hover:border-cyan-500/80';
             const accentColor = isM1 ? 'text-amber-400' : 'text-cyan-400';
+            const barBg = isM1 ? 'bg-amber-400' : 'bg-cyan-400';
             const btnBg = isM1 ? 'bg-amber-500 hover:bg-amber-400 border-amber-300' : 'bg-zinc-800 hover:bg-zinc-700 border-zinc-600';
             const btnText = isM1 ? 'text-zinc-950' : 'text-zinc-200';
             const modIcon = isM1 ? RetroIcons.wrench('w-5 h-5 text-amber-400') : RetroIcons.network('w-5 h-5 text-cyan-400');
+            const percent = stats.total > 0 ? Math.round((stats.available / stats.total) * 100) : 0;
+
+            const segmentsHtml = mod.phases.map(p => {
+                const hasAvail = p.lessons.some(l => l.status === 'available');
+                return `<div class="h-full ${hasAvail ? barBg : 'bg-zinc-800'} flex-1"></div>`;
+            }).join('');
 
             html += `
                 <div class="bg-zinc-900 border-2 border-zinc-700 ${accentBorder} p-6 pixel-card flex flex-col h-full cursor-pointer relative" onclick="app.renderModuleDetails('${mod.id}')">
@@ -387,9 +380,20 @@ const app = {
                         <span>${mod.title}</span>
                     </h3>
                     
-                    <p class="text-zinc-400 text-xs font-mono leading-relaxed mb-6">
+                    <p class="text-zinc-400 text-xs font-mono leading-relaxed mb-4">
                         Ateliers pratiques, cas de dépannage réels et travaux dirigés pour forger vos réflexes techniques.
                     </p>
+
+                    <!-- 8-Bit Progress bar -->
+                    <div class="w-full mb-6">
+                        <div class="font-arcade text-[9px] text-zinc-400 mb-1.5 flex justify-between">
+                            <span>STAGE PROGRESSION</span>
+                            <span class="${accentColor} font-bold">${stats.available}/${stats.total} DISPO (${percent}%)</span>
+                        </div>
+                        <div class="w-full h-3 bg-zinc-950 border border-zinc-700 p-0.5 flex gap-1">
+                            ${segmentsHtml}
+                        </div>
+                    </div>
 
                     <div class="mt-auto pt-4 border-t border-zinc-800 flex items-center justify-between font-mono">
                         <span class="font-arcade text-[9px] text-zinc-500">${mod.phases.length} PHASES</span>
@@ -429,6 +433,37 @@ const app = {
         const mod = itCampusData.modules.find(m => m.id === moduleId);
         if (!mod) return;
 
+        const isSchool = mod.id === 'm3';
+        let progressHeaderHtml = '';
+        if (!isSchool) {
+            let totalAvail = 0;
+            let totalAll = 0;
+            mod.phases.forEach(p => {
+                totalAll += p.lessons.length;
+                totalAvail += p.lessons.filter(l => l.status === 'available').length;
+            });
+            const modPercent = totalAll > 0 ? Math.round((totalAvail / totalAll) * 100) : 0;
+            const isM1 = mod.id === 'm1';
+            const accentColor = isM1 ? 'text-amber-400' : 'text-cyan-400';
+            const barBg = isM1 ? 'bg-amber-400' : 'bg-cyan-400';
+            const segments = mod.phases.map(p => {
+                const hasAvail = p.lessons.some(l => l.status === 'available');
+                return `<div class="h-full ${hasAvail ? barBg : 'bg-zinc-800'} flex-1"></div>`;
+            }).join('');
+
+            progressHeaderHtml = `
+                <div class="max-w-md mt-5 pt-4 border-t border-zinc-800">
+                    <div class="font-arcade text-[9px] text-zinc-400 mb-1.5 flex justify-between">
+                        <span>STAGE PROGRESSION</span>
+                        <span class="${accentColor} font-bold">${totalAvail}/${totalAll} DISPO (${modPercent}%)</span>
+                    </div>
+                    <div class="w-full h-3 bg-zinc-950 border border-zinc-700 p-0.5 flex gap-1">
+                        ${segments}
+                    </div>
+                </div>
+            `;
+        }
+
         let html = `
         <div class="max-w-6xl mx-auto p-4 sm:p-8 lg:p-10 pb-24">
             <button onclick="app.renderHome()" class="pixel-btn mb-8 px-4 py-2 bg-zinc-900 border-2 border-zinc-700 text-zinc-300 hover:text-white font-arcade text-[10px] flex items-center gap-2 group w-fit">
@@ -441,6 +476,7 @@ const app = {
                 </div>
                 <h1 class="font-pixel text-2xl sm:text-4xl font-bold text-zinc-100 tracking-wide mb-3 pixel-title-shadow leading-tight">${mod.title}</h1>
                 <p class="font-mono text-sm text-zinc-400">${mod.description || "Sélectionnez une phase d'apprentissage pour continuer l'entraînement."}</p>
+                ${progressHeaderHtml}
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
