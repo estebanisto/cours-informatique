@@ -251,25 +251,25 @@ const app = {
                 </div>
 
                 <!-- Animated Pixel Typewriter Title -->
-                <h1 class="font-pixel text-3xl sm:text-5xl lg:text-6xl font-bold tracking-normal mb-5 text-amber-400 pixel-title-shadow leading-tight min-h-[3.6rem] flex items-center justify-center flex-wrap">
-                    <span id="retro-title"></span><span id="retro-cursor" class="animate-pixel-cursor text-amber-300 inline-block ml-1">█</span>
+                <h1 class="heading-main text-3xl sm:text-5xl lg:text-6xl font-bold tracking-normal mb-5 leading-tight min-h-[3.6rem] flex items-center justify-center flex-wrap">
+                    <span id="retro-title"></span><span id="retro-cursor" class="animate-pixel-cursor text-[var(--primary-green)] inline-block ml-1">█</span>
                 </h1>
 
                 <!-- Retro Mission Briefing Dialogue Box -->
-                <div class="bg-zinc-900 border-2 border-zinc-700 p-5 sm:p-6 shadow-[4px_4px_0px_0px_#000] text-left max-w-3xl mx-auto mt-4">
-                    <div class="font-arcade text-[9px] sm:text-[10px] text-amber-400 mb-2.5 flex items-center justify-between border-b border-zinc-800 pb-2">
+                <div class="briefing-box briefing-box--green max-w-3xl mx-auto">
+                    <div class="briefing-header briefing-header--orange">
                         <span>[ MISSION BRIEFING // CAMPUS IT ]</span>
-                        <span class="text-emerald-400 flex items-center gap-1">${RetroIcons.play('w-2.5 h-2.5')} READY</span>
+                        <span class="text-[var(--primary-green)] flex items-center gap-1">${RetroIcons.play('w-2.5 h-2.5')} READY</span>
                     </div>
-                    <p class="text-zinc-300 text-sm sm:text-base leading-relaxed font-mono">
-                        Acquérez les compétences d'intervention sur poste client : dépannage matériel & logiciel, diagnostic sous PowerShell, gestion de tickets d'assistance et administration des réseaux locaux.
+                    <p class="paragraph-body">
+                        Acquérez les compétences d'intervention sur poste client : dépannage matériel &amp; logiciel, diagnostic sous PowerShell, gestion de tickets d'assistance et administration des réseaux locaux.
                     </p>
-                    <div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-zinc-800 font-mono text-xs">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300"><span class="text-amber-400">${RetroIcons.wrench('w-3.5 h-3.5')}</span> Support N1/N2</span>
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300"><span class="text-cyan-400">${RetroIcons.terminal('w-3.5 h-3.5')}</span> Windows & Linux</span>
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300"><span class="text-emerald-400">${RetroIcons.network('w-3.5 h-3.5')}</span> Réseau Local</span>
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300"><span class="text-amber-400">${RetroIcons.ticket('w-3.5 h-3.5')}</span> GLPI Helpdesk</span>
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-950 border border-zinc-700 text-zinc-300"><span class="text-blue-400">${RetroIcons.cli('w-3.5 h-3.5')}</span> PowerShell CLI</span>
+                    <div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-[var(--border-muted)]">
+                        <span class="badge-terminal">${RetroIcons.wrench('w-3.5 h-3.5')} Support N1/N2</span>
+                        <span class="badge-terminal">${RetroIcons.terminal('w-3.5 h-3.5')} Windows &amp; Linux</span>
+                        <span class="badge-terminal">${RetroIcons.network('w-3.5 h-3.5')} Réseau Local</span>
+                        <span class="badge-terminal">${RetroIcons.ticket('w-3.5 h-3.5')} GLPI Helpdesk</span>
+                        <span class="badge-terminal">${RetroIcons.cli('w-3.5 h-3.5')} PowerShell CLI</span>
                     </div>
                 </div>
             </div>
@@ -278,46 +278,46 @@ const app = {
             <div class="mb-12">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-3">
-                        <span class="text-emerald-400">${RetroIcons.crt('w-7 h-7')}</span>
-                        <h2 class="font-pixel text-2xl sm:text-3xl text-emerald-400 tracking-wide pixel-title-shadow uppercase">
+                        <span class="text-[var(--primary-green)]">${RetroIcons.crt('w-7 h-7')}</span>
+                        <h2 class="heading-sub !m-0 !text-2xl sm:!text-3xl !text-[var(--primary-green)]">
                             Quête Principale • Formation École
                         </h2>
                     </div>
-                    <span class="font-arcade text-[9px] sm:text-[10px] px-2.5 py-1 bg-emerald-950 border-2 border-emerald-500 text-emerald-400 shadow-[2px_2px_0px_#000]">
+                    <span class="badge-terminal">
                         MAIN QUEST
                     </span>
                 </div>
 
-                <!-- Main Quest Pixel Card -->
-                <div class="bg-zinc-900 border-2 border-emerald-500/80 p-6 sm:p-8 pixel-card cursor-pointer" onclick="app.renderModuleDetails('${schoolModule.id}')">
+                <!-- Main Quest Terminal Card -->
+                <div class="card-terminal p-6 sm:p-8 cursor-pointer" onclick="app.renderModuleDetails('${schoolModule.id}')">
                     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                         <div class="flex-1">
-                            <div class="flex flex-wrap items-center gap-2 mb-3 font-arcade text-[10px]">
-                                <span class="px-2 py-0.5 bg-emerald-500 text-zinc-950 font-bold border border-emerald-400">
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                <span class="badge-terminal">
                                     CURSUS OFFICIEL
                                 </span>
-                                <span class="px-2 py-0.5 bg-zinc-950 text-zinc-300 border border-zinc-700">
+                                <span class="badge-terminal !border-[var(--border-muted)] !text-[var(--text-muted)] !bg-transparent">
                                     ${schoolModule.phases.length} STAGE(S)
                                 </span>
-                                <span class="px-2 py-0.5 bg-zinc-950 text-zinc-300 border border-zinc-700">
+                                <span class="badge-terminal !border-[var(--border-muted)] !text-[var(--text-muted)] !bg-transparent">
                                     ${schoolStats.total} COURS
                                 </span>
                             </div>
 
-                            <h3 class="font-pixel text-2xl sm:text-3xl text-zinc-100 mb-3 tracking-wide flex items-center gap-2.5">
+                            <h3 class="card-terminal-title text-2xl sm:text-3xl flex items-center gap-2.5">
                                 ${RetroIcons.crt('w-6 h-6 text-emerald-400')}
                                 <span>${schoolModule.title}</span>
                             </h3>
                             
-                            <p class="text-zinc-400 text-sm leading-relaxed mb-6 max-w-2xl font-mono">
+                            <p class="paragraph-muted line-clamp-3 max-w-2xl">
                                 ${schoolModule.description || "Retrouvez ici l'ensemble des cours dispensés en formation, les synthèses de promotion, les supports officiels de cours et les fiches de révision pour les examens."}
                             </p>
 
                             <!-- Quest Stages Preview -->
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-2 mt-3">
                                 ${schoolModule.phases.map((p, idx) => `
-                                    <div class="px-3 py-1.5 bg-zinc-950 border border-zinc-700 text-zinc-300 font-mono text-xs flex items-center gap-2">
-                                        <span class="text-emerald-400 font-arcade text-[9px]">S0${idx+1}</span>
+                                    <div class="px-3 py-1.5 bg-black border border-[var(--border-muted)] text-[var(--text-muted)] font-sans text-xs flex items-center gap-2">
+                                        <span class="text-[var(--primary-green)] font-mono text-[10px]">S0${idx+1}</span>
                                         <span>${p.title}</span>
                                     </div>
                                 `).join('')}
@@ -325,11 +325,11 @@ const app = {
                         </div>
 
                         <div class="lg:w-64 flex-shrink-0 flex flex-col justify-center">
-                            <button class="pixel-btn w-full py-4 px-6 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-arcade text-xs font-bold border-2 border-emerald-300 flex items-center justify-center gap-2 pointer-events-none">
-                                ${RetroIcons.play('w-3.5 h-3.5 text-zinc-950')}
+                            <button class="pixel-btn w-full py-4 px-6 bg-[var(--primary-green-muted)] hover:bg-[var(--primary-green)] text-black font-arcade text-xs font-bold border-2 border-[var(--primary-green)] flex items-center justify-center gap-2 pointer-events-none">
+                                ${RetroIcons.play('w-3.5 h-3.5 text-black')}
                                 <span>START MISSION</span>
                             </button>
-                            <div class="text-center font-arcade text-[9px] text-zinc-500 mt-2">[ PRESS TO ENTER ]</div>
+                            <div class="text-center font-arcade text-[9px] text-[var(--text-muted)] mt-2">[ PRESS TO ENTER ]</div>
                         </div>
                     </div>
                 </div>
@@ -339,8 +339,8 @@ const app = {
             <div class="mb-8">
                 <div class="flex items-center gap-3 mb-4">
                     <span class="text-amber-400">${RetroIcons.chip('w-7 h-7 text-amber-400')}</span>
-                    <h2 class="font-pixel text-2xl sm:text-3xl text-amber-400 tracking-wide pixel-title-shadow uppercase">
-                        Chantiers & Ateliers Pratiques
+                    <h2 class="heading-sub !m-0 !text-2xl sm:!text-3xl !text-amber-400">
+                        Chantiers &amp; Ateliers Pratiques
                     </h2>
                 </div>
 
@@ -351,7 +351,6 @@ const app = {
             const stats = getModuleStats(mod);
             const isM1 = mod.id === 'm1';
             const badgeLabel = isM1 ? 'STAGE 01 • WORKSHOP' : 'STAGE 02 • WORKSHOP';
-            const accentBorder = isM1 ? 'hover:border-amber-500/80' : 'hover:border-cyan-500/80';
             const accentColor = isM1 ? 'text-amber-400' : 'text-cyan-400';
             const barBg = isM1 ? 'bg-amber-400' : 'bg-cyan-400';
             const btnBg = isM1 ? 'bg-amber-500 hover:bg-amber-400 border-amber-300' : 'bg-zinc-800 hover:bg-zinc-700 border-zinc-600';
@@ -365,38 +364,38 @@ const app = {
             }).join('');
 
             html += `
-                <div class="bg-zinc-900 border-2 border-zinc-700 ${accentBorder} p-6 pixel-card flex flex-col h-full cursor-pointer relative" onclick="app.renderModuleDetails('${mod.id}')">
-                    <div class="flex items-center justify-between mb-3 font-arcade text-[9px]">
-                        <span class="px-2 py-0.5 bg-zinc-950 ${accentColor} border border-zinc-700">
+                <div class="card-terminal cursor-pointer h-full" onclick="app.renderModuleDetails('${mod.id}')">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="badge-terminal">
                             ${badgeLabel}
                         </span>
-                        <span class="text-zinc-500 font-mono">
+                        <span class="text-[var(--text-muted)] font-sans text-xs">
                             ${stats.total} LEÇONS
                         </span>
                     </div>
 
-                    <h3 class="font-pixel text-xl sm:text-2xl text-zinc-100 mb-2 tracking-wide flex items-center gap-2.5">
+                    <h3 class="card-terminal-title text-xl sm:text-2xl mb-2 flex items-center gap-2.5">
                         ${modIcon}
                         <span>${mod.title}</span>
                     </h3>
                     
-                    <p class="text-zinc-400 text-xs font-mono leading-relaxed mb-4">
+                    <p class="paragraph-muted line-clamp-3 mb-4">
                         Ateliers pratiques, cas de dépannage réels et travaux dirigés pour forger vos réflexes techniques.
                     </p>
 
                     <!-- 8-Bit Progress bar -->
-                    <div class="w-full mb-6">
-                        <div class="font-arcade text-[9px] text-zinc-400 mb-1.5 flex justify-between">
+                    <div class="w-full mb-6 mt-auto">
+                        <div class="text-[10px] text-[var(--text-muted)] mb-1.5 flex justify-between font-mono">
                             <span>STAGE PROGRESSION</span>
                             <span class="${accentColor} font-bold">${stats.available}/${stats.total} DISPO (${percent}%)</span>
                         </div>
-                        <div class="w-full h-3 bg-zinc-950 border border-zinc-700 p-0.5 flex gap-1">
+                        <div class="w-full h-3 bg-black border border-[var(--border-muted)] p-0.5 flex gap-1">
                             ${segmentsHtml}
                         </div>
                     </div>
 
-                    <div class="mt-auto pt-4 border-t border-zinc-800 flex items-center justify-between font-mono">
-                        <span class="font-arcade text-[9px] text-zinc-500">${mod.phases.length} PHASES</span>
+                    <div class="pt-4 border-t border-[var(--border-muted)] flex items-center justify-between font-sans">
+                        <span class="text-xs text-[var(--text-muted)]">${mod.phases.length} PHASES</span>
                         <button class="pixel-btn px-4 py-2 ${btnBg} ${btnText} font-arcade text-[10px] font-bold border-2 pointer-events-none flex items-center gap-1.5">
                             ${RetroIcons.play('w-3 h-3')} EXPLORER
                         </button>
@@ -470,12 +469,15 @@ const app = {
                 ${RetroIcons.arrowLeft('w-3 h-3')} RETOUR ACCUEIL
             </button>
             
-            <div class="mb-10 bg-zinc-900 border-2 border-zinc-700 p-6 shadow-[4px_4px_0px_#000]">
-                <div class="font-arcade text-[10px] text-amber-400 mb-2 flex items-center gap-2">
-                    ${RetroIcons.crt('w-4 h-4 text-amber-400')} MODULE BRIEFING
+            <div class="briefing-box briefing-box--green mb-10">
+                <div class="briefing-header briefing-header--orange">
+                    <span class="flex items-center gap-2">
+                        ${RetroIcons.crt('w-4 h-4 text-amber-400')} [ MODULE BRIEFING // IT CAMPUS ]
+                    </span>
+                    <span class="text-[var(--primary-green)] font-mono text-[10px]">${mod.phases.length} STAGES</span>
                 </div>
-                <h1 class="font-pixel text-2xl sm:text-4xl font-bold text-zinc-100 tracking-wide mb-3 pixel-title-shadow leading-tight">${mod.title}</h1>
-                <p class="font-mono text-sm text-zinc-400">${mod.description || "Sélectionnez une phase d'apprentissage pour continuer l'entraînement."}</p>
+                <h1 class="heading-main text-2xl sm:text-4xl font-bold tracking-wide mb-3 leading-tight">${mod.title}</h1>
+                <p class="paragraph-body">${mod.description || "Sélectionnez une phase d'apprentissage pour continuer l'entraînement."}</p>
                 ${progressHeaderHtml}
             </div>
 
@@ -488,16 +490,19 @@ const app = {
             let firstLessonId = phase.lessons.length > 0 ? phase.lessons[0].id : null;
 
             html += `
-                <div class="bg-zinc-900 border-2 border-zinc-700 hover:border-emerald-500/80 p-6 pixel-card group flex flex-col h-full cursor-pointer relative" onclick="${firstLessonId ? `app.loadLesson('${firstLessonId}')` : `app.togglePhase('phase-${itCampusData.modules.findIndex(m => m.id === mod.id)}-${pIndex}')`}">
-                    <div class="flex items-start justify-between mb-4 font-arcade text-[9px]">
-                        <span class="px-2 py-0.5 bg-zinc-950 text-emerald-400 border border-zinc-700">STAGE 0${pIndex + 1}</span>
-                        <span class="px-2 py-0.5 bg-zinc-800 text-zinc-300 border border-zinc-700">${availableLessons}/${totalLessons} DISPO</span>
+                <div class="card-terminal cursor-pointer group" onclick="${firstLessonId ? `app.loadLesson('${firstLessonId}')` : `app.togglePhase('phase-${itCampusData.modules.findIndex(m => m.id === mod.id)}-${pIndex}')`}">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="badge-terminal">STAGE 0${pIndex + 1}</span>
+                        <span class="badge-terminal !border-[var(--border-muted)] !text-[var(--text-muted)] !bg-transparent">${availableLessons}/${totalLessons} DISPO</span>
                     </div>
-                    <h3 class="font-pixel text-xl font-bold text-zinc-100 mb-2 group-hover:text-amber-300 transition-colors">${phase.title}</h3>
-                    <p class="font-mono text-xs text-zinc-400 mt-auto pt-4 border-t border-zinc-800 flex items-center justify-between">
-                        <span>Démarrer le stage</span>
-                        <span class="text-amber-400 font-arcade text-[10px] flex items-center gap-1">${RetroIcons.play('w-2.5 h-2.5')}</span>
+                    <h3 class="card-terminal-title text-xl mb-2 group-hover:text-[var(--primary-green)] transition-colors">${phase.title}</h3>
+                    <p class="paragraph-muted line-clamp-3 text-xs mb-4">
+                        Consultez le cours détaillé, visualisez la vidéo explicative et validez vos compétences par le quiz interactif.
                     </p>
+                    <div class="text-xs text-[var(--text-muted)] mt-auto pt-4 border-t border-[var(--border-muted)] flex items-center justify-between font-sans">
+                        <span>Démarrer le stage</span>
+                        <span class="text-[var(--primary-green)] font-mono text-xs flex items-center gap-1">${RetroIcons.play('w-2.5 h-2.5')}</span>
+                    </div>
                 </div>
             `;
         });
@@ -706,27 +711,32 @@ const app = {
         }
 
         let html = `
-        <div class="max-w-5xl mx-auto p-4 sm:p-8 lg:p-10 pb-24">
+        <article class="reading-container">
             <!-- Header -->
-            <div class="mb-8">
-                <div class="flex flex-wrap items-center gap-2 mb-4 font-arcade text-[9px] sm:text-[10px]">
-                    <button onclick="app.renderModuleDetails('${currentModule.id}')" class="pixel-btn px-2.5 py-1 bg-zinc-900 text-zinc-300 hover:text-amber-300 border border-zinc-700 shadow-[2px_2px_0px_#000] flex items-center gap-1.5 cursor-pointer">
-                        ${RetroIcons.arrowLeft('w-2.5 h-2.5')} ${currentModule.title.split(' : ')[0]}
-                    </button>
-                    <span class="px-2.5 py-1 bg-zinc-900 text-emerald-400 border border-zinc-700 shadow-[2px_2px_0px_#000]">${currentPhase.title.split(' : ')[0]}</span>
-                    ${currentLesson.quiz && currentLesson.quiz.length > 0 ? `<a href="#quiz-container" class="ml-auto pixel-btn px-3 py-1 bg-amber-500 text-zinc-950 font-arcade text-[9px] sm:text-[10px] font-bold border border-amber-300 flex items-center gap-1.5">${RetroIcons.chevronDown('w-3 h-3 text-zinc-950')} QUIZ</a>` : ''}
+            <header class="mb-8">
+                <div class="lesson-nav-header flex items-center justify-between mt-10 mb-8 font-sans text-xs flex-wrap gap-3">
+                    <div class="flex items-center gap-2.5">
+                        <button onclick="app.renderModuleDetails('${currentModule.id}')" class="pixel-btn px-2.5 py-1 bg-zinc-900 text-zinc-300 hover:text-[var(--primary-green)] border border-zinc-700 shadow-[2px_2px_0px_#000] flex items-center gap-1.5 cursor-pointer font-sans text-xs">
+                            ${RetroIcons.arrowLeft('w-2.5 h-2.5')} ${currentModule.title.split(' : ')[0]}
+                        </button>
+                        <span class="badge-terminal">${currentPhase.title.split(' : ')[0]}</span>
+                    </div>
+                    ${currentLesson.quiz && currentLesson.quiz.length > 0 ? `<a href="#quiz-container" class="pixel-btn px-3 py-1 bg-[var(--primary-green-muted)] text-zinc-950 font-sans text-xs font-bold border border-emerald-300 flex items-center gap-1.5 hover:bg-[var(--primary-green)] transition-colors">${RetroIcons.chevronDown('w-3 h-3 text-zinc-950')} QUIZ</a>` : ''}
                 </div>
-                <h1 class="font-pixel text-2xl sm:text-4xl font-bold text-zinc-100 tracking-wide mb-5 pixel-title-shadow leading-tight">${currentLesson.title}</h1>
+                <h1 class="heading-main text-2xl sm:text-4xl font-bold tracking-wide mb-5 leading-tight">${currentLesson.title}</h1>
                 
                 ${currentLesson.objective ? `
-                <div class="bg-zinc-900 border-2 border-amber-500/70 p-5 shadow-[3px_3px_0px_#000]">
-                    <h3 class="text-amber-400 font-arcade text-xs mb-2 flex items-center gap-2 uppercase tracking-wider">
-                        ${RetroIcons.cli('w-3.5 h-3.5 text-amber-400')} Objectif d'apprentissage
-                    </h3>
-                    <p class="text-zinc-300 font-mono leading-relaxed text-sm sm:text-base">${currentLesson.objective}</p>
+                <div class="briefing-box briefing-box--green">
+                    <div class="briefing-header briefing-header--green">
+                        <span class="flex items-center gap-2">
+                            ${RetroIcons.cli('w-3.5 h-3.5 text-[var(--primary-green)]')} [ OBJECTIF D'APPRENTISSAGE ]
+                        </span>
+                        <span class="badge-terminal">MISSION CRITIQUE</span>
+                    </div>
+                    <p class="paragraph-body leading-relaxed">${currentLesson.objective}</p>
                 </div>
                 ` : ''}
-            </div>
+            </header>
 
             <!-- Video Section -->
             <div class="mb-10">
@@ -735,8 +745,8 @@ const app = {
                 </div>
             </div>
 
-            <!-- Content Area -->
-            <div class="mb-14 font-mono text-zinc-300 leading-relaxed">
+            <!-- Content Area (Lecture ergonomique dans conteneur 800px max) -->
+            <div class="mb-14 font-sans text-[var(--text-primary)] leading-relaxed lesson-content">
                 ${contentHtml}
             </div>
 
@@ -745,11 +755,11 @@ const app = {
             </div>
 
             <!-- Navigation Buttons -->
-            <div class="flex items-center justify-between pt-6 border-t-2 border-zinc-800">
-                ${prevLesson ? `<button onclick="app.loadLesson('${prevLesson.id}')" class="pixel-btn px-4 sm:px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border-2 border-zinc-700 text-zinc-300 font-arcade text-[10px] font-bold flex items-center gap-2 focus:outline-none">${RetroIcons.arrowLeft('w-3.5 h-3.5')} <span class="hidden sm:inline">Précédent</span></button>` : '<div></div>'}
-                ${nextLesson ? `<button onclick="app.loadLesson('${nextLesson.id}')" class="pixel-btn px-4 sm:px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-arcade text-[10px] font-bold border-2 border-emerald-300 flex items-center gap-2 focus:outline-none"><span class="hidden sm:inline">Suivant</span> ${RetroIcons.arrowRight('w-3.5 h-3.5 text-zinc-950')}</button>` : '<div></div>'}
-            </div>
-        </div>
+            <footer class="flex items-center justify-between pt-6 border-t-2 border-[var(--border-muted)] mb-12">
+                ${prevLesson ? `<button onclick="app.loadLesson('${prevLesson.id}')" class="pixel-btn px-4 sm:px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border-2 border-zinc-700 text-zinc-300 font-sans text-xs font-bold flex items-center gap-2 focus:outline-none">${RetroIcons.arrowLeft('w-3.5 h-3.5')} <span class="hidden sm:inline">Précédent</span></button>` : '<div></div>'}
+                ${nextLesson ? `<button onclick="app.loadLesson('${nextLesson.id}')" class="pixel-btn px-4 sm:px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-sans text-xs font-bold border-2 border-emerald-300 flex items-center gap-2 focus:outline-none"><span class="hidden sm:inline">Suivant</span> ${RetroIcons.arrowRight('w-3.5 h-3.5 text-zinc-950')}</button>` : '<div></div>'}
+            </footer>
+        </article>
         `;
         
         document.getElementById('main-content').innerHTML = html;
@@ -793,14 +803,14 @@ const app = {
             });
             
             container.innerHTML = `
-                <div class="bg-zinc-900 border-2 border-amber-500 p-8 sm:p-12 text-center shadow-[6px_6px_0px_0px_#000] relative">
-                    <div class="font-arcade text-xs sm:text-sm text-amber-400 mb-2 tracking-widest flex items-center justify-center gap-2">
-                        ${RetroIcons.star('w-4 h-4 text-amber-400')} STAGE CLEAR ${RetroIcons.star('w-4 h-4 text-amber-400')}
+                <div class="bg-zinc-900 border-2 border-[var(--primary-green)] p-8 sm:p-12 text-center shadow-[6px_6px_0px_0px_#000] relative">
+                    <div class="font-sans text-xs sm:text-sm text-[var(--primary-green)] mb-2 tracking-widest font-bold flex items-center justify-center gap-2">
+                        ${RetroIcons.star('w-4 h-4 text-[var(--primary-green)]')} STAGE CLEAR ${RetroIcons.star('w-4 h-4 text-[var(--primary-green)]')}
                     </div>
                     <h3 class="font-pixel text-3xl sm:text-4xl font-bold text-zinc-100 mb-2 tracking-wide">Quiz terminé !</h3>
-                    <p class="text-zinc-400 font-mono text-sm mb-6">Évaluation enregistrée pour cette session.</p>
-                    <div class="font-arcade text-4xl sm:text-5xl text-emerald-400 mb-8 font-bold">${score} / ${state.questions.length} XP</div>
-                    <button onclick="app.loadLesson('${state.lessonId}')" class="pixel-btn px-8 py-3.5 bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-zinc-950 font-arcade text-xs font-bold border-2 border-amber-300 flex items-center justify-center gap-2 mx-auto">
+                    <p class="paragraph-muted text-sm mb-6 mx-auto text-center font-sans">Évaluation enregistrée pour cette session.</p>
+                    <div class="font-sans text-4xl sm:text-5xl text-[var(--primary-green)] mb-8 font-bold">${score} / ${state.questions.length} XP</div>
+                    <button onclick="app.loadLesson('${state.lessonId}')" class="pixel-btn px-8 py-3.5 bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 text-zinc-950 font-sans text-xs font-bold border-2 border-emerald-300 flex items-center justify-center gap-2 mx-auto">
                         ${RetroIcons.play('w-3.5 h-3.5 text-zinc-950')} RECOMMENCER
                     </button>
                 </div>
@@ -817,9 +827,9 @@ const app = {
                 const type = q.type === 'single' ? 'radio' : 'checkbox';
                 const name = `quiz_q${state.currentIndex}`;
                 optionsHtml += `
-                    <label class="flex items-start gap-3.5 p-4 border-2 border-zinc-700 bg-zinc-950/60 cursor-pointer hover:bg-zinc-800/80 hover:border-zinc-500 transition-all has-[:checked]:bg-zinc-800 has-[:checked]:border-amber-400 group pixel-card">
-                        <input type="${type}" name="${name}" value="${idx}" class="mt-1 w-4 h-4 accent-amber-400 flex-shrink-0" onchange="app.handleQuizSelection()">
-                        <span class="text-zinc-300 font-mono text-sm group-has-[:checked]:text-amber-200 leading-relaxed">${opt.text}</span>
+                    <label class="flex items-start gap-3.5 p-4 border-2 border-[var(--border-muted)] bg-[var(--bg-card)] cursor-pointer hover:bg-zinc-800/80 hover:border-zinc-500 transition-all has-[:checked]:bg-zinc-800 has-[:checked]:border-[var(--primary-green)] group pixel-card font-sans">
+                        <input type="${type}" name="${name}" value="${idx}" class="mt-1 w-4 h-4 accent-emerald-500 flex-shrink-0" onchange="app.handleQuizSelection()">
+                        <span class="text-[var(--text-primary)] font-sans text-sm group-has-[:checked]:text-emerald-200 leading-relaxed">${opt.text}</span>
                     </label>
                 `;
             });
@@ -827,38 +837,38 @@ const app = {
         } else if (q.type === 'text') {
             optionsHtml = `
                 <div class="mt-6">
-                    <input type="text" id="quiz_text_input" class="w-full bg-zinc-950 border-2 border-zinc-700 px-4 py-3 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-amber-400 font-mono text-base shadow-inner" placeholder="Saisissez votre réponse ici..." oninput="app.handleQuizSelection()">
+                    <input type="text" id="quiz_text_input" class="w-full bg-black border-2 border-[var(--border-muted)] px-4 py-3 text-[var(--text-primary)] placeholder-zinc-600 focus:outline-none focus:border-[var(--primary-green)] font-sans text-base shadow-inner" placeholder="Saisissez votre réponse ici..." oninput="app.handleQuizSelection()">
                 </div>
             `;
         }
 
         container.innerHTML = `
-            <div class="bg-zinc-900 border-2 border-zinc-700 shadow-[4px_4px_0px_0px_#000] overflow-hidden flex flex-col">
-                <div class="bg-zinc-950 px-6 py-3.5 flex items-center justify-between border-b-2 border-zinc-700 font-arcade text-xs">
-                    <span class="text-amber-400 flex items-center gap-2">
-                        ${RetroIcons.star('w-3.5 h-3.5 text-amber-400')} ÉVALUATION
+            <div class="card-terminal !p-0 overflow-hidden flex flex-col">
+                <div class="bg-zinc-950 px-6 py-3.5 flex items-center justify-between border-b-2 border-[var(--border-muted)] font-sans text-xs">
+                    <span class="text-[var(--primary-green)] flex items-center gap-2 font-bold uppercase tracking-wider">
+                        ${RetroIcons.star('w-3.5 h-3.5 text-[var(--primary-green)]')} ÉVALUATION
                     </span>
-                    <span class="bg-zinc-900 text-zinc-300 border border-zinc-700 px-2.5 py-1 text-[10px]">
+                    <span class="badge-terminal">
                         QUESTION ${state.currentIndex + 1} / ${state.questions.length}
                     </span>
                 </div>
                 
                 <!-- Progress bar -->
-                <div class="w-full bg-zinc-950 h-2 border-b border-zinc-800">
-                    <div class="bg-amber-400 h-full transition-all duration-300" style="width: ${((state.currentIndex) / state.questions.length) * 100}%"></div>
+                <div class="w-full bg-black h-2 border-b border-[var(--border-muted)]">
+                    <div class="bg-[var(--primary-green)] h-full transition-all duration-300" style="width: ${((state.currentIndex) / state.questions.length) * 100}%"></div>
                 </div>
                 
                 <div class="p-6 md:p-8">
-                    <h4 class="font-pixel text-xl sm:text-2xl text-zinc-100 leading-snug tracking-wide">${q.question}</h4>
-                    ${q.type === 'multiple' ? `<p class="text-emerald-400 text-xs font-mono mt-2 font-bold flex items-center gap-1.5">${RetroIcons.info('w-3.5 h-3.5 text-emerald-400')} Plusieurs réponses possibles</p>` : ''}
+                    <h4 class="font-sans text-xl sm:text-2xl font-bold text-zinc-100 leading-snug tracking-normal">${q.question}</h4>
+                    ${q.type === 'multiple' ? `<p class="text-[var(--primary-green)] text-xs font-sans mt-2 font-bold flex items-center gap-1.5">${RetroIcons.info('w-3.5 h-3.5 text-emerald-400')} Plusieurs réponses possibles</p>` : ''}
                     
                     ${optionsHtml}
                     
-                    <div id="quiz-feedback" class="mt-8 hidden font-mono text-sm"></div>
+                    <div id="quiz-feedback" class="mt-8 hidden font-sans text-sm"></div>
                     
                     <div class="mt-8 pt-6 border-t-2 border-zinc-800 flex justify-end gap-3">
-                        <button id="quiz-submit-btn" onclick="app.submitQuizAnswer()" class="pixel-btn px-6 py-3 bg-zinc-800 text-zinc-500 font-arcade text-xs border-2 border-zinc-700 cursor-not-allowed transition-all" disabled>VALIDER</button>
-                        <button id="quiz-next-btn" onclick="app.nextQuizQuestion()" class="hidden pixel-btn px-6 py-3 bg-amber-500 hover:bg-amber-400 text-zinc-950 font-arcade text-xs font-bold border-2 border-amber-300 transition-all flex items-center gap-2">
+                        <button id="quiz-submit-btn" onclick="app.submitQuizAnswer()" class="pixel-btn px-6 py-3 bg-zinc-800 text-zinc-500 font-sans text-xs font-bold border-2 border-zinc-700 cursor-not-allowed transition-all" disabled>VALIDER</button>
+                        <button id="quiz-next-btn" onclick="app.nextQuizQuestion()" class="hidden pixel-btn px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-sans text-xs font-bold border-2 border-emerald-300 transition-all flex items-center gap-2">
                             <span>SUIVANT</span> ${RetroIcons.arrowRight('w-3 h-3 text-zinc-950')}
                         </button>
                     </div>
@@ -884,11 +894,11 @@ const app = {
         if (hasSelection) {
             btn.disabled = false;
             btn.classList.remove('bg-zinc-800', 'text-zinc-500', 'cursor-not-allowed', 'border-zinc-700');
-            btn.classList.add('bg-amber-500', 'hover:bg-amber-400', 'text-zinc-950', 'border-amber-300');
+            btn.classList.add('bg-emerald-500', 'hover:bg-emerald-400', 'text-zinc-950', 'border-emerald-300');
         } else {
             btn.disabled = true;
             btn.classList.add('bg-zinc-800', 'text-zinc-500', 'cursor-not-allowed', 'border-zinc-700');
-            btn.classList.remove('bg-amber-500', 'hover:bg-amber-400', 'text-zinc-950', 'border-amber-300');
+            btn.classList.remove('bg-emerald-500', 'hover:bg-emerald-400', 'text-zinc-950', 'border-emerald-300');
         }
     },
 
@@ -923,10 +933,10 @@ const app = {
             
             feedbackHtml = `
                 <div class="p-5 ${isCorrect ? 'bg-emerald-950/40 border-2 border-emerald-500' : 'bg-rose-950/40 border-2 border-rose-500'} pixel-card">
-                    <strong class="flex items-center gap-2.5 mb-2 ${isCorrect ? 'text-emerald-400' : 'text-rose-400'} font-arcade text-xs">
+                    <strong class="flex items-center gap-2.5 mb-2 ${isCorrect ? 'text-emerald-400' : 'text-rose-400'} font-sans font-bold text-sm">
                         ${isCorrect ? `${RetroIcons.check('w-5 h-5 text-emerald-400')} BONNE RÉPONSE !` : `${RetroIcons.cross('w-5 h-5 text-rose-400')} PAS TOUT À FAIT...`}
                     </strong>
-                    <p class="text-zinc-300 font-mono text-sm leading-relaxed">${opt.feedback}</p>
+                    <p class="paragraph-body !mb-0 text-sm leading-relaxed">${opt.feedback}</p>
                 </div>
             `;
         } else if (q.type === 'multiple') {
@@ -943,14 +953,14 @@ const app = {
                 else if (selected.includes(i) && !o.isCorrect) label.classList.add('border-rose-500', 'bg-rose-900/20');
                 
                 if (selected.includes(i) || o.isCorrect) {
-                    details += `<div class="mt-3 font-mono text-xs"><strong class="${o.isCorrect ? 'text-emerald-400' : 'text-rose-400'}">[${o.isCorrect ? '✓' : '✗'}] ${o.text}</strong><br><span class="text-zinc-300">${o.feedback}</span></div>`;
+                    details += `<div class="mt-3 font-sans text-xs"><strong class="${o.isCorrect ? 'text-emerald-400' : 'text-rose-400'}">[${o.isCorrect ? '✓' : '✗'}] ${o.text}</strong><br><span class="text-zinc-300 font-sans">${o.feedback}</span></div>`;
                 }
             });
             
             feedbackHtml = `
-                <div class="p-5 ${isCorrect ? 'bg-emerald-950/40 border-2 border-emerald-500' : 'bg-zinc-900 border-2 border-amber-500'} pixel-card">
-                    <strong class="flex items-center gap-2.5 mb-2 ${isCorrect ? 'text-emerald-400' : 'text-amber-400'} font-arcade text-xs">
-                        ${isCorrect ? `${RetroIcons.check('w-5 h-5 text-emerald-400')} EXCELLENTE RÉPONSE !` : `${RetroIcons.info('w-5 h-5 text-amber-400')} VOICI LES EXPLICATIONS :`}
+                <div class="p-5 ${isCorrect ? 'bg-emerald-950/40 border-2 border-emerald-500' : 'bg-zinc-900 border-2 border-emerald-500'} pixel-card">
+                    <strong class="flex items-center gap-2.5 mb-2 ${isCorrect ? 'text-emerald-400' : 'text-emerald-400'} font-sans font-bold text-sm">
+                        ${isCorrect ? `${RetroIcons.check('w-5 h-5 text-emerald-400')} EXCELLENTE RÉPONSE !` : `${RetroIcons.info('w-5 h-5 text-emerald-400')} VOICI LES EXPLICATIONS :`}
                     </strong>
                     ${details}
                 </div>
@@ -966,10 +976,10 @@ const app = {
             
             feedbackHtml = `
                 <div class="p-5 ${isCorrect ? 'bg-emerald-950/40 border-2 border-emerald-500' : 'bg-rose-950/40 border-2 border-rose-500'} pixel-card">
-                    <strong class="flex items-center gap-2.5 mb-2 ${isCorrect ? 'text-emerald-400' : 'text-rose-400'} font-arcade text-xs">
+                    <strong class="flex items-center gap-2.5 mb-2 ${isCorrect ? 'text-emerald-400' : 'text-rose-400'} font-sans font-bold text-sm">
                         ${isCorrect ? `${RetroIcons.check('w-5 h-5 text-emerald-400')} BONNE RÉPONSE !` : `${RetroIcons.cross('w-5 h-5 text-rose-400')} PAS TOUT À FAIT...`}
                     </strong>
-                    <p class="text-zinc-300 font-mono text-sm leading-relaxed">${q.feedback}</p>
+                    <p class="paragraph-body !mb-0 text-sm leading-relaxed">${q.feedback}</p>
                 </div>
             `;
         }

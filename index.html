@@ -32,7 +32,6 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&family=Pixelify+Sans:wght@400;600;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <style>
         /* Custom scrollbar */
         ::-webkit-scrollbar {
@@ -40,29 +39,24 @@
             height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0c0e14;
+            background: var(--bg-app);
         }
         ::-webkit-scrollbar-thumb {
             background: #27272a;
+            border: 1px solid var(--border-muted);
             border-radius: 0px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #3f3f46;
+            background: var(--primary-green-muted);
         }
-        body {
-            font-family: 'Inter', sans-serif;
+        body, main, p, li, td, th, span, label {
+            font-family: var(--font-body);
         }
         pre, code, .font-mono {
             font-family: 'Fira Code', monospace;
         }
-        .font-pixel {
+        h1.font-pixel, h2.font-pixel, h3.font-pixel, .badge.font-pixel, .badge-terminal {
             font-family: 'Pixelify Sans', system-ui, sans-serif;
-        }
-        .font-arcade {
-            font-family: 'Press Start 2P', monospace;
-        }
-        .font-vt {
-            font-family: 'VT323', monospace;
         }
         @keyframes blinkCursor {
             0%, 49% { opacity: 1; }
@@ -107,31 +101,33 @@
             pointer-events: none;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="terminal-theme.css">
 </head>
-<body class="bg-[#0c0e14] text-zinc-300 h-screen flex overflow-hidden selection:bg-amber-400 selection:text-zinc-950">
+<body class="bg-[var(--bg-app)] text-[var(--text-primary)] h-screen flex overflow-hidden selection:bg-[var(--primary-green)] selection:text-black">
 
     <!-- Subtle CRT Scanlines Texture -->
     <div class="crt-scanlines fixed inset-0 z-50 pointer-events-none opacity-30"></div>
 
     <!-- Mobile Header -->
-    <div class="lg:hidden absolute top-0 left-0 right-0 h-16 bg-zinc-900 border-b-2 border-zinc-800 flex items-center justify-between px-4 z-30">
-        <button onclick="app.renderHome()" class="font-pixel text-xl text-amber-400 flex items-center gap-2.5 hover:text-amber-300 transition-colors cursor-pointer focus:outline-none pixel-title-shadow group">
+    <div class="lg:hidden absolute top-0 left-0 right-0 h-16 bg-[var(--bg-card)] border-b-2 border-[var(--border-muted)] flex items-center justify-between px-4 z-30">
+        <button onclick="app.renderHome()" class="font-pixel text-xl text-[var(--primary-green)] flex items-center gap-2.5 hover:text-emerald-300 transition-colors cursor-pointer focus:outline-none pixel-title-shadow group">
             <span class="inline-block transform group-hover:scale-110 transition-transform">
                 <svg class="w-7 h-7 flex-shrink-0" viewBox="0 0 16 16" fill="none" shape-rendering="crispEdges">
-                    <path d="M2 1h12v10H2V1zm1 1v8h10V2H3z" fill="#f59e0b"/>
-                    <rect x="4" y="3" width="8" height="6" fill="#090b10"/>
-                    <rect x="5" y="4" width="2" height="1" fill="#22c55e"/>
-                    <rect x="6" y="5" width="2" height="1" fill="#22c55e"/>
-                    <rect x="5" y="6" width="2" height="1" fill="#22c55e"/>
-                    <rect x="8" y="7" width="3" height="1" fill="#4ade80"/>
-                    <rect x="12" y="9" width="1" height="1" fill="#ef4444"/>
-                    <rect x="6" y="11" width="4" height="2" fill="#d97706"/>
-                    <rect x="4" y="13" width="8" height="2" fill="#f59e0b"/>
+                    <path d="M2 1h12v10H2V1zm1 1v8h10V2H3z" fill="#00ff41"/>
+                    <rect x="4" y="3" width="8" height="6" fill="#000000"/>
+                    <rect x="5" y="4" width="2" height="1" fill="#00ff41"/>
+                    <rect x="6" y="5" width="2" height="1" fill="#00ff41"/>
+                    <rect x="5" y="6" width="2" height="1" fill="#00ff41"/>
+                    <rect x="8" y="7" width="3" height="1" fill="#00cc33"/>
+                    <rect x="12" y="9" width="1" height="1" fill="#ff9f00"/>
+                    <rect x="6" y="11" width="4" height="2" fill="#00cc33"/>
+                    <rect x="4" y="13" width="8" height="2" fill="#00ff41"/>
                 </svg>
             </span>
             <span>IT CAMPUS</span>
         </button>
-        <button id="mobile-menu-btn" class="pixel-btn p-2 bg-zinc-950 border-2 border-zinc-700 text-amber-400 hover:text-amber-300 transition-colors focus:outline-none" title="Menu">
+        <button id="mobile-menu-btn" class="pixel-btn p-2 bg-black border-2 border-[var(--border-muted)] text-[var(--primary-green)] hover:text-emerald-300 transition-colors focus:outline-none" title="Menu">
             <svg class="w-5 h-5" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
                 <rect x="2" y="3" width="12" height="2"/>
                 <rect x="2" y="7" width="12" height="2"/>
@@ -144,25 +140,25 @@
     <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-20 hidden transition-opacity opacity-0"></div>
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="bg-zinc-950 border-r-2 border-zinc-800 w-80 flex-shrink-0 h-full flex flex-col transition-transform duration-300 ease-in-out z-30 fixed lg:relative transform -translate-x-full lg:translate-x-0 pt-16 lg:pt-0">
-        <div class="h-16 flex items-center px-6 border-b-2 border-zinc-800 hidden lg:flex">
-            <button onclick="app.renderHome()" class="font-pixel text-2xl text-amber-400 flex items-center gap-3 hover:text-amber-300 transition-colors cursor-pointer focus:outline-none pixel-title-shadow group">
+    <aside id="sidebar" class="bg-[var(--bg-card)] border-r-2 border-[var(--border-muted)] w-80 flex-shrink-0 h-full flex flex-col transition-transform duration-300 ease-in-out z-30 fixed lg:relative transform -translate-x-full lg:translate-x-0 pt-16 lg:pt-0">
+        <div class="h-16 flex items-center px-6 border-b-2 border-[var(--border-muted)] hidden lg:flex">
+            <button onclick="app.renderHome()" class="font-pixel text-2xl text-[var(--primary-green)] flex items-center gap-3 hover:text-emerald-300 transition-colors cursor-pointer focus:outline-none pixel-title-shadow group">
                 <span class="inline-block transform group-hover:scale-110 transition-transform">
                     <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 16 16" fill="none" shape-rendering="crispEdges">
-                        <path d="M2 1h12v10H2V1zm1 1v8h10V2H3z" fill="#f59e0b"/>
-                        <rect x="4" y="3" width="8" height="6" fill="#090b10"/>
-                        <rect x="5" y="4" width="2" height="1" fill="#22c55e"/>
-                        <rect x="6" y="5" width="2" height="1" fill="#22c55e"/>
-                        <rect x="5" y="6" width="2" height="1" fill="#22c55e"/>
-                        <rect x="8" y="7" width="3" height="1" fill="#4ade80"/>
-                        <rect x="12" y="9" width="1" height="1" fill="#ef4444"/>
-                        <rect x="6" y="11" width="4" height="2" fill="#d97706"/>
-                        <rect x="4" y="13" width="8" height="2" fill="#f59e0b"/>
+                        <path d="M2 1h12v10H2V1zm1 1v8h10V2H3z" fill="#00ff41"/>
+                        <rect x="4" y="3" width="8" height="6" fill="#000000"/>
+                        <rect x="5" y="4" width="2" height="1" fill="#00ff41"/>
+                        <rect x="6" y="5" width="2" height="1" fill="#00ff41"/>
+                        <rect x="5" y="6" width="2" height="1" fill="#00ff41"/>
+                        <rect x="8" y="7" width="3" height="1" fill="#00cc33"/>
+                        <rect x="12" y="9" width="1" height="1" fill="#ff9f00"/>
+                        <rect x="6" y="11" width="4" height="2" fill="#00cc33"/>
+                        <rect x="4" y="13" width="8" height="2" fill="#00ff41"/>
                     </svg>
                 </span>
                 <span>IT CAMPUS</span>
             </button>
-            <button onclick="app.toggleDesktopSidebar()" class="pixel-btn p-1.5 bg-zinc-900 hover:bg-zinc-800 border-2 border-zinc-700 text-zinc-400 hover:text-amber-400 transition-colors ml-auto focus:outline-none font-arcade text-xs" title="Masquer le menu">
+            <button onclick="app.toggleDesktopSidebar()" class="pixel-btn p-1.5 bg-black hover:bg-zinc-900 border-2 border-[var(--border-muted)] text-[var(--text-muted)] hover:text-[var(--primary-green)] transition-colors ml-auto focus:outline-none font-arcade text-xs" title="Masquer le menu">
                 <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
                     <path d="M10 3L5 8l5 5V3z"/>
                 </svg>
@@ -170,14 +166,13 @@
         </div>
         
 
-
         <nav class="flex-1 overflow-y-auto p-4 space-y-4" id="nav-container">
             <!-- Sidebar injected by JS -->
         </nav>
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 h-full overflow-y-auto bg-[#0c0e14] pt-16 lg:pt-0 scroll-smooth relative" id="main-content">
+    <main class="flex-1 h-full overflow-y-auto bg-[var(--bg-app)] pt-16 lg:pt-0 scroll-smooth relative" id="main-content">
         <!-- Desktop Floating Toggle (hidden by default) -->
         <button id="desktop-toggle-btn" onclick="app.toggleDesktopSidebar()" class="hidden lg:flex fixed top-4 left-4 z-40 p-2.5 bg-zinc-900 border-2 border-zinc-700 text-amber-400 hover:text-amber-300 pixel-btn shadow-[3px_3px_0px_#000] transition-all focus:outline-none opacity-0 pointer-events-none" title="Afficher le menu">
             <svg class="w-5 h-5" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">

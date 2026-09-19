@@ -105,29 +105,32 @@ const itCampusData = {
                             content: `
                             <div class="space-y-12">
                                 <!-- Intro Dialogue / Hardware Briefing Block -->
-                                <div class="bg-zinc-900 border-2 border-zinc-700 p-6 sm:p-8 pixel-card shadow-[4px_4px_0px_#000]">
-                                    <div class="font-arcade text-[9px] sm:text-[10px] text-amber-400 mb-3 flex items-center justify-between border-b border-zinc-800 pb-2">
-                                        <span>[ BRIEFING TECHNIQUE // ARCHITECTURE DU STOCKAGE ]</span>
-                                        <span class="text-emerald-400">HARDWARE READY ▶</span>
+                                <!-- Intro Dialogue / Hardware Briefing Block -->
+                                <div class="briefing-box briefing-box--green">
+                                    <div class="briefing-header briefing-header--green">
+                                        <span class="flex items-center gap-2 font-sans font-bold">
+                                            [ BRIEFING TECHNIQUE // ARCHITECTURE DU STOCKAGE ]
+                                        </span>
+                                        <span class="badge-terminal">HARDWARE READY ▶</span>
                                     </div>
-                                    <p class="text-zinc-300 text-sm sm:text-base leading-relaxed font-mono mb-6">
-                                        Un disque dur (HDD) ou un SSD est initialement composé de blocs physiques nommés <strong class="text-amber-300">secteurs</strong>, mesurant généralement 512 octets (Legacy) ou 4 Ko (Advanced Format). Avant l'écriture de dossiers ou de fichiers, le système d'exploitation s'appuie sur la <strong class="text-white">table de partitionnement</strong> inscrite au tout début du disque physique pour délimiter les découpages logiques (les partitions).
+                                    <p class="paragraph-body mb-6">
+                                        Un disque dur (HDD) ou un SSD est initialement composé de blocs physiques nommés <strong class="text-white font-semibold">secteurs</strong>, mesurant généralement 512 octets (Legacy) ou 4 Ko (Advanced Format). Avant l'écriture de dossiers ou de fichiers, le système d'exploitation s'appuie sur la <strong class="text-white font-semibold">table de partitionnement</strong> inscrite au tout début du disque physique pour délimiter les découpages logiques (les partitions).
                                     </p>
-                                    <div class="bg-zinc-950 p-4 sm:p-5 border-2 border-zinc-800">
-                                        <div class="font-arcade text-[9px] text-zinc-400 mb-3 flex items-center gap-2">
-                                            <span class="text-amber-400">●</span> TOPOLOGIE PHYSIQUE DU DISQUE :
+                                    <div class="bg-black p-4 sm:p-5 border border-[var(--border-muted)]">
+                                        <div class="font-sans text-xs font-semibold text-zinc-300 mb-3 flex items-center gap-2">
+                                            <span class="text-[var(--primary-green)]">●</span> TOPOLOGIE PHYSIQUE DU DISQUE :
                                         </div>
                                         <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs">
-                                            <div class="px-3 py-2 bg-zinc-900 border-2 border-zinc-700 text-zinc-200 shadow-[2px_2px_0px_#000] font-bold">
+                                            <div class="px-3 py-2 bg-[var(--bg-card)] border border-[var(--border-muted)] text-[var(--text-primary)] font-bold">
                                                 DISQUE PHYSIQUE (LBA 0...N)
                                             </div>
-                                            <span class="text-amber-400 font-arcade text-xs">▶▶</span>
-                                            <div class="px-3 py-2 bg-zinc-900 border-2 border-amber-500/80 text-amber-300 shadow-[2px_2px_0px_#000] font-bold">
+                                            <span class="text-[var(--primary-green)] font-mono text-xs">▶▶</span>
+                                            <div class="px-3 py-2 bg-[var(--bg-card)] border border-[var(--border-muted)] text-[var(--text-primary)] font-bold">
                                                 SECTEUR 0 : LBA 0 (TABLE MBR / GPT)
                                             </div>
-                                            <span class="text-amber-400 font-arcade text-xs">▶▶</span>
-                                            <div class="px-3 py-2 bg-zinc-900 border-2 border-emerald-500/80 text-emerald-300 shadow-[2px_2px_0px_#000] font-bold">
-                                                PARTITIONS & SYSTÈMES DE FICHIERS
+                                            <span class="text-[var(--primary-green)] font-mono text-xs">▶▶</span>
+                                            <div class="px-3 py-2 bg-[var(--bg-card)] border border-[var(--primary-green)] text-[var(--primary-green)] font-bold">
+                                                PARTITIONS &amp; SYSTÈMES DE FICHIERS
                                             </div>
                                         </div>
                                     </div>
@@ -135,53 +138,53 @@ const itCampusData = {
 
                                 <!-- Section 1 : Partitioning Tables -->
                                 <section>
-                                    <div class="flex items-center gap-3 mb-6">
-                                        <span class="px-2.5 py-1 bg-amber-500 text-zinc-950 font-arcade text-xs font-bold shadow-[2px_2px_0px_#000]">01</span>
-                                        <h2 class="font-pixel text-2xl sm:text-4xl font-bold text-amber-400 tracking-wide pixel-title-shadow uppercase">
+                                    <div class="flex items-center gap-3 mb-8">
+                                        <span class="badge-terminal">01</span>
+                                        <h2 class="heading-section !m-0 text-xl sm:text-3xl">
                                             La Table de Partitionnement : MBR vs GPT
                                         </h2>
                                     </div>
                                     
                                     <div class="flex flex-col gap-8 mb-10">
                                         <!-- MBR Card -->
-                                        <div class="bg-zinc-900 border-2 border-zinc-700 p-6 sm:p-8 pixel-card shadow-[4px_4px_0px_#000] relative">
-                                            <div class="flex items-center justify-between gap-4 mb-5 border-b border-zinc-800 pb-4 flex-wrap">
+                                        <div class="card-terminal p-6 sm:p-8 relative">
+                                            <div class="flex items-center justify-between gap-4 mb-5 border-b border-[var(--border-muted)] pb-4 flex-wrap">
                                                 <div class="flex items-center gap-3">
-                                                    <span class="px-2 py-0.5 bg-zinc-950 text-amber-400 border border-zinc-700 font-arcade text-[10px]">LEGACY BIOS</span>
-                                                    <h3 class="font-pixel text-2xl sm:text-3xl text-zinc-100 tracking-wide">A. MBR (Master Boot Record)</h3>
+                                                    <span class="badge-terminal badge-orange">LEGACY BIOS</span>
+                                                    <h3 class="card-terminal-title !text-2xl sm:!text-3xl text-zinc-100 tracking-wide">A. MBR (Master Boot Record)</h3>
                                                 </div>
-                                                <span class="font-arcade text-[9px] text-zinc-500">[ INTRODUIT EN 1983 ]</span>
+                                                <span class="font-mono text-xs text-[var(--text-muted)]">[ INTRODUIT EN 1983 ]</span>
                                             </div>
                                             
-                                            <div class="space-y-5 font-mono text-zinc-300 text-sm leading-relaxed">
-                                                <p><strong class="text-white">Origine et architecture :</strong> Conçu par IBM en 1983 pour le système DOS, le standard MBR repose sur une architecture 32 bits intrinsèquement liée au micrologiciel <strong class="text-amber-300">BIOS Legacy</strong>.</p>
-                                                <p><strong class="text-white">Emplacement physique :</strong> Réside exclusivement sur le tout premier secteur du disque physique, nommé <strong class="text-amber-300">secteur LBA 0</strong> (Logical Block Addressing), d'une dimension exacte et fixe de 512 octets.</p>
+                                            <div class="space-y-5 font-sans text-[var(--text-primary)] text-sm sm:text-base leading-relaxed">
+                                                <p><strong class="text-white">Origine et architecture :</strong> Conçu par IBM en 1983 pour le système DOS, le standard MBR repose sur une architecture 32 bits intrinsèquement liée au micrologiciel <strong class="text-white font-semibold">BIOS Legacy</strong>.</p>
+                                                <p><strong class="text-white">Emplacement physique :</strong> Réside exclusivement sur le tout premier secteur du disque physique, nommé <strong class="text-white font-semibold">secteur LBA 0</strong> (Logical Block Addressing), d'une dimension exacte et fixe de 512 octets.</p>
                                                 
-                                                <div class="bg-zinc-950 p-5 border-2 border-zinc-800 shadow-[3px_3px_0px_#000]">
-                                                    <div class="font-arcade text-[10px] text-amber-400 mb-3 border-b border-zinc-800 pb-2 flex items-center justify-between">
+                                                <div class="bg-black p-5 border border-[var(--border-muted)]">
+                                                    <div class="font-sans text-xs font-semibold text-zinc-300 mb-3 border-b border-[var(--border-muted)] pb-2 flex items-center justify-between">
                                                         <span>[ DISSECTION DES 512 OCTETS DU SECTEUR LBA 0 ]</span>
-                                                        <span class="text-zinc-500">512 BYTES FIXED</span>
+                                                        <span class="text-[var(--text-muted)] font-mono text-xs">512 BYTES FIXED</span>
                                                     </div>
-                                                    <div class="space-y-3">
-                                                        <div class="flex items-start gap-3 p-3 bg-zinc-900 border border-zinc-800">
-                                                            <span class="font-arcade text-[9px] px-2 py-1 bg-amber-500 text-zinc-950 font-bold flex-shrink-0">01</span>
+                                                    <div class="space-y-3 font-sans">
+                                                        <div class="flex items-start gap-3 p-3 bg-[var(--bg-card)] border border-[var(--border-muted)]">
+                                                            <span class="badge-terminal !text-[10px] !px-2 !py-0.5">01</span>
                                                             <div>
-                                                                <strong class="text-amber-300 font-bold block mb-1">Code de démarrage (Bootstrap Code) : 446 octets</strong>
-                                                                <span class="text-zinc-400 text-xs">Code machine binaire exécuté directement par le BIOS pour identifier la partition active et transférer la main au bootloader de l'OS.</span>
+                                                                <strong class="text-white font-semibold block mb-1">Code de démarrage (Bootstrap Code) : 446 octets</strong>
+                                                                <span class="text-[var(--text-muted)] text-xs">Code machine binaire exécuté directement par le BIOS pour identifier la partition active et transférer la main au bootloader de l'OS.</span>
                                                             </div>
                                                         </div>
-                                                        <div class="flex items-start gap-3 p-3 bg-zinc-900 border border-zinc-800">
-                                                            <span class="font-arcade text-[9px] px-2 py-1 bg-amber-500 text-zinc-950 font-bold flex-shrink-0">02</span>
+                                                        <div class="flex items-start gap-3 p-3 bg-[var(--bg-card)] border border-[var(--border-muted)]">
+                                                            <span class="badge-terminal !text-[10px] !px-2 !py-0.5">02</span>
                                                             <div>
-                                                                <strong class="text-amber-300 font-bold block mb-1">Table de partition : 64 octets (4 entrées de 16 octets)</strong>
-                                                                <span class="text-zinc-400 text-xs">Chaque descripteur de partition occupe exactement 16 octets. La formule arithmétique rigide <code>64 ÷ 16 = 4</code> rend mathématiquement impossible la création de plus de 4 partitions primaires.</span>
+                                                                <strong class="text-white font-semibold block mb-1">Table de partition : 64 octets (4 entrées de 16 octets)</strong>
+                                                                <span class="text-[var(--text-muted)] text-xs">Chaque descripteur de partition occupe exactement 16 octets. La formule arithmétique rigide <code>64 ÷ 16 = 4</code> rend mathématiquement impossible la création de plus de 4 partitions primaires.</span>
                                                             </div>
                                                         </div>
-                                                        <div class="flex items-start gap-3 p-3 bg-zinc-900 border border-zinc-800">
-                                                            <span class="font-arcade text-[9px] px-2 py-1 bg-amber-500 text-zinc-950 font-bold flex-shrink-0">03</span>
+                                                        <div class="flex items-start gap-3 p-3 bg-[var(--bg-card)] border border-[var(--border-muted)]">
+                                                            <span class="badge-terminal !text-[10px] !px-2 !py-0.5">03</span>
                                                             <div>
-                                                                <strong class="text-amber-300 font-bold block mb-1">Signature de boot (Magic Number) : 2 octets [ 0x55AA ]</strong>
-                                                                <span class="text-zinc-400 text-xs">Valeur hexadécimale de validation confirmant au BIOS que le disque physique contient une amorce valide.</span>
+                                                                <strong class="text-white font-semibold block mb-1">Signature de boot (Magic Number) : 2 octets [ 0x55AA ]</strong>
+                                                                <span class="text-[var(--text-muted)] text-xs">Valeur hexadécimale de validation confirmant au BIOS que le disque physique contient une amorce valide.</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -189,21 +192,21 @@ const itCampusData = {
                                                 
                                                 <div>
                                                     <strong class="text-white block mb-1">Calcul mathématique de la limite des 2 To :</strong>
-                                                    <p class="text-zinc-300 mb-2">Le MBR utilise un champ d'adressage de secteur limité à 32 bits (soit 2³² adresses possibles). Avec des secteurs standards de 512 octets :</p>
-                                                    <div class="bg-black border-2 border-zinc-800 p-3 shadow-[2px_2px_0px_#000] text-amber-300 font-mono text-xs overflow-x-auto">
+                                                    <p class="text-[var(--text-primary)] mb-2">Le MBR utilise un champ d'adressage de secteur limité à 32 bits (soit 2³² adresses possibles). Avec des secteurs standards de 512 octets :</p>
+                                                    <div class="bg-black border border-[var(--border-muted)] p-3 text-zinc-200 font-mono text-xs overflow-x-auto">
                                                         <code>4 294 967 296 secteurs × 512 octets = 2 199 023 255 552 octets ≈ 2,19 To (2 Tio)</code>
                                                     </div>
-                                                    <p class="text-zinc-400 text-xs mt-1">Tout secteur physique au-delà de cette frontière de 2,19 To est complètement invisible pour le BIOS et le partitionneur MBR.</p>
+                                                    <p class="text-[var(--text-muted)] text-xs mt-1">Tout secteur physique au-delà de cette frontière de 2,19 To est complètement invisible pour le BIOS et le partitionneur MBR.</p>
                                                 </div>
 
-                                                <p><strong class="text-white">Contournement :</strong> Possibilité de sacrifier une entrée primaire pour créer une <strong class="text-amber-300">partition étendue</strong>, servant de réceptacle à des lecteurs logiques chaînés (EBR).</p>
+                                                <p><strong class="text-white">Contournement :</strong> Possibilité de sacrifier une entrée primaire pour créer une <strong class="text-white font-semibold">partition étendue</strong>, servant de réceptacle à des lecteurs logiques chaînés (EBR).</p>
 
                                                 <!-- Critical Vulnerability Warning Box -->
-                                                <div class="bg-zinc-950 border-2 border-rose-500/80 p-4 shadow-[3px_3px_0px_#000] mt-4">
-                                                    <div class="font-arcade text-[10px] text-rose-400 mb-1.5 flex items-center gap-2">
-                                                        <span>▲</span> [ VULNÉRABILITÉ CRITIQUE MBR : ABSENCE DE REDONDANCE ]
+                                                <div class="briefing-box briefing-box--orange mt-4">
+                                                    <div class="briefing-header briefing-header--orange">
+                                                        <span class="font-sans font-bold">▲ [ VULNÉRABILITÉ CRITIQUE MBR : ABSENCE DE REDONDANCE ]</span>
                                                     </div>
-                                                    <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                                                    <p class="paragraph-body !mb-0 text-xs sm:text-sm leading-relaxed">
                                                         Aucune sauvegarde n'existe par défaut. Si le premier secteur physique LBA 0 est endommagé, corrompu par un malware ou défaillant, le système d'exploitation ne repère plus aucune table : le disque bascule instantanément à l'état non initialisé / brut (<strong class="text-rose-400 font-bold">RAW</strong>), bloquant l'accès à toutes les données.
                                                     </p>
                                                 </div>
@@ -211,50 +214,50 @@ const itCampusData = {
                                         </div>
 
                                         <!-- GPT Card -->
-                                        <div class="bg-zinc-900 border-2 border-cyan-500/70 p-6 sm:p-8 pixel-card shadow-[4px_4px_0px_#000] relative">
-                                            <div class="flex items-center justify-between gap-4 mb-5 border-b border-zinc-800 pb-4 flex-wrap">
+                                        <div class="card-terminal p-6 sm:p-8 relative">
+                                            <div class="flex items-center justify-between gap-4 mb-5 border-b border-[var(--border-muted)] pb-4 flex-wrap">
                                                 <div class="flex items-center gap-3">
-                                                    <span class="px-2 py-0.5 bg-zinc-950 text-cyan-400 border border-cyan-500/60 font-arcade text-[10px]">MODERN UEFI</span>
-                                                    <h3 class="font-pixel text-2xl sm:text-3xl text-zinc-100 tracking-wide">B. GPT (GUID Partition Table)</h3>
+                                                    <span class="badge-terminal badge-cyan">MODERN UEFI</span>
+                                                    <h3 class="card-terminal-title !text-2xl sm:!text-3xl text-zinc-100 tracking-wide">B. GPT (GUID Partition Table)</h3>
                                                 </div>
-                                                <span class="font-arcade text-[9px] text-zinc-500">[ STANDARD UEFI ACTUEL ]</span>
+                                                <span class="font-mono text-xs text-[var(--text-muted)]">[ STANDARD UEFI ACTUEL ]</span>
                                             </div>
                                             
-                                            <div class="space-y-5 font-mono text-zinc-300 text-sm leading-relaxed">
-                                                <p><strong class="text-white">Origine et architecture :</strong> Introduit dans le cadre de la norme <strong class="text-cyan-300">UEFI</strong> pour remplacer définitivement les limites du BIOS, le GPT s'appuie sur un adressage de blocs sur 64 bits et attribue un identifiant universel unique (<strong class="text-cyan-300">GUID / UUID sur 128 bits</strong>) à chaque partition.</p>
+                                            <div class="space-y-5 font-sans text-[var(--text-primary)] text-sm sm:text-base leading-relaxed">
+                                                <p><strong class="text-white">Origine et architecture :</strong> Introduit dans le cadre de la norme <strong class="text-white font-semibold">UEFI</strong> pour remplacer définitivement les limites du BIOS, le GPT s'appuie sur un adressage de blocs sur 64 bits et attribue un identifiant universel unique (<strong class="text-white font-semibold">GUID / UUID sur 128 bits</strong>) à chaque partition.</p>
                                                 
-                                                <div class="bg-zinc-950 p-5 border-2 border-zinc-800 shadow-[3px_3px_0px_#000]">
-                                                    <div class="font-arcade text-[10px] text-cyan-400 mb-3 border-b border-zinc-800 pb-2 flex items-center justify-between">
+                                                <div class="bg-black p-5 border border-[var(--border-muted)]">
+                                                    <div class="font-sans text-xs font-semibold text-zinc-300 mb-3 border-b border-[var(--border-muted)] pb-2 flex items-center justify-between">
                                                         <span>[ TOPOLOGIE DES LBA EN GPT : INTÉGRITÉ & REDONDANCE ]</span>
-                                                        <span class="text-zinc-500">64-BIT LBA</span>
+                                                        <span class="text-[var(--text-muted)] font-mono text-xs">64-BIT LBA</span>
                                                     </div>
-                                                    <div class="space-y-3">
-                                                        <div class="flex items-start gap-3 p-3 bg-zinc-900 border border-zinc-800">
-                                                            <span class="font-arcade text-[9px] px-2 py-1 bg-cyan-500 text-zinc-950 font-bold flex-shrink-0">01</span>
+                                                    <div class="space-y-3 font-sans">
+                                                        <div class="flex items-start gap-3 p-3 bg-[var(--bg-card)] border border-[var(--border-muted)]">
+                                                            <span class="badge-terminal !text-[10px] !px-2 !py-0.5">01</span>
                                                             <div>
-                                                                <strong class="text-cyan-300 font-bold block mb-1">Protective MBR (LBA 0) : Sécurité rétrocompatible</strong>
-                                                                <span class="text-zinc-400 text-xs">Un faux MBR occupant tout le disque avec une fausse partition type <code>0xEE</code>. Empêche les anciens utilitaires de considérer le disque comme non partitionné et d'écraser vos données.</span>
+                                                                <strong class="text-white font-semibold block mb-1">Protective MBR (LBA 0) : Sécurité rétrocompatible</strong>
+                                                                <span class="text-[var(--text-muted)] text-xs">Un faux MBR occupant tout le disque avec une fausse partition type <code>0xEE</code>. Empêche les anciens utilitaires de considérer le disque comme non partitionné et d'écraser vos données.</span>
                                                             </div>
                                                         </div>
-                                                        <div class="flex items-start gap-3 p-3 bg-zinc-900 border border-zinc-800">
-                                                            <span class="font-arcade text-[9px] px-2 py-1 bg-cyan-500 text-zinc-950 font-bold flex-shrink-0">02</span>
+                                                        <div class="flex items-start gap-3 p-3 bg-[var(--bg-card)] border border-[var(--border-muted)]">
+                                                            <span class="badge-terminal !text-[10px] !px-2 !py-0.5">02</span>
                                                             <div>
-                                                                <strong class="text-cyan-300 font-bold block mb-1">En-tête GPT Primaire (LBA 1) : Contrôle d'intégrité CRC32</strong>
-                                                                <span class="text-zinc-400 text-xs">Contient les GUIDs du disque, l'emplacement des tables et une somme de contrôle <strong>CRC32</strong>. Toute altération est immédiatement détectée par l'UEFI au boot.</span>
+                                                                <strong class="text-white font-semibold block mb-1">En-tête GPT Primaire (LBA 1) : Contrôle d'intégrité CRC32</strong>
+                                                                <span class="text-[var(--text-muted)] text-xs">Contient les GUIDs du disque, l'emplacement des tables et une somme de contrôle <strong>CRC32</strong>. Toute altération est immédiatement détectée par l'UEFI au boot.</span>
                                                             </div>
                                                         </div>
-                                                        <div class="flex items-start gap-3 p-3 bg-zinc-900 border border-zinc-800">
-                                                            <span class="font-arcade text-[9px] px-2 py-1 bg-cyan-500 text-zinc-950 font-bold flex-shrink-0">03</span>
+                                                        <div class="flex items-start gap-3 p-3 bg-[var(--bg-card)] border border-[var(--border-muted)]">
+                                                            <span class="badge-terminal !text-[10px] !px-2 !py-0.5">03</span>
                                                             <div>
-                                                                <strong class="text-cyan-300 font-bold block mb-1">Table des partitions primaires (LBA 2 à 33) : 128 partitions</strong>
-                                                                <span class="text-zinc-400 text-xs">Sous Windows, 32 secteurs sont réservés pour 128 entrées de partition (128 octets par entrée), sans aucune contrainte de partitions étendues.</span>
+                                                                <strong class="text-white font-semibold block mb-1">Table des partitions primaires (LBA 2 à 33) : 128 partitions</strong>
+                                                                <span class="text-[var(--text-muted)] text-xs">Sous Windows, 32 secteurs sont réservés pour 128 entrées de partition (128 octets par entrée), sans aucune contrainte de partitions étendues.</span>
                                                             </div>
                                                         </div>
-                                                        <div class="flex items-start gap-3 p-3 bg-zinc-900 border border-zinc-800">
-                                                            <span class="font-arcade text-[9px] px-2 py-1 bg-emerald-500 text-zinc-950 font-bold flex-shrink-0">04</span>
+                                                        <div class="flex items-start gap-3 p-3 bg-[var(--bg-card)] border border-[var(--border-muted)]">
+                                                            <span class="badge-terminal !text-[10px] !px-2 !py-0.5">04</span>
                                                             <div>
-                                                                <strong class="text-emerald-400 font-bold block mb-1">Backup GPT (GPT Secondaire) : Sauvegarde miroir physique</strong>
-                                                                <span class="text-zinc-400 text-xs">Une copie miroir complète de l'en-tête et de la table est inscrite à la toute fin physique du disque. En cas de dégât sur le LBA 1, l'UEFI restaure la table automatiquement.</span>
+                                                                <strong class="text-white font-semibold block mb-1">Backup GPT (GPT Secondaire) : Sauvegarde miroir physique</strong>
+                                                                <span class="text-[var(--text-muted)] text-xs">Une copie miroir complète de l'en-tête et de la table est inscrite à la toute fin physique du disque. En cas de dégât sur le LBA 1, l'UEFI restaure la table automatiquement.</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -268,43 +271,43 @@ const itCampusData = {
 
                                     <!-- Comparison Table MBR vs GPT -->
                                     <div class="mb-14">
-                                        <div class="font-arcade text-xs text-zinc-300 mb-3 flex items-center gap-2">
-                                            <span class="text-amber-400">■</span> C. COMPARATIF DIRECT : MBR VS GPT
+                                        <div class="font-sans text-xs font-bold text-zinc-300 mb-3 flex items-center gap-2">
+                                            <span class="text-[var(--primary-green)]">■</span> C. COMPARATIF DIRECT : MBR VS GPT
                                         </div>
-                                        <div class="bg-zinc-900 border-2 border-zinc-700 shadow-[4px_4px_0px_#000] overflow-x-auto">
-                                            <table class="w-full text-left border-collapse min-w-[650px] font-mono text-xs">
+                                        <div class="bg-black border border-[var(--border-muted)] shadow-[4px_4px_0px_#000] overflow-x-auto">
+                                            <table class="w-full text-left border-collapse min-w-[650px] font-sans text-xs sm:text-sm">
                                                 <thead>
-                                                    <tr class="bg-zinc-950 text-zinc-300 font-arcade text-[9px] sm:text-[10px] uppercase border-b-2 border-zinc-700">
-                                                        <th class="p-4 border-r border-zinc-800 w-1/3">Paramètre Matériel</th>
-                                                        <th class="p-4 border-r border-zinc-800 text-amber-400 w-1/3">MBR (Master Boot Record)</th>
-                                                        <th class="p-4 text-cyan-400 w-1/3">GPT (GUID Partition Table)</th>
+                                                    <tr class="bg-zinc-950 text-zinc-300 font-sans text-xs uppercase font-bold border-b border-[var(--border-muted)]">
+                                                        <th class="p-4 border-r border-[var(--border-muted)] w-1/3">Paramètre Matériel</th>
+                                                        <th class="p-4 border-r border-[var(--border-muted)] text-zinc-100 w-1/3">MBR (Master Boot Record) <span class="badge-terminal badge-orange text-[10px] ml-1">LEGACY</span></th>
+                                                        <th class="p-4 text-zinc-100 w-1/3">GPT (GUID Partition Table) <span class="badge-terminal badge-cyan text-[10px] ml-1">UEFI</span></th>
                                                     </tr>
                                                 </thead>
-                                                <tbody class="divide-y divide-zinc-800">
-                                                    <tr class="hover:bg-zinc-800/50 transition-colors">
-                                                        <td class="p-4 font-bold text-zinc-200 border-r border-zinc-800">Micrologiciel carte mère</td>
-                                                        <td class="p-4 text-zinc-400 border-r border-zinc-800">BIOS Legacy (ou UEFI en mode CSM)</td>
+                                                <tbody class="divide-y divide-[var(--border-muted)]">
+                                                    <tr class="hover:bg-zinc-900/50 transition-colors">
+                                                        <td class="p-4 font-bold text-zinc-200 border-r border-[var(--border-muted)]">Micrologiciel carte mère</td>
+                                                        <td class="p-4 text-zinc-400 border-r border-[var(--border-muted)]">BIOS Legacy (ou UEFI en mode CSM)</td>
                                                         <td class="p-4 text-emerald-400 font-bold">UEFI Natif (Requis pour Windows 11)</td>
                                                     </tr>
-                                                    <tr class="hover:bg-zinc-800/50 transition-colors">
-                                                        <td class="p-4 font-bold text-zinc-200 border-r border-zinc-800">Capacité maximale disque</td>
-                                                        <td class="p-4 text-rose-400 font-bold border-r border-zinc-800"><span class="px-2 py-0.5 bg-rose-950 border border-rose-500/60 font-arcade text-[9px]">2 To (32 BITS)</span></td>
-                                                        <td class="p-4 text-emerald-400 font-bold"><span class="px-2 py-0.5 bg-emerald-950 border border-emerald-500/60 font-arcade text-[9px]">9,4 Zo (64 BITS)</span></td>
+                                                    <tr class="hover:bg-zinc-900/50 transition-colors">
+                                                        <td class="p-4 font-bold text-zinc-200 border-r border-[var(--border-muted)]">Capacité maximale disque</td>
+                                                        <td class="p-4 text-rose-400 font-bold border-r border-[var(--border-muted)]"><span class="px-2 py-0.5 bg-rose-950 border border-rose-500/60 font-sans text-xs font-semibold">2 To (32 BITS)</span></td>
+                                                        <td class="p-4 text-emerald-400 font-bold"><span class="px-2 py-0.5 bg-emerald-950 border border-emerald-500/60 font-sans text-xs font-semibold">9,4 Zo (64 BITS)</span></td>
                                                     </tr>
-                                                    <tr class="hover:bg-zinc-800/50 transition-colors">
-                                                        <td class="p-4 font-bold text-zinc-200 border-r border-zinc-800">Nombre max de partitions</td>
-                                                        <td class="p-4 text-zinc-300 border-r border-zinc-800">4 primaires max (ou 3 primaires + 1 étendue)</td>
-                                                        <td class="p-4 text-emerald-400 font-bold"><span class="px-2 py-0.5 bg-zinc-950 border border-emerald-500/60 font-arcade text-[9px]">128 PARTITIONS (WINDOWS)</span></td>
+                                                    <tr class="hover:bg-zinc-900/50 transition-colors">
+                                                        <td class="p-4 font-bold text-zinc-200 border-r border-[var(--border-muted)]">Nombre max de partitions</td>
+                                                        <td class="p-4 text-zinc-300 border-r border-[var(--border-muted)]">4 primaires max (ou 3 primaires + 1 étendue)</td>
+                                                        <td class="p-4 text-emerald-400 font-bold"><span class="px-2 py-0.5 bg-zinc-950 border border-emerald-500/60 font-sans text-xs font-semibold">128 PARTITIONS (WINDOWS)</span></td>
                                                     </tr>
-                                                    <tr class="hover:bg-zinc-800/50 transition-colors">
-                                                        <td class="p-4 font-bold text-zinc-200 border-r border-zinc-800">Tolérance aux pannes</td>
-                                                        <td class="p-4 text-rose-400 font-bold border-r border-zinc-800"><span class="px-2 py-0.5 bg-rose-950 border border-rose-500/60 font-arcade text-[9px]">[✗] AUCUNE (LBA 0 UNIQUE)</span></td>
-                                                        <td class="p-4 text-emerald-400 font-bold"><span class="px-2 py-0.5 bg-emerald-950 border border-emerald-500/60 font-arcade text-[9px]">[✓] HAUTE (BACKUP GPT + CRC32)</span></td>
+                                                    <tr class="hover:bg-zinc-900/50 transition-colors">
+                                                        <td class="p-4 font-bold text-zinc-200 border-r border-[var(--border-muted)]">Tolérance aux pannes</td>
+                                                        <td class="p-4 text-rose-400 font-bold border-r border-[var(--border-muted)]"><span class="px-2 py-0.5 bg-rose-950 border border-rose-500/60 font-sans text-xs font-semibold">[✗] AUCUNE (LBA 0 UNIQUE)</span></td>
+                                                        <td class="p-4 text-emerald-400 font-bold"><span class="px-2 py-0.5 bg-emerald-950 border border-emerald-500/60 font-sans text-xs font-semibold">[✓] HAUTE (BACKUP GPT + CRC32)</span></td>
                                                     </tr>
-                                                    <tr class="hover:bg-zinc-800/50 transition-colors">
-                                                        <td class="p-4 font-bold text-zinc-200 border-r border-zinc-800">Identification des volumes</td>
-                                                        <td class="p-4 text-zinc-400 border-r border-zinc-800">Numérotation ordinale simple</td>
-                                                        <td class="p-4 text-cyan-300 font-bold">GUID / UUID unique (128 bits universel)</td>
+                                                    <tr class="hover:bg-zinc-900/50 transition-colors">
+                                                        <td class="p-4 font-bold text-zinc-200 border-r border-[var(--border-muted)]">Identification des volumes</td>
+                                                        <td class="p-4 text-zinc-400 border-r border-[var(--border-muted)]">Numérotation ordinale simple</td>
+                                                        <td class="p-4 text-zinc-200 font-semibold">GUID / UUID unique (128 bits universel)</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -314,66 +317,66 @@ const itCampusData = {
 
                                 <!-- Section 2 : File Systems -->
                                 <section>
-                                    <div class="flex items-center gap-3 mb-6">
-                                        <span class="px-2.5 py-1 bg-emerald-500 text-zinc-950 font-arcade text-xs font-bold shadow-[2px_2px_0px_#000]">02</span>
-                                        <h2 class="font-pixel text-2xl sm:text-4xl font-bold text-emerald-400 tracking-wide pixel-title-shadow uppercase">
+                                    <div class="flex items-center gap-3 mb-8">
+                                        <span class="badge-terminal">02</span>
+                                        <h2 class="heading-section !m-0 text-xl sm:text-3xl">
                                             Les Systèmes de Fichiers : FAT32, exFAT, NTFS
                                         </h2>
                                     </div>
-                                    <p class="text-zinc-300 text-sm sm:text-base leading-relaxed font-mono mb-8">
-                                        Une fois la partition logique définie dans la table, le <strong class="text-white">système de fichiers</strong> organise la hiérarchie des dossiers et alloue l'espace de stockage sous forme de grappes de blocs appelées <strong class="text-amber-300">clusters</strong>.
+                                    <p class="paragraph-body text-sm sm:text-base leading-relaxed mb-8">
+                                        Une fois la partition logique définie dans la table, le <strong class="text-white font-semibold">système de fichiers</strong> organise la hiérarchie des dossiers et alloue l'espace de stockage sous forme de grappes de blocs appelées <strong class="text-white font-semibold">clusters</strong>.
                                     </p>
 
                                     <div class="flex flex-col gap-8 mb-10">
                                         <!-- FAT32 Card -->
-                                        <div class="bg-zinc-900 border-2 border-zinc-700 p-6 sm:p-8 pixel-card shadow-[4px_4px_0px_#000] relative">
-                                            <div class="flex items-center justify-between gap-4 mb-4 border-b border-zinc-800 pb-3 flex-wrap">
+                                        <div class="card-terminal p-6 sm:p-8 relative">
+                                            <div class="flex items-center justify-between gap-4 mb-4 border-b border-[var(--border-muted)] pb-3 flex-wrap">
                                                 <div class="flex items-center gap-3">
-                                                    <span class="px-2 py-0.5 bg-zinc-950 text-zinc-300 border border-zinc-700 font-arcade text-[10px]">LEGACY USB</span>
-                                                    <h3 class="font-pixel text-xl sm:text-2xl text-zinc-100 tracking-wide">A. FAT32 (File Allocation Table 32 bits)</h3>
+                                                    <span class="badge-terminal">LEGACY USB</span>
+                                                    <h3 class="card-terminal-title !text-xl sm:!text-2xl text-zinc-100 tracking-wide">A. FAT32 (File Allocation Table 32 bits)</h3>
                                                 </div>
-                                                <span class="font-arcade text-[9px] text-zinc-500">[ WIN 95 OSR2 ]</span>
+                                                <span class="font-mono text-xs text-[var(--text-muted)]">[ WIN 95 OSR2 ]</span>
                                             </div>
-                                            <ul class="space-y-3 font-mono text-zinc-300 text-xs sm:text-sm leading-relaxed">
+                                            <ul class="space-y-3 font-sans text-[var(--text-primary)] text-sm leading-relaxed">
                                                 <li><strong class="text-white">Conception :</strong> Table statique en début de volume associant chaque fichier à sa chaîne de clusters physiques.</li>
                                                 <li><strong class="text-rose-400 font-bold">Limite fatidique des 4 Go par fichier :</strong> Le champ de taille dans l'en-tête de fichier est codé sur 32 bits non signés (<code>2³² - 1 octets = 4 294 967 295 octets ≈ 4 Go</code>). Un fichier vidéo ou ISO de 4,01 Go ne peut absolument pas être écrit, même avec 1 To d'espace disponible sur la partition.</li>
-                                                <li><strong class="text-amber-300">Limite de partition :</strong> Bien que le format supporte techniquement 2 To, l'utilitaire natif de formatage Windows bride artificiellement la création de volumes FAT32 à <strong class="text-white">32 Go</strong> afin de privilégier NTFS.</li>
-                                                <li><strong class="text-rose-400">Zéro sécurité & zéro journalisation :</strong> Aucune gestion des droits (ACL), pas de chiffrement natif, et aucune tolérance aux déconnexions brutales (risques fréquents de clusters orphelins).</li>
+                                                <li><strong class="text-white font-semibold">Limite de partition :</strong> Bien que le format supporte techniquement 2 To, l'utilitaire natif de formatage Windows bride artificiellement la création de volumes FAT32 à <strong class="text-white font-semibold">32 Go</strong> afin de privilégier NTFS.</li>
+                                                <li><strong class="text-rose-400">Zéro sécurité &amp; zéro journalisation :</strong> Aucune gestion des droits (ACL), pas de chiffrement natif, et aucune tolérance aux déconnexions brutales (risques fréquents de clusters orphelins).</li>
                                                 <li><strong class="text-emerald-400 font-bold">Usage actuel :</strong> Interopérabilité universelle maximale (clés bootables BIOS/UEFI, autoradios, microcontrôleurs, anciennes consoles de jeu).</li>
                                             </ul>
                                         </div>
 
                                         <!-- exFAT Card -->
-                                        <div class="bg-zinc-900 border-2 border-cyan-500/70 p-6 sm:p-8 pixel-card shadow-[4px_4px_0px_#000] relative">
-                                            <div class="flex items-center justify-between gap-4 mb-4 border-b border-zinc-800 pb-3 flex-wrap">
+                                        <div class="card-terminal p-6 sm:p-8 relative">
+                                            <div class="flex items-center justify-between gap-4 mb-4 border-b border-[var(--border-muted)] pb-3 flex-wrap">
                                                 <div class="flex items-center gap-3">
-                                                    <span class="px-2 py-0.5 bg-zinc-950 text-cyan-400 border border-cyan-500/60 font-arcade text-[10px]">FLASH & MULTI-OS</span>
-                                                    <h3 class="font-pixel text-xl sm:text-2xl text-zinc-100 tracking-wide">B. exFAT (Extended File Allocation Table)</h3>
+                                                    <span class="badge-terminal">FLASH &amp; MULTI-OS</span>
+                                                    <h3 class="card-terminal-title !text-xl sm:!text-2xl text-zinc-100 tracking-wide">B. exFAT (Extended File Allocation Table)</h3>
                                                 </div>
-                                                <span class="font-arcade text-[9px] text-zinc-500">[ MICROSOFT 2006 ]</span>
+                                                <span class="font-mono text-xs text-[var(--text-muted)]">[ MICROSOFT 2006 ]</span>
                                             </div>
-                                            <ul class="space-y-3 font-mono text-zinc-300 text-xs sm:text-sm leading-relaxed">
+                                            <ul class="space-y-3 font-sans text-[var(--text-primary)] text-sm leading-relaxed">
                                                 <li><strong class="text-white">Conception :</strong> Créé pour succéder au FAT32 sur les supports de stockage nomades (cartes SDXC, clés USB volumineuses, disques SSD externes).</li>
                                                 <li><strong class="text-emerald-400 font-bold">Suppression de la barrière des 4 Go :</strong> Supporte des fichiers individuels atteignant jusqu'à 16 Eo (Exaoctets), parfait pour les gros enregistrements 4K et images virtuelles.</li>
-                                                <li><strong class="text-cyan-300">Optimisé pour mémoires flash :</strong> Évite les écritures répétées de métadonnées et de journalisation, réduisant l'usure prématurée des puces NAND flash.</li>
-                                                <li><strong class="text-emerald-400 font-bold">Interopérabilité Windows & macOS :</strong> Reconnue nativement en lecture et écriture sans aucun pilote tiers sur Windows, macOS et distributions Linux récentes.</li>
+                                                <li><strong class="text-white font-semibold">Optimisé pour mémoires flash :</strong> Évite les écritures répétées de métadonnées et de journalisation, réduisant l'usure prématurée des puces NAND flash.</li>
+                                                <li><strong class="text-emerald-400 font-bold">Interopérabilité Windows &amp; macOS :</strong> Reconnue nativement en lecture et écriture sans aucun pilote tiers sur Windows, macOS et distributions Linux récentes.</li>
                                             </ul>
                                         </div>
 
                                         <!-- NTFS Card -->
-                                        <div class="bg-zinc-900 border-2 border-amber-500/70 p-6 sm:p-8 pixel-card shadow-[4px_4px_0px_#000] relative">
-                                            <div class="flex items-center justify-between gap-4 mb-4 border-b border-zinc-800 pb-3 flex-wrap">
+                                        <div class="card-terminal p-6 sm:p-8 relative">
+                                            <div class="flex items-center justify-between gap-4 mb-4 border-b border-[var(--border-muted)] pb-3 flex-wrap">
                                                 <div class="flex items-center gap-3">
-                                                    <span class="px-2 py-0.5 bg-zinc-950 text-amber-400 border border-amber-500/60 font-arcade text-[10px]">STANDARD ENTREPRISE</span>
-                                                    <h3 class="font-pixel text-xl sm:text-2xl text-zinc-100 tracking-wide">C. NTFS (New Technology File System)</h3>
+                                                    <span class="badge-terminal">STANDARD ENTREPRISE</span>
+                                                    <h3 class="card-terminal-title !text-xl sm:!text-2xl text-zinc-100 tracking-wide">C. NTFS (New Technology File System)</h3>
                                                 </div>
-                                                <span class="font-arcade text-[9px] text-zinc-500">[ SYSTÈME NÉVRALGIQUE OS ]</span>
+                                                <span class="font-mono text-xs text-[var(--text-muted)]">[ SYSTÈME NÉVRALGIQUE OS ]</span>
                                             </div>
-                                            <ul class="space-y-3 font-mono text-zinc-300 text-xs sm:text-sm leading-relaxed">
+                                            <ul class="space-y-3 font-sans text-[var(--text-primary)] text-sm leading-relaxed">
                                                 <li><strong class="text-white">Conception :</strong> Système de fichiers propriétaire robuste introduit pour Windows NT, standard absolu pour le disque système interne (C:).</li>
-                                                <li><strong class="text-amber-300">Master File Table (MFT) :</strong> Base de données relationnelle interne stockant chaque fichier, ses attributs, ses droits de sécurité et l'emplacement de ses clusters.</li>
+                                                <li><strong class="text-white font-semibold">Master File Table (MFT) :</strong> Base de données relationnelle interne stockant chaque fichier, ses attributs, ses droits de sécurité et l'emplacement de ses clusters.</li>
                                                 <li><strong class="text-emerald-400 font-bold">Journalisation active ($LogFile) :</strong> En cas de coupure de courant ou de crash BSOD, le journal transactionnel annule l'opération incomplète (<em>rollback</em>) au reboot, empêchant la corruption logique du volume.</li>
-                                                <li><strong class="text-amber-300">Sécurité granulaire (ACLs) :</strong> Listes de contrôle d'accès fines par utilisateur et groupe Active Directory, intégrité des permissions NTFS et chiffrement natif EFS.</li>
+                                                <li><strong class="text-white font-semibold">Sécurité granulaire (ACLs) :</strong> Listes de contrôle d'accès fines par utilisateur et groupe Active Directory, intégrité des permissions NTFS et chiffrement natif EFS.</li>
                                                 <li><strong class="text-white">Services avancés :</strong> Quotas de stockage par utilisateur, compression à la volée, clichés instantanés (VSS) et gestion des fichiers creux (sparse files).</li>
                                                 <li><strong class="text-rose-400">Restriction macOS :</strong> macOS lit nativement le NTFS mais est incapable d'y écrire sans logiciel tiers payant (Tuxera, Paragon).</li>
                                             </ul>
@@ -382,23 +385,23 @@ const itCampusData = {
 
                                     <!-- File Systems Comparison Table -->
                                     <div class="mb-6">
-                                        <div class="font-arcade text-xs text-zinc-300 mb-3 flex items-center gap-2">
-                                            <span class="text-emerald-400">■</span> D. TABLEAU RÉCAPITULATIF : SYSTÈMES DE FICHIERS
+                                        <div class="font-sans text-xs font-bold text-zinc-300 mb-3 flex items-center gap-2">
+                                            <span class="text-[var(--primary-green)]">■</span> D. TABLEAU RÉCAPITULATIF : SYSTÈMES DE FICHIERS
                                         </div>
-                                        <div class="bg-zinc-900 border-2 border-zinc-700 shadow-[4px_4px_0px_#000] overflow-x-auto">
-                                            <table class="w-full text-left border-collapse min-w-[700px] font-mono text-xs">
+                                        <div class="bg-black border border-[var(--border-muted)] shadow-[4px_4px_0px_#000] overflow-x-auto">
+                                            <table class="w-full text-left border-collapse min-w-[700px] font-sans text-xs sm:text-sm">
                                                 <thead>
-                                                    <tr class="bg-zinc-950 text-zinc-300 font-arcade text-[9px] sm:text-[10px] uppercase border-b-2 border-zinc-700">
+                                                    <tr class="bg-zinc-950 text-zinc-300 font-sans text-xs uppercase font-bold border-b border-[var(--border-muted)]">
                                                         <th class="p-4 border-r border-zinc-800">Critère</th>
-                                                        <th class="p-4 border-r border-zinc-800 text-zinc-400">FAT32</th>
-                                                        <th class="p-4 border-r border-zinc-800 text-cyan-400">exFAT</th>
-                                                        <th class="p-4 text-amber-400">NTFS</th>
+                                                        <th class="p-4 border-r border-zinc-800 text-zinc-100">FAT32</th>
+                                                        <th class="p-4 border-r border-zinc-800 text-zinc-100">exFAT</th>
+                                                        <th class="p-4 text-zinc-100">NTFS</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="divide-y divide-zinc-800">
                                                     <tr class="hover:bg-zinc-800/50 transition-colors">
                                                         <td class="p-4 font-bold text-zinc-200 border-r border-zinc-800">Taille max fichier</td>
-                                                        <td class="p-4 text-rose-400 font-bold border-r border-zinc-800"><span class="px-1.5 py-0.5 bg-rose-950 border border-rose-500/60 font-arcade text-[9px]">4 Go MAX</span></td>
+                                                        <td class="p-4 text-rose-400 font-bold border-r border-zinc-800"><span class="px-1.5 py-0.5 bg-rose-950 border border-rose-500/60 font-sans text-xs font-semibold">4 Go MAX</span></td>
                                                         <td class="p-4 text-emerald-400 font-bold border-r border-zinc-800">16 Eo</td>
                                                         <td class="p-4 text-emerald-400 font-bold">16 To (standard 4 Ko)</td>
                                                     </tr>
@@ -412,31 +415,31 @@ const itCampusData = {
                                                         <td class="p-4 font-bold text-zinc-200 border-r border-zinc-800">Journalisation ($LogFile)</td>
                                                         <td class="p-4 text-rose-400 font-bold border-r border-zinc-800">[✗] NON</td>
                                                         <td class="p-4 text-rose-400 font-bold border-r border-zinc-800">[✗] NON</td>
-                                                        <td class="p-4 text-emerald-400 font-bold"><span class="px-1.5 py-0.5 bg-emerald-950 border border-emerald-500/60 font-arcade text-[9px]">[✓] OUI (TOLÉRANCE CRASH)</span></td>
+                                                        <td class="p-4 text-emerald-400 font-bold"><span class="px-1.5 py-0.5 bg-emerald-950 border border-emerald-500/60 font-sans text-xs font-semibold">[✓] OUI (TOLÉRANCE CRASH)</span></td>
                                                     </tr>
                                                     <tr class="hover:bg-zinc-800/50 transition-colors">
                                                         <td class="p-4 font-bold text-zinc-200 border-r border-zinc-800">Permissions (ACLs)</td>
                                                         <td class="p-4 text-zinc-500 border-r border-zinc-800">[✗] NON</td>
                                                         <td class="p-4 text-zinc-500 border-r border-zinc-800">[✗] NON</td>
-                                                        <td class="p-4 text-emerald-400 font-bold"><span class="px-1.5 py-0.5 bg-emerald-950 border border-emerald-500/60 font-arcade text-[9px]">[✓] OUI (SÉCURITÉ FINE)</span></td>
+                                                        <td class="p-4 text-emerald-400 font-bold"><span class="px-1.5 py-0.5 bg-emerald-950 border border-emerald-500/60 font-sans text-xs font-semibold">[✓] OUI (SÉCURITÉ FINE)</span></td>
                                                     </tr>
                                                     <tr class="hover:bg-zinc-800/50 transition-colors">
                                                         <td class="p-4 font-bold text-zinc-200 border-r border-zinc-800">Quotas disque</td>
                                                         <td class="p-4 text-zinc-500 border-r border-zinc-800">[✗] NON</td>
                                                         <td class="p-4 text-zinc-500 border-r border-zinc-800">[✗] NON</td>
-                                                        <td class="p-4 text-emerald-400 font-bold"><span class="px-1.5 py-0.5 bg-emerald-950 border border-emerald-500/60 font-arcade text-[9px]">[✓] OUI</span></td>
+                                                        <td class="p-4 text-emerald-400 font-bold"><span class="px-1.5 py-0.5 bg-emerald-950 border border-emerald-500/60 font-sans text-xs font-semibold">[✓] OUI</span></td>
                                                     </tr>
                                                     <tr class="hover:bg-zinc-800/50 transition-colors">
                                                         <td class="p-4 font-bold text-zinc-200 border-r border-zinc-800">Compatibilité macOS</td>
                                                         <td class="p-4 text-emerald-400 font-bold border-r border-zinc-800">Lecture & Écriture</td>
                                                         <td class="p-4 text-emerald-400 font-bold border-r border-zinc-800">Lecture & Écriture</td>
-                                                        <td class="p-4 text-rose-400 font-bold"><span class="px-1.5 py-0.5 bg-rose-950 border border-rose-500/60 font-arcade text-[9px]">LECTURE SEULE NATIVE</span></td>
+                                                        <td class="p-4 text-rose-400 font-bold"><span class="px-1.5 py-0.5 bg-rose-950 border border-rose-500/60 font-sans text-xs font-semibold">LECTURE SEULE NATIVE</span></td>
                                                     </tr>
                                                     <tr class="hover:bg-zinc-800/50 transition-colors">
                                                         <td class="p-4 font-bold text-zinc-200 border-r border-zinc-800">Cible d'usage recommandée</td>
                                                         <td class="p-4 text-zinc-300 border-r border-zinc-800">Clés USB boot, vieux périphériques</td>
-                                                        <td class="p-4 text-cyan-300 border-r border-zinc-800">Supports amovibles partagés multi-OS</td>
-                                                        <td class="p-4 text-amber-300 font-bold">Disques système internes & serveurs Windows</td>
+                                                        <td class="p-4 text-zinc-200 border-r border-zinc-800">Supports amovibles partagés multi-OS</td>
+                                                        <td class="p-4 text-zinc-200 font-semibold">Disques système internes & serveurs Windows</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

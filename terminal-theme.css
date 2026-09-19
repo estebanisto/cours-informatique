@@ -1,0 +1,479 @@
+/**
+ * ==============================================================================
+ * IT CAMPUS - SYSTÈME DE DESIGN TERMINAL / HACKER
+ * ==============================================================================
+ * Système standardisé de typographie et de couleurs pour la plateforme LMS.
+ * Optimisé pour la lisibilité, l'immersion rétro et la conformité WCAG AA / AAA.
+ * ==============================================================================
+ */
+
+/* --------------------------------------------------------------------------
+ * 0. POLICE TERMINAL (FALLBACK ÉMULATION PIXEL)
+ * -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Pixelated-Terminal-Font';
+  src: local('Pixelify Sans'), local('VT323'), local('Press Start 2P'), local('Courier New');
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+ * 1. VARIABLES GLOBALES (:root)
+ * -------------------------------------------------------------------------- */
+:root {
+  /* --- PALETTE DE COULEURS --- */
+  --bg-app: #000000;              /* Noir pur : fond principal de l'application */
+  --bg-card: #0a0a0a;             /* Gris très foncé : conteneurs, cartes et panneaux */
+  --text-primary: #e0e0e0;        /* Blanc cassé : corps de texte à haute lisibilité */
+  --text-muted: #888888;          /* Gris moyen : texte secondaire et métadonnées */
+  --primary-green: #00ff41;       /* Vert terminal classique : accents et grands titres */
+  --primary-green-muted: #00cc33; /* Vert atténué : états actifs/hover */
+  --accent-orange: #ff9f00;       /* Orange ambre : uniquement badges legacy / alertes */
+  --accent-cyan: #00e5ff;         /* Cyan : uniquement badges modern UEFI */
+  --border-muted: #1a1a1a;        /* Bordure sombre : délimitation discrète des blocs */
+
+  /* --- VARIABLES DU SYSTÈME TYPOGRAPHIQUE --- */
+  --font-terminal: 'Pixelated-Terminal-Font', monospace; /* RESTRICTION STRICTE : h1, h2, h3, et .badge */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-code: 'Fira Code', monospace;
+
+  /* --- ÉCHELLE DE TAILLES & INTERLIGNES --- */
+  --font-size-xs: 0.75rem;        /* 12px */
+  --font-size-sm: 0.875rem;       /* 14px */
+  --font-size-base: 1rem;         /* 16px */
+  --font-size-lg: 1.125rem;       /* 18px */
+  --font-size-xl: 1.35rem;        /* 21.6px */
+  --font-size-2xl: 1.85rem;       /* 29.6px */
+  --font-size-3xl: 2.5rem;        /* 40px */
+
+  --line-height-heading: 1.25;
+  --line-height-body: 1.65;
+  --line-height-relaxed: 1.8;
+
+  --terminal-radius: 2px;
+  --terminal-border-width: 1px;
+}
+
+/* ==============================================================================
+ * RÈGLE 1 : INVERSION DE LA TYPOGRAPHIE (ÉRADICATION DU TEXTE PIXELISÉ)
+ * ==============================================================================
+ * - Police par défaut de TOUT le document sur la police sans-serif (Inter ou Arial).
+ * - Le corps du texte des encarts (ex: "Origine et architecture"), les tableaux et
+ *   TOUTES les questions/réponses du Quiz DOIVENT être en sans-serif.
+ * - RESTRICTION STRICTE : La police pixelisée (--font-terminal) ne doit être
+ *   appliquée QU'AUX sélecteurs suivants : h1, h2, h3, et les classes .badge.
+ * ============================================================================== */
+
+/* 1.1. Application globale sans-serif sur l'intégralité du document */
+*,
+*::before,
+*::after {
+  font-family: var(--font-body);
+}
+
+html,
+body,
+main,
+article,
+section,
+p,
+li,
+ul,
+ol,
+td,
+th,
+span,
+label,
+input,
+button,
+textarea,
+select,
+div,
+strong,
+b,
+em,
+i,
+a,
+header,
+footer,
+aside,
+nav {
+  font-family: var(--font-body);
+}
+
+/* 1.2. Priorité absolue du sans-serif sur tous les éléments de texte et formulaires */
+p,
+li,
+td,
+th,
+label,
+input,
+select,
+textarea,
+.paragraph-body,
+.paragraph-muted {
+  font-family: var(--font-body) !important;
+}
+
+/* 1.3. Encarts, tableaux et TOUT le Quiz strictement en sans-serif */
+.briefing-box,
+.briefing-box *,
+.briefing-box p,
+.briefing-box span,
+.briefing-box div,
+.briefing-box strong,
+.card-terminal p,
+.card-terminal li,
+.card-terminal span:not(.badge):not(.badge-terminal):not(.badge-terminal-alert):not(.badge-orange):not(.badge-cyan),
+.card-terminal div:not(.badge):not(.badge-terminal):not(.badge-terminal-alert):not(.badge-orange):not(.badge-cyan),
+table,
+table *,
+table th,
+table td,
+table span,
+#quiz-container,
+#quiz-container *,
+#quiz-container h4,
+#quiz-container p,
+#quiz-container label,
+#quiz-container span,
+#quiz-container div,
+#quiz-container strong,
+#quiz-container input,
+#quiz-container button {
+  font-family: var(--font-body) !important;
+}
+
+/* 1.4. Préservation stricte du code machine / adresses / commandes */
+code,
+pre,
+kbd,
+samp,
+.code-inline,
+.code-block {
+  font-family: var(--font-code) !important;
+}
+
+/* 1.5. RESTRICTION STRICTE : La police pixelisée ne doit être appliquée
+        QU'AUX sélecteurs suivants : h1, h2, h3, et les classes .badge */
+h1,
+h2,
+h3,
+.badge,
+.badge-terminal,
+.badge-terminal-alert,
+.badge-orange,
+.badge-cyan {
+  font-family: var(--font-terminal) !important;
+}
+
+/* Écrasement préventif pour h4, h5, h6 (ex: questions de quiz) : strictement sans-serif */
+h4,
+h5,
+h6 {
+  font-family: var(--font-body) !important;
+}
+
+/* Neutralisation des anciennes classes rétro sur le texte courant */
+p.font-pixel,
+p.font-arcade,
+p.font-vt,
+label.font-pixel,
+label.font-arcade,
+label.font-vt,
+span.font-pixel:not(.badge):not(.badge-terminal),
+span.font-arcade:not(.badge):not(.badge-terminal),
+div.font-pixel:not(h1):not(h2):not(h3),
+div.font-arcade:not(h1):not(h2):not(h3) {
+  font-family: var(--font-body) !important;
+}
+
+/* ==============================================================================
+ * RÈGLE 2 : CONTENEUR DE LECTURE (LAYOUT STRICT)
+ * ==============================================================================
+ * CSS EXACT DEMANDÉ :
+ * max-width: 800px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem;
+ * ============================================================================== */
+.reading-container {
+  max-width: 800px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+/* Ajustement des composants internes : s'adaptent strictement à 100% des 800px */
+.reading-container .briefing-box,
+.reading-container .card-terminal,
+.reading-container .lesson-content,
+.reading-container section,
+.reading-container table,
+.reading-container #quiz-container,
+.reading-container > * {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.reading-container img,
+.reading-container video,
+.reading-container iframe {
+  max-width: 100%;
+}
+
+/* En-tête de navigation de la leçon (Respiration & Alignement Flexbox) */
+.lesson-nav-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 2rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* ==============================================================================
+ * RÈGLE 3 : COHÉRENCE DES COULEURS (SUPPRIMER LE SAPIN DE NOËL)
+ * ==============================================================================
+ * - Tous les grands titres de section (H2) doivent utiliser la même couleur
+ *   primaire (Vert terminal). Supprime les titres oranges.
+ * - Les couleurs alternatives (Orange pour "Legacy BIOS", Cyan pour "Modern UEFI")
+ *   doivent être utilisées UNIQUEMENT sur les petits badges à côté des titres,
+ *   pas sur les textes ni les titres eux-mêmes.
+ * ============================================================================== */
+
+/* Grands titres de section H2 : Tous en Vert terminal primaire, marge inférieure généreuse */
+h2,
+.heading-section,
+.lesson-content h2 {
+  font-family: var(--font-terminal) !important;
+  color: var(--primary-green) !important;
+  text-shadow: 2px 2px 0px #000000, 0 0 3px rgba(0, 255, 65, 0.35) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem !important;
+  line-height: var(--line-height-heading);
+}
+
+/* Titre principal H1 : Vert terminal avec lueur néon nette et relief */
+h1,
+.heading-main {
+  font-family: var(--font-terminal) !important;
+  color: var(--primary-green) !important;
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  line-height: var(--line-height-heading);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 0px #000000, 0 0 4px rgba(0, 255, 65, 0.45);
+}
+
+/* Titres H3 de cartes : Net, lisible, text-primary, aucun halo flou */
+h3,
+.card-terminal h3,
+.card-terminal-title {
+  font-family: var(--font-terminal) !important;
+  color: var(--text-primary) !important;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.03em;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: none !important;
+}
+
+/* BADGES : Seul endroit autorisé pour les couleurs d'accentuation */
+.badge,
+.badge-terminal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-terminal) !important;
+  color: var(--primary-green) !important;
+  background-color: rgba(0, 255, 65, 0.08) !important;
+  border: 1px solid var(--primary-green-muted) !important;
+  border-radius: var(--terminal-radius);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.55rem;
+  line-height: 1;
+  user-select: none;
+  box-shadow: 0 0 6px rgba(0, 255, 65, 0.15);
+}
+
+/* Badge alternatif Orange : UNIQUEMENT pour "LEGACY BIOS" / Avertissements */
+.badge-orange,
+.badge-terminal-alert {
+  color: var(--accent-orange) !important;
+  background-color: rgba(255, 159, 0, 0.1) !important;
+  border-color: var(--accent-orange) !important;
+  box-shadow: 0 0 6px rgba(255, 159, 0, 0.25) !important;
+}
+
+/* Badge alternatif Cyan : UNIQUEMENT pour "MODERN UEFI" */
+.badge-cyan {
+  color: var(--accent-cyan) !important;
+  background-color: rgba(0, 229, 255, 0.1) !important;
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 0 6px rgba(0, 229, 255, 0.25) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * 4. COMPOSANT "CARD" (MODULES, PHASES, ATELIERS)
+ * -------------------------------------------------------------------------- */
+.card-terminal {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-muted);
+  border-radius: var(--terminal-radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  text-align: left;
+}
+
+.card-terminal:hover {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.2);
+}
+
+/* Paragraphe descriptif de carte */
+.card-terminal p,
+.card-terminal .paragraph-muted,
+.card-terminal-desc {
+  font-family: var(--font-body) !important;
+  color: var(--text-muted) !important;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Limite d'affichage à 3 lignes */
+.card-terminal .paragraph-muted,
+.card-terminal-desc,
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --------------------------------------------------------------------------
+ * 5. COMPOSANT "BRIEFING BOX" (BOÎTES D'INFORMATION & MISSIONS)
+ * -------------------------------------------------------------------------- */
+.briefing-box {
+  background-color: #0d0d0d;
+  border: 1px solid var(--border-muted);
+  border-radius: var(--terminal-radius);
+  padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.briefing-box--green {
+  border-color: rgba(0, 255, 65, 0.35);
+  box-shadow: inset 2px 0 0 var(--primary-green);
+}
+
+.briefing-box--orange {
+  border-color: rgba(255, 159, 0, 0.35);
+  box-shadow: inset 2px 0 0 var(--accent-orange);
+}
+
+.briefing-box-header,
+.briefing-header {
+  font-family: var(--font-terminal) !important;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.625rem;
+  margin-bottom: 0.875rem;
+  border-bottom: 1px solid var(--border-muted);
+}
+
+.briefing-header--green {
+  color: var(--primary-green);
+}
+
+.briefing-header--orange {
+  color: var(--accent-orange);
+}
+
+.briefing-box p,
+.briefing-box .paragraph-body {
+  font-family: var(--font-body) !important;
+  color: var(--text-primary) !important;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.65 !important;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  max-width: none;
+}
+
+/* --------------------------------------------------------------------------
+ * 6. CLASSES TYPOGRAPHIQUES UTILITAIRES
+ * -------------------------------------------------------------------------- */
+.paragraph-body {
+  font-family: var(--font-body) !important;
+  color: var(--text-primary);
+  font-weight: 400;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+  max-width: 72ch;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.paragraph-muted {
+  font-family: var(--font-body) !important;
+  color: var(--text-muted) !important;
+  font-weight: 400;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-body);
+  max-width: 72ch;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Extraits de code */
+.code-inline {
+  font-family: var(--font-code) !important;
+  color: var(--primary-green);
+  background-color: var(--bg-card);
+  border: var(--terminal-border-width) solid var(--border-muted);
+  border-radius: var(--terminal-radius);
+  padding: 0.15rem 0.4rem;
+  font-size: 0.9em;
+  word-break: break-word;
+}
+
+.code-block {
+  font-family: var(--font-code) !important;
+  color: var(--text-primary);
+  background-color: var(--bg-card);
+  border: var(--terminal-border-width) solid var(--border-muted);
+  border-left: 3px solid var(--primary-green-muted);
+  border-radius: var(--terminal-radius);
+  padding: 1rem 1.25rem;
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+}
