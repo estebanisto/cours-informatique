@@ -559,3 +559,387 @@ h3,
   }
 }
 
+/* ==============================================================================
+ * 8. SYSTÈME DE NAVIGATION SIDEBAR & MODE FOCUS DESKTOP
+ * ============================================================================== */
+
+/* Transition fluide globale et démarcation pour la sidebar */
+#sidebar,
+aside#sidebar {
+  border-right: 1px solid var(--border-muted, rgba(255, 255, 255, 0.05)) !important;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: width, transform, opacity;
+}
+
+/* RÈGLE 1 : VERROUILLAGE DE LA LARGEUR (Sidebar Root) */
+@media (min-width: 1024px) {
+  #sidebar,
+  aside#sidebar,
+  aside#sidebar.w-\[320px\] {
+    width: 320px !important;
+    min-width: 320px !important;
+    max-width: 320px !important;
+    flex: 0 0 320px !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    z-index: 20 !important;
+    transform: none !important;
+  }
+
+  /* Mode Focus : masquage complet de la barre latérale */
+  /* RÈGLE 1 : L'ÉTAT RÉDUIT (Navigation Rail) */
+  #sidebar.sidebar-collapsed,
+  aside#sidebar.sidebar-collapsed {
+    width: 72px !important;
+    min-width: 72px !important;
+    max-width: 72px !important;
+    flex: 0 0 72px !important;
+    overflow: hidden !important;
+  }
+
+  /* RÈGLE 2 & 3 : MASQUAGE DU TEXTE ET CENTRAGE DES ICÔNES */
+  #sidebar.sidebar-collapsed .sidebar-module-title,
+  #sidebar.sidebar-collapsed .badge-school,
+  #sidebar.sidebar-collapsed .sidebar-chevron,
+  #sidebar.sidebar-collapsed .sidebar-header-text {
+    display: none !important;
+    opacity: 0;
+    width: 0;
+  }
+
+  /* RÈGLE 2 : NETTOYAGE DES ICÔNES DE MENU (Transparence et Survol) */
+  #sidebar.sidebar-collapsed .sidebar-module-item > button {
+    padding: 0.75rem 0 !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    transition: background-color 0.2s ease;
+  }
+
+  #sidebar.sidebar-collapsed .sidebar-module-item > button:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  #sidebar.sidebar-collapsed .sidebar-btn-content {
+    padding: 0 !important;
+    margin: 0 !important;
+    flex: 0 0 auto !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  #sidebar.sidebar-collapsed .sidebar-icon {
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* RÈGLE 1 : NETTOYAGE DU LOGO */
+  #sidebar.sidebar-collapsed .sidebar-header-logo {
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  #sidebar.sidebar-collapsed .h-16.flex.items-center {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: auto !important;
+    padding: 1rem 0 !important;
+    gap: 0 !important;
+  }
+
+  #sidebar.sidebar-collapsed .h-16.flex.items-center > button:first-child {
+    gap: 0 !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  /* RÈGLE 3 : RECENTRAGE DU BOUTON TOGGLE */
+  #sidebar.sidebar-collapsed #sidebar-collapse-btn {
+    margin: 1rem auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  /* Cache les sous-éléments (phases, leçons) en mode Rail */
+  #sidebar.sidebar-collapsed [id^="module-"] {
+    display: none !important;
+  }
+
+  /* Bouton flottant supprimé (gardé ici pour éviter de casser s'il est encore dans le DOM) */
+  #desktop-toggle-btn {
+    display: none !important;
+  }
+}
+
+/* Conteneur principal fluide */
+#main-content {
+  flex: 1 1 0%;
+  min-width: 0;
+  transition: padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Comportement Mobile / Tablette (< 1024px) */
+@media (max-width: 1023px) {
+  #sidebar,
+  aside#sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 300px !important;
+    max-width: 85vw !important;
+    height: 100% !important;
+    z-index: 50 !important;
+    transform: translateX(-100%) !important;
+    box-shadow: 10px 0 25px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  /* Menu tiroir ouvert sur mobile */
+  #sidebar.mobile-open,
+  aside#sidebar.mobile-open {
+    transform: translateX(0) !important;
+  }
+
+  #sidebar-overlay {
+    transition: opacity 0.3s ease;
+  }
+}
+
+/* Structure de liste pour l'accordéon */
+.sidebar-modules-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.sidebar-module-item {
+  margin-bottom: 0.5rem !important;
+}
+
+/* ------------------------------------------------------------------------------
+ * RÈGLE 2 : RÉPARATION DE LA STRUCTURE DES BOUTONS (Architecture Flexbox)
+ * ------------------------------------------------------------------------------ */
+
+/* Bouton racine */
+.sidebar-module-item > button,
+.sidebar-phase-item > button,
+.sidebar-lesson-item > button {
+  width: 100% !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+.sidebar-phase-item > button,
+.sidebar-lesson-item > button {
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
+/* Conteneur intermédiaire (icône + badge + conteneur de texte) */
+.sidebar-btn-content {
+  display: flex !important;
+  align-items: flex-start !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important; /* Astuce cruciale pour permettre la troncature Flexbox */
+}
+
+/* Préservation stricte des icônes, badges et chevrons */
+.sidebar-icon,
+.badge-school,
+.sidebar-chevron,
+.sidebar-badge {
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+}
+
+/* ------------------------------------------------------------------------------
+ * RÈGLE 3 : MAINTIEN DU LINE-CLAMP (Appliqué STRICTEMENT au conteneur de texte)
+ * ------------------------------------------------------------------------------ */
+.sidebar-module-title,
+.sidebar-phase-title,
+.sidebar-lesson-title {
+  flex: 1 1 auto !important;
+  min-width: 0 !important; /* Astuce cruciale pour le calcul de taille */
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  line-height: 1.25 !important;
+  font-size: 13px !important;
+  word-break: break-word !important;
+  text-overflow: ellipsis !important;
+}
+
+/* ------------------------------------------------------------------------------
+ * RÈGLE 3 : STYLE DU BOUTON TOGGLE [<] (Ghost Button)
+ * ------------------------------------------------------------------------------ */
+#sidebar-collapse-btn,
+.sidebar-toggle-btn {
+  background: transparent !important;
+  border: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  color: var(--text-muted) !important;
+  padding: 0.35rem 0.6rem !important;
+  border-radius: var(--terminal-radius, 4px) !important;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#sidebar-collapse-btn:hover,
+.sidebar-toggle-btn:hover {
+  background-color: #141414 !important;
+  color: var(--primary-green) !important;
+  animation: none !important;
+  box-shadow: none !important;
+}
+
+#sidebar-close-btn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--text-muted) !important;
+  padding: 0.35rem 0.6rem !important;
+  border-radius: var(--terminal-radius, 4px) !important;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#sidebar-close-btn:hover {
+  background-color: #141414 !important;
+  color: #ff0055 !important;
+  animation: none !important;
+  box-shadow: none !important;
+}
+
+
+
+/* ==============================================================================
+ * 9. MATRIX INTRO ANIMATIONS
+ * ============================================================================== */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.is-blinking {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes matrix-glitch-boot {
+  /* 0-15% : Chauffage du tube (Ligne blanche intense) */
+  0%   { transform: scale(1, 0.002); filter: brightness(0) contrast(100); opacity: 0; }
+  3%   { transform: scale(1, 0.002); filter: brightness(20) contrast(100); opacity: 1; }
+  8%   { transform: scale(1, 0.005); filter: brightness(15) contrast(100); opacity: 0.8; }
+  15%  { transform: scale(1, 0.01); filter: brightness(20) contrast(100); opacity: 1; }
+
+  /* 15-35% : Déchirement violent et expansion */
+  16%  { transform: scale(0.8, 0.2) skewX(30deg); filter: brightness(8) hue-rotate(90deg); }
+  20%  { transform: scale(1.1, 0.6) skewX(-20deg); filter: brightness(5) drop-shadow(15px 0 0 red) drop-shadow(-15px 0 0 blue); }
+  25%  { transform: scale(0.95, 0.9) skewX(10deg); filter: brightness(3) drop-shadow(5px 5px 0 green); }
+  30%  { transform: scale(1.02, 1.02) skewX(-5deg); filter: brightness(2) contrast(2); }
+  35%  { transform: scale(1, 1) skewX(0deg); filter: brightness(1); }
+
+  /* 35-50% : Première tentative de stabilisation (Jittering) */
+  36%  { transform: translate(15px, -5px); filter: drop-shadow(10px 0 0 rgba(255,0,0,0.9)); }
+  40%  { transform: translate(-15px, 5px); filter: drop-shadow(-10px 0 0 rgba(0,0,255,0.9)); }
+  45%  { transform: translate(5px, 0); filter: none; }
+  50%  { transform: translate(0, 0); opacity: 1; }
+
+  /* 50-65% : Scintillement d'alimentation (Blackouts partiels) */
+  52%  { opacity: 0.3; filter: brightness(0.5); }
+  54%  { opacity: 1; filter: brightness(1.5); }
+  56%  { opacity: 0.1; filter: brightness(0.2); }
+  60%  { opacity: 1; filter: brightness(1.2); }
+  65%  { opacity: 1; filter: brightness(1); }
+
+  /* 65-80% : Réplique (After-shock glitch) */
+  66%  { transform: scale(1.05, 0.95) skewX(15deg); filter: drop-shadow(10px 0 0 red); opacity: 0.8; }
+  68%  { transform: scale(0.95, 1.05) skewX(-10deg); filter: drop-shadow(-10px 0 0 blue); opacity: 1; }
+  72%  { transform: translate(0, 0) skewX(0deg); filter: none; }
+  75%  { transform: translate(-5px, 3px); filter: drop-shadow(2px 0 0 green); }
+  80%  { transform: translate(0, 0); filter: none; }
+
+  /* 80-100% : Retour à la normale parfaite */
+  100% { transform: scale(1, 1); filter: none; opacity: 1; }
+}
+
+.animate-crt-boot {
+  animation: matrix-glitch-boot 4s ease-out forwards;
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.98; }
+  50% { opacity: 1; }
+  100% { opacity: 0.98; }
+}
+
+/* Grille Phosphore RGB & Scanlines horizontales */
+#matrix-screen::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 4px, 6px 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Vignette (bords sombres d'écran) & Scintillement */
+#matrix-screen::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at center, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+  z-index: 11;
+  pointer-events: none;
+  animation: crt-flicker 0.15s infinite;
+}
+
+/* Static TV Noise Layer */
+.matrix-noise {
+  position: absolute;
+  top: -50%; left: -50%; right: -50%; bottom: -50%;
+  width: 200%; height: 200%;
+  background: transparent url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E") repeat;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 15;
+  mix-blend-mode: overlay;
+  animation: noise-jitter 0.05s infinite;
+}
+
+@keyframes noise-jitter {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-5%, 5%); }
+  40% { transform: translate(5%, -5%); }
+  60% { transform: translate(-5%, -5%); }
+  80% { transform: translate(5%, 5%); }
+  100% { transform: translate(0, 0); }
+}

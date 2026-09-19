@@ -138,48 +138,68 @@ const app = {
         const btn = document.getElementById('mobile-menu-btn');
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('sidebar-overlay');
+        if (!btn || !sidebar || !overlay) return;
 
-        const toggleMenu = () => {
-            const isOpen = !sidebar.classList.contains('-translate-x-full');
-            if (isOpen) {
-                sidebar.classList.add('-translate-x-full');
-                overlay.classList.add('hidden');
-                setTimeout(() => overlay.classList.remove('opacity-100'), 10);
-            } else {
-                sidebar.classList.remove('-translate-x-full');
-                overlay.classList.remove('hidden');
-                setTimeout(() => overlay.classList.add('opacity-100'), 10);
-            }
+        const openMenu = () => {
+            sidebar.classList.add('mobile-open');
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                overlay.classList.add('opacity-100');
+                overlay.classList.remove('opacity-0');
+            });
         };
 
-        btn.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
+        const closeMenu = () => {
+            sidebar.classList.remove('mobile-open');
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.remove('opacity-100');
+            overlay.classList.add('opacity-0');
+            setTimeout(() => {
+                if (!sidebar.classList.contains('mobile-open')) {
+                    overlay.classList.add('hidden');
+                }
+            }, 300);
+        };
+
+        this.openMobileMenu = openMenu;
+        this.closeMobileMenu = closeMenu;
+
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (sidebar.classList.contains('mobile-open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        overlay.addEventListener('click', closeMenu);
     },
+
+    desktopSidebarCollapsed: false,
 
     toggleDesktopSidebar: function() {
         const sidebar = document.getElementById('sidebar');
-        const floatBtn = document.getElementById('desktop-toggle-btn');
+        const collapseBtn = document.getElementById('sidebar-collapse-btn');
+        if (!sidebar) return;
         
         this.desktopSidebarCollapsed = !this.desktopSidebarCollapsed;
         
         if (this.desktopSidebarCollapsed) {
-            // Collapse sidebar
-            sidebar.classList.remove('lg:translate-x-0');
-            sidebar.classList.add('lg:-ml-80');
-            
-            // Show float btn
-            setTimeout(() => {
-                floatBtn.classList.remove('opacity-0', 'pointer-events-none');
-                floatBtn.classList.add('opacity-100', 'pointer-events-auto');
-            }, 300);
+            // RÈGLE 1 : Activer le Mode Navigation Rail (réduire la sidebar à 72px)
+            sidebar.classList.add('sidebar-collapsed');
+            if (collapseBtn) {
+                collapseBtn.innerHTML = '<span>[&gt;]</span>';
+                collapseBtn.title = 'Déployer le menu';
+            }
         } else {
-            // Expand sidebar
-            sidebar.classList.remove('lg:-ml-80');
-            sidebar.classList.add('lg:translate-x-0');
-            
-            // Hide float btn
-            floatBtn.classList.add('opacity-0', 'pointer-events-none');
-            floatBtn.classList.remove('opacity-100', 'pointer-events-auto');
+            // RÈGLE 1 : Quitter le Mode Navigation Rail (réafficher la sidebar complète)
+            sidebar.classList.remove('sidebar-collapsed');
+            if (collapseBtn) {
+                collapseBtn.innerHTML = '<span>[&lt;]</span>';
+                collapseBtn.title = 'Réduire le menu';
+            }
         }
     },
 
@@ -210,9 +230,8 @@ const app = {
             el.classList.add('text-slate-400');
         });
 
-        if (window.innerWidth < 1024) {
-            document.getElementById('sidebar').classList.add('-translate-x-full');
-            document.getElementById('sidebar-overlay').classList.add('hidden');
+        if (window.innerWidth < 1024 && this.closeMobileMenu) {
+            this.closeMobileMenu();
         }
 
         const schoolModule = itCampusData.modules.find(m => m.id === 'm3') || itCampusData.modules[0];
@@ -424,9 +443,8 @@ const app = {
             el.classList.add('text-slate-400');
         });
 
-        if (window.innerWidth < 1024) {
-            document.getElementById('sidebar').classList.add('-translate-x-full');
-            document.getElementById('sidebar-overlay').classList.add('hidden');
+        if (window.innerWidth < 1024 && this.closeMobileMenu) {
+            this.closeMobileMenu();
         }
 
         const mod = itCampusData.modules.find(m => m.id === moduleId);
@@ -524,49 +542,52 @@ const app = {
 
     renderSidebar: function() {
         const container = document.getElementById('nav-container');
-        let html = '';
+        let html = '<ul class="sidebar-modules-list space-y-3">';
         
         itCampusData.modules.forEach((mod, mIndex) => {
             const moduleId = `module-${mod.id}`;
             const isSchool = mod.id === 'm3';
             const isM1 = mod.id === 'm1';
             
-            const modIcon = isSchool 
-                ? RetroIcons.crt('w-4 h-4 text-emerald-400 mr-2 flex-shrink-0')
-                : (isM1 ? RetroIcons.wrench('w-3.5 h-3.5 text-amber-400 mr-2 flex-shrink-0') : RetroIcons.network('w-3.5 h-3.5 text-cyan-400 mr-2 flex-shrink-0'));
-
             const btnClass = isSchool
                 ? 'bg-emerald-950/40 hover:bg-emerald-900/40 border-2 border-emerald-500/70 text-emerald-200 pixel-btn'
                 : 'bg-zinc-900 hover:bg-zinc-800 border-2 border-zinc-800 text-zinc-300 pixel-btn';
+
+            const modIcon = isSchool 
+                ? RetroIcons.crt('w-4 h-4 text-emerald-400 mr-2 flex-shrink-0 mt-0.5 sidebar-icon')
+                : (isM1 ? RetroIcons.wrench('w-3.5 h-3.5 text-amber-400 mr-2 flex-shrink-0 mt-0.5 sidebar-icon') : RetroIcons.network('w-3.5 h-3.5 text-cyan-400 mr-2 flex-shrink-0 mt-0.5 sidebar-icon'));
+
             const badgeSchool = isSchool
-                ? `<span class="px-1.5 py-0.5 bg-emerald-500 text-zinc-950 font-arcade text-[8px] font-bold mr-2 flex-shrink-0">ÉCOLE</span>`
+                ? `<span class="badge-school px-1.5 py-0.5 bg-emerald-500 text-zinc-950 font-arcade text-[8px] font-bold mr-2 flex-shrink-0 mt-0.5">ÉCOLE</span>`
                 : '';
 
             html += `
-            <div class="mb-3">
-                <button class="w-full flex items-center justify-between p-3 text-left hover:text-white border transition-colors group shadow-sm focus:outline-none ${btnClass}" onclick="app.toggleModule('${moduleId}')">
-                    <div class="flex items-center min-w-0 pr-2 flex-1 font-pixel text-sm tracking-wide">
+            <li class="sidebar-module-item">
+                <button class="w-full flex items-start justify-between py-2 px-3 text-left hover:text-white border transition-colors group shadow-sm focus:outline-none ${btnClass}" onclick="app.toggleModule('${moduleId}')" title="${mod.title}">
+                    <div class="sidebar-btn-content flex items-start min-w-0 pr-2 flex-1 font-pixel text-sm tracking-wide">
                         ${modIcon}
                         ${badgeSchool}
-                        <span class="truncate leading-tight">${mod.title}</span>
+                        <span class="sidebar-module-title" title="${mod.title}">${mod.title}</span>
                     </div>
-                    <div id="icon-${moduleId}" class="text-zinc-500 group-hover:text-amber-400 transition-transform duration-200 flex-shrink-0 ml-2">
+                    <div id="icon-${moduleId}" class="sidebar-chevron text-zinc-500 group-hover:text-amber-400 transition-transform duration-200 flex-shrink-0 ml-2 mt-0.5">
                         ${RetroIcons.chevronDown('w-3.5 h-3.5')}
                     </div>
                 </button>
-                <div id="${moduleId}" class="hidden flex-col mt-2 pl-3 space-y-1.5 border-l-2 border-zinc-800 ml-3">
+                <div id="${moduleId}" class="hidden flex-col mt-1.5 pl-2.5 space-y-1 border-l-2 border-zinc-800 ml-3">
+                    <ul class="list-none p-0 m-0 space-y-1.5">
             `;
             mod.phases.forEach((phase, pIndex) => {
                 const phaseId = `phase-${mIndex}-${pIndex}`;
                 html += `
-                    <div>
-                        <button class="w-full flex items-center justify-between p-2 text-left text-xs font-mono text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60 transition-colors group focus:outline-none" onclick="app.togglePhase('${phaseId}')">
-                            <span class="truncate pr-2">${phase.title}</span>
-                            <div id="icon-${phaseId}" class="text-zinc-500 group-hover:text-zinc-300 transition-transform duration-200 flex-shrink-0">
-                                ${RetroIcons.chevronDown('w-3 h-3')}
-                            </div>
-                        </button>
-                        <div id="${phaseId}" class="hidden flex-col pl-3 py-1 space-y-1 border-l border-zinc-700/60 ml-2 mt-0.5">
+                        <li class="sidebar-phase-item">
+                            <button class="w-full flex items-start justify-between py-1.5 px-2 text-left text-[13px] font-mono text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60 transition-colors group focus:outline-none" onclick="app.togglePhase('${phaseId}')" title="${phase.title}">
+                                <span class="sidebar-phase-title pr-2" title="${phase.title}">${phase.title}</span>
+                                <div id="icon-${phaseId}" class="sidebar-chevron text-zinc-500 group-hover:text-zinc-300 transition-transform duration-200 flex-shrink-0 mt-0.5">
+                                    ${RetroIcons.chevronDown('w-3 h-3')}
+                                </div>
+                            </button>
+                            <div id="${phaseId}" class="hidden flex-col pl-2.5 py-0.5 space-y-0.5 border-l border-zinc-700/60 ml-2 mt-0.5">
+                                <ul class="list-none p-0 m-0 space-y-0.5">
                 `;
                 phase.lessons.forEach(lesson => {
                     const isAvailable = lesson.status === 'available';
@@ -576,39 +597,71 @@ const app = {
                         : `<span class="inline-flex items-center gap-1">${RetroIcons.lock('w-2.5 h-2.5')} LOCK</span>`;
                     
                     html += `
-                            <button onclick="app.loadLesson('${lesson.id}')" id="nav-${lesson.id}" class="w-full text-left p-2 text-xs text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 transition-all flex items-start justify-between group focus:outline-none font-mono">
-                                <span class="truncate mr-2 flex-1 pt-0.5">${lesson.title}</span>
-                                <span class="text-[8px] px-1 py-0.5 uppercase tracking-wider ${badgeClass}">${badgeContent}</span>
-                            </button>
+                                    <li class="sidebar-lesson-item">
+                                        <button onclick="app.loadLesson('${lesson.id}')" id="nav-${lesson.id}" class="w-full text-left py-1.5 px-2 text-[13px] text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 transition-all flex items-start justify-between group focus:outline-none font-mono" title="${lesson.title}">
+                                            <span class="sidebar-lesson-title mr-2" title="${lesson.title}">${lesson.title}</span>
+                                            <span class="sidebar-badge text-[8px] px-1 py-0.5 uppercase tracking-wider flex-shrink-0 mt-0.5 ${badgeClass}">${badgeContent}</span>
+                                        </button>
+                                    </li>
                     `;
                 });
                 html += `
-                        </div>
-                    </div>
+                                </ul>
+                            </div>
+                        </li>
                 `;
             });
             html += `
+                    </ul>
                 </div>
-            </div>
+            </li>
             `;
         });
         
+        html += '</ul>';
         container.innerHTML = html;
         // Expand first module by default
         this.toggleModule(`module-${itCampusData.modules[0].id}`);
     },
 
     toggleModule: function(moduleId) {
-        const el = document.getElementById(moduleId);
-        const icon = document.getElementById(`icon-${moduleId}`);
-        if (el.classList.contains('hidden')) {
+        let wasAutoOpened = false;
+        // RÈGLE 4 : Auto-ouverture du Navigation Rail
+        if (window.innerWidth >= 1024 && this.desktopSidebarCollapsed) {
+            this.toggleDesktopSidebar();
+            wasAutoOpened = true;
+        }
+
+        const targetId = moduleId.startsWith('module-') ? moduleId : `module-${moduleId}`;
+        const el = document.getElementById(targetId);
+        const icon = document.getElementById(`icon-${targetId}`);
+        if (!el) return;
+
+        const isOpening = el.classList.contains('hidden') || wasAutoOpened;
+
+        // RÈGLE 3 : Accordéon strict - fermer automatiquement tous les autres modules ouverts
+        itCampusData.modules.forEach(m => {
+            const otherId = `module-${m.id}`;
+            if (otherId !== targetId) {
+                const otherEl = document.getElementById(otherId);
+                const otherIcon = document.getElementById(`icon-${otherId}`);
+                if (otherEl && !otherEl.classList.contains('hidden')) {
+                    otherEl.classList.add('hidden');
+                    otherEl.classList.remove('flex');
+                    if (otherIcon) otherIcon.classList.remove('rotate-180');
+                }
+            }
+        });
+
+        // Bascule de l'élément cliqué
+        if (isOpening) {
             el.classList.remove('hidden');
             el.classList.add('flex');
-            icon.classList.add('rotate-180');
+            if (icon) icon.classList.add('rotate-180');
         } else {
             el.classList.add('hidden');
             el.classList.remove('flex');
-            icon.classList.remove('rotate-180');
+            if (icon) icon.classList.remove('rotate-180');
         }
     },
 
@@ -666,9 +719,8 @@ const app = {
         }
         
         // Auto-close sidebar on mobile after click
-        if (window.innerWidth < 1024) {
-            document.getElementById('sidebar').classList.add('-translate-x-full');
-            document.getElementById('sidebar-overlay').classList.add('hidden');
+        if (window.innerWidth < 1024 && this.closeMobileMenu) {
+            this.closeMobileMenu();
         }
 
         let currentIndex = flatLessons.findIndex(item => item.lesson.id === lessonId);
@@ -994,7 +1046,152 @@ const app = {
     }
 };
 
+const MatrixIntro = {
+    text: "root@it-campus:~# INITIALISATION DU TERMINAL... [ OK ]\nroot@it-campus:~# SYSTÈME : ANALYSE EN COURS... [ OK ]\nroot@it-campus:~# PROFIL DÉTECTÉ : OPÉRATEUR INFORMATIQUE.\nroot@it-campus:~# ALERTE : MATRICE CORROMPUE. [ FAULT ]\nroot@it-campus:~# REQUÊTE D'INPUT : CHOISISSEZ VOTRE PROTOCOLE D'INTERVENTION.\nroot@it-campus:~# Choisis le Protocole Bleu et tout s'arrête, après tu pourras faire de beaux rêves et penser ce que tu veux.\nroot@it-campus:~# Choisis le Protocole Rouge, tu restes au pays des merveilles et on descend avec le lapin blanc au fond du système.",
+    speed: 20,
+    container: null,
+    textElement: null,
+    buttons: null,
+    isSkipped: false,
+    timeoutIds: [],
+    audioCtx: null,
+
+    init() {
+        const forceIntro = new URLSearchParams(window.location.search).get('intro') === '1';
+        if (localStorage.getItem('matrixIntroPlayed') === 'true' && !forceIntro) return;
+        
+        try {
+            this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        } catch (e) {
+            console.warn("Web Audio API non supportée");
+        }
+
+        const unlockAudio = () => {
+            if (this.audioCtx && this.audioCtx.state === 'suspended') {
+                this.audioCtx.resume();
+            }
+            document.removeEventListener('click', unlockAudio);
+            document.removeEventListener('keydown', unlockAudio);
+        };
+        document.addEventListener('click', unlockAudio);
+        document.addEventListener('keydown', unlockAudio);
+
+        this.container = document.getElementById('matrix-intro');
+        this.textElement = document.getElementById('typewriter-text');
+        this.buttons = document.getElementById('matrix-buttons');
+        
+        if (!this.container || !this.textElement || !this.buttons) return;
+
+        // Force container flex visible if it wasn't hidden by inline script
+        this.container.style.display = 'flex';
+
+        // Bind events
+        document.getElementById('pill-red').addEventListener('click', () => this.unlock());
+        document.getElementById('pill-blue').addEventListener('click', () => {
+            window.open('https://fakeupdate.net/win10ue/', '_blank');
+            this.unlock();
+        });
+        
+        this.handleKeydown = (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                this.unlock();
+            }
+        };
+        document.addEventListener('keydown', this.handleKeydown);
+
+        this.typeWriter();
+    },
+
+    playKeystroke() {
+        if (!this.audioCtx || this.audioCtx.state === 'suspended') return;
+        
+        const osc = this.audioCtx.createOscillator();
+        const gainNode = this.audioCtx.createGain();
+        
+        osc.connect(gainNode);
+        gainNode.connect(this.audioCtx.destination);
+        
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(600 + Math.random() * 150, this.audioCtx.currentTime);
+        
+        gainNode.gain.setValueAtTime(0.015, this.audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + 0.015);
+        
+        osc.start(this.audioCtx.currentTime);
+        osc.stop(this.audioCtx.currentTime + 0.02);
+    },
+
+    typeWriter() {
+        let i = 0;
+        const lines = this.text.split('\n');
+        let currentLine = 0;
+        let currentText = '';
+
+        const type = () => {
+            if (this.isSkipped) return;
+            
+            if (currentLine < lines.length) {
+                if (i < lines[currentLine].length) {
+                    const char = lines[currentLine].charAt(i);
+                    currentText += char;
+                    if (char !== ' ') this.playKeystroke();
+                    this.textElement.innerHTML = currentText + '<span id="matrix-cursor">█</span>';
+                    i++;
+                    
+                    // Add slight random variation to typing speed for realism
+                    let delay = this.speed + Math.random() * 25;
+                    // Pause slightly longer on punctuation
+                    if (char === '.' || char === ':' || char === ',') {
+                        delay += 100;
+                    }
+                    this.timeoutIds.push(setTimeout(type, delay));
+                } else {
+                    currentText += '\n';
+                    this.textElement.innerHTML = currentText + '<span id="matrix-cursor">█</span>';
+                    i = 0;
+                    currentLine++;
+                    // Longer pause at the end of a line
+                    this.timeoutIds.push(setTimeout(type, 1000));
+                }
+            } else {
+                this.textElement.innerHTML = currentText + '<span id="matrix-cursor">█</span>';
+                this.showButtons();
+            }
+        };
+        
+        type();
+    },
+
+    showButtons() {
+        if (this.isSkipped) return;
+        this.buttons.classList.remove('opacity-0', 'pointer-events-none');
+        this.buttons.classList.add('opacity-100', 'pointer-events-auto');
+        const cursor = document.getElementById('matrix-cursor');
+        if (cursor) cursor.classList.add('is-blinking');
+    },
+
+    unlock() {
+        if (this.isSkipped) return;
+        this.isSkipped = true;
+        this.timeoutIds.forEach(clearTimeout);
+        document.removeEventListener('keydown', this.handleKeydown);
+        
+        localStorage.setItem('matrixIntroPlayed', 'true');
+        
+        this.container.style.transition = 'opacity 0.8s ease';
+        this.container.style.opacity = '0';
+        
+        setTimeout(() => {
+            this.container.style.display = 'none';
+        }, 800);
+    }
+};
+
 window.app = app;
 window.RetroIcons = RetroIcons;
 
-document.addEventListener('DOMContentLoaded', () => app.init());
+document.addEventListener('DOMContentLoaded', () => {
+    MatrixIntro.init();
+    app.init();
+});

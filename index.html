@@ -100,6 +100,40 @@
     <!-- Subtle CRT Scanlines & Vignette Overlay -->
     <div class="crt-overlay"></div>
 
+    <!-- Matrix Intro -->
+    <div id="matrix-intro" class="fixed inset-0 bg-black z-[9999]">
+        <div id="matrix-screen" class="absolute inset-0 flex flex-col justify-center items-center font-mono p-4 lg:p-8 animate-crt-boot bg-black overflow-hidden">
+            <div class="matrix-noise"></div>
+            <div class="w-full max-w-4xl text-left relative z-20">
+            <div class="text-[var(--primary-green)] text-lg lg:text-2xl mb-8 opacity-80" style="text-shadow: 0 0 10px rgba(0,255,65,0.5);">
+                IT-CAMPUS OS [Version 2.4.19045]<br>
+                (c) IT Campus Corporation. Tous droits réservés.
+            </div>
+            <div id="typewriter-text" class="text-[var(--primary-green)] text-lg lg:text-2xl leading-relaxed min-h-[300px] whitespace-pre-wrap mb-8" style="text-shadow: 0 0 10px rgba(0,255,65,0.5);"></div>
+            
+            <div id="matrix-buttons" class="flex flex-col gap-3 mt-4 opacity-0 transition-opacity duration-1000 ease-in-out pointer-events-none">
+                <div class="text-[var(--text-muted)] text-sm mb-2">>_ ATTENTE DE LA DÉCISION DE L'OPÉRATEUR...</div>
+                <button id="pill-red" class="text-left font-mono text-[var(--primary-green)] hover:bg-[var(--primary-green)] hover:text-black py-2 px-4 transition-colors focus:outline-none w-fit cursor-pointer border border-transparent hover:border-[var(--primary-green)]">
+                    [1] ACTIVER LE PROTOCOLE ROUGE (ACCÈS ROOT)
+                </button>
+                <button id="pill-blue" class="text-left font-mono text-zinc-500 hover:bg-zinc-800 hover:text-white py-2 px-4 transition-colors focus:outline-none w-fit cursor-pointer border border-transparent hover:border-zinc-500">
+                    [2] ACTIVER LE PROTOCOLE BLEU (MISE EN VEILLE)
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-8 text-zinc-500 text-xs tracking-widest text-center w-full animate-pulse">
+            [ Appuyez sur Espace pour passer ]
+        </div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (localStorage.getItem('matrixIntroPlayed') === 'true' && urlParams.get('intro') !== '1') {
+            document.getElementById('matrix-intro').style.display = 'none';
+        }
+    </script>
+
     <!-- Mobile Header -->
     <div class="lg:hidden absolute top-0 left-0 right-0 h-16 bg-[var(--bg-card)] border-b-2 border-[var(--border-muted)] flex items-center justify-between px-4 z-30">
         <button onclick="app.renderHome()" class="font-pixel text-xl text-[var(--primary-green)] flex items-center gap-2.5 hover:text-emerald-300 transition-colors cursor-pointer focus:outline-none pixel-title-shadow group">
@@ -131,11 +165,11 @@
     <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-20 hidden transition-opacity opacity-0"></div>
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="bg-[var(--bg-card)] border-r-2 border-[var(--border-muted)] w-80 flex-shrink-0 h-full flex flex-col transition-transform duration-300 ease-in-out z-30 fixed lg:relative transform -translate-x-full lg:translate-x-0 pt-16 lg:pt-0">
-        <div class="h-16 flex items-center px-6 border-b-2 border-[var(--border-muted)] hidden lg:flex">
-            <button onclick="app.renderHome()" class="font-pixel text-2xl text-[var(--primary-green)] flex items-center gap-3 hover:text-emerald-300 transition-colors cursor-pointer focus:outline-none pixel-title-shadow group">
-                <span class="inline-block transform group-hover:scale-110 transition-transform">
-                    <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 16 16" fill="none" shape-rendering="crispEdges">
+    <aside id="sidebar" class="bg-[var(--bg-card)] border-r-2 border-[var(--border-muted)] w-[320px] lg:w-[320px] flex-shrink-0 h-full flex flex-col z-50 fixed lg:relative">
+        <div class="h-16 flex items-center justify-between px-4 lg:px-5 border-b-2 border-[var(--border-muted)] flex-shrink-0">
+            <button onclick="app.renderHome()" class="font-pixel text-xl lg:text-2xl text-[var(--primary-green)] flex items-center gap-2.5 hover:text-emerald-300 transition-colors cursor-pointer focus:outline-none pixel-title-shadow group" title="Accueil">
+                <span class="inline-block transform group-hover:scale-110 transition-transform sidebar-header-logo">
+                    <svg class="w-7 h-7 lg:w-8 lg:h-8 flex-shrink-0" viewBox="0 0 16 16" fill="none" shape-rendering="crispEdges">
                         <path d="M2 1h12v10H2V1zm1 1v8h10V2H3z" fill="#00ff41"/>
                         <rect x="4" y="3" width="8" height="6" fill="#000000"/>
                         <rect x="5" y="4" width="2" height="1" fill="#00ff41"/>
@@ -147,12 +181,15 @@
                         <rect x="4" y="13" width="8" height="2" fill="#00ff41"/>
                     </svg>
                 </span>
-                <span>IT CAMPUS</span>
+                <span class="sidebar-header-text">IT CAMPUS</span>
             </button>
-            <button onclick="app.toggleDesktopSidebar()" class="pixel-btn p-1.5 bg-black hover:bg-zinc-900 border-2 border-[var(--border-muted)] text-[var(--text-muted)] hover:text-[var(--primary-green)] transition-colors ml-auto focus:outline-none font-arcade text-xs" title="Masquer le menu">
-                <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
-                    <path d="M10 3L5 8l5 5V3z"/>
-                </svg>
+            <!-- Bouton Desktop : [<] (Ghost button) -->
+            <button onclick="app.toggleDesktopSidebar()" id="sidebar-collapse-btn" class="sidebar-toggle-btn px-2.5 py-1.5 bg-transparent border-0 text-[var(--text-muted)] hover:text-[var(--primary-green)] transition-colors focus:outline-none font-mono text-xs font-bold hidden lg:flex items-center" title="Mode Focus : Masquer la barre latérale">
+                <span>[&lt;]</span>
+            </button>
+            <!-- Bouton Mobile : [X] (Ghost button) -->
+            <button onclick="app.closeMobileMenu()" id="sidebar-close-btn" class="sidebar-toggle-btn px-2.5 py-1.5 bg-transparent border-0 text-[var(--text-muted)] hover:text-rose-400 transition-colors focus:outline-none font-mono text-xs font-bold lg:hidden flex items-center" title="Fermer le menu">
+                <span>[X]</span>
             </button>
         </div>
         
