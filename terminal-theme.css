@@ -477,3 +477,85 @@ h3,
   overflow-x: auto;
   margin: 1.25rem 0;
 }
+
+/* ==============================================================================
+ * 7. ESTHÉTIQUE ÉCRAN CATHODIQUE (CRT) & EFFET GLITCH INTERACTIF
+ * ============================================================================== */
+
+/* RÈGLE 3 : Conditionnement à l'absence de préférence de mouvement réduit */
+@media (prefers-reduced-motion: no-preference) {
+  /* RÈGLE 1 : Overlay CRT Global (Scanlines à 3% max & Vignette bombée) */
+  .crt-overlay,
+  .crt-scanlines,
+  body.has-crt::after {
+    content: " ";
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none !important;
+    z-index: 9999;
+    /* 
+     1. radial-gradient : Crée un halo vert phosphorescent très subtil au centre (5%) qui disparaît vers les bords.
+     2. linear-gradient : Lignes de balayage vert phosphorescent ultra-subtiles en filigrane (1.5%).
+    */
+    background:
+      radial-gradient(ellipse at center, rgba(0, 255, 65, 0.05) 0%, rgba(0, 0, 0, 0) 70%),
+      linear-gradient(to bottom, rgba(0, 255, 65, 0) 50%, rgba(0, 255, 65, 0.015) 50%);
+    background-size: 100% 100%, 100% 4px;
+    background-repeat: no-repeat, repeat;
+  }
+
+  /* RÈGLE 2 : Effet Glitch/Parasite au survol (:hover) durant 250ms */
+  @keyframes crt-glitch {
+    0% {
+      transform: translate(0, 0);
+      text-shadow: none;
+    }
+    20% {
+      transform: translate(-2px, 0);
+      text-shadow: -2px 0 rgba(255, 0, 85, 0.8), 2px 0 rgba(0, 229, 255, 0.8);
+    }
+    40% {
+      transform: translate(2px, 0);
+      text-shadow: 2px 0 rgba(255, 0, 85, 0.8), -2px 0 rgba(0, 229, 255, 0.8);
+    }
+    60% {
+      transform: translate(-1px, 0);
+      text-shadow: -1px 0 rgba(255, 0, 85, 0.7), 1px 0 rgba(0, 229, 255, 0.7);
+    }
+    80% {
+      transform: translate(1px, 0);
+      text-shadow: 1px 0 rgba(255, 0, 85, 0.5), -1px 0 rgba(0, 229, 255, 0.5);
+    }
+    100% {
+      transform: translate(0, 0);
+      text-shadow: none;
+    }
+  }
+
+  /* Déclenchement unique au survol (:hover) sans boucle continue */
+  .pixel-btn:hover,
+  .btn-glitch:hover,
+  .card-terminal:hover,
+  .pixel-card:hover {
+    animation: crt-glitch 0.25s ease-in-out 1;
+  }
+}
+
+/* RÈGLE 3 : Accessibilité - Désactivation totale si réduction de mouvement demandée */
+@media (prefers-reduced-motion: reduce) {
+  .crt-overlay,
+  .crt-scanlines,
+  body.has-crt::after {
+    display: none !important;
+  }
+
+  .pixel-btn:hover,
+  .btn-glitch:hover,
+  .card-terminal:hover,
+  .pixel-card:hover {
+    animation: none !important;
+  }
+}
+

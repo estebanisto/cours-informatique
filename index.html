@@ -91,23 +91,14 @@
         .pixel-title-shadow {
             text-shadow: 3px 3px 0px #000, 5px 5px 0px #18181b;
         }
-        /* Subtle CRT scanline overlay */
-        .crt-scanlines {
-            background: linear-gradient(
-                rgba(18, 16, 16, 0) 50%, 
-                rgba(0, 0, 0, 0.18) 50%
-            );
-            background-size: 100% 4px;
-            pointer-events: none;
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="terminal-theme.css">
 </head>
 <body class="bg-[var(--bg-app)] text-[var(--text-primary)] h-screen flex overflow-hidden selection:bg-[var(--primary-green)] selection:text-black">
 
-    <!-- Subtle CRT Scanlines Texture -->
-    <div class="crt-scanlines fixed inset-0 z-50 pointer-events-none opacity-30"></div>
+    <!-- Subtle CRT Scanlines & Vignette Overlay -->
+    <div class="crt-overlay"></div>
 
     <!-- Mobile Header -->
     <div class="lg:hidden absolute top-0 left-0 right-0 h-16 bg-[var(--bg-card)] border-b-2 border-[var(--border-muted)] flex items-center justify-between px-4 z-30">
