@@ -263,7 +263,7 @@ const app = {
 
                 <!-- Animated Pixel Typewriter Title -->
                 <h1 class="heading-main text-3xl sm:text-5xl lg:text-6xl font-bold tracking-normal mb-5 leading-tight min-h-[3.6rem] flex items-center justify-center flex-wrap">
-                    <span id="retro-title" class="title-glitch">FORMATION EN OPÉRATEUR INFORMATIQUE</span><span id="retro-cursor" class="animate-pixel-cursor text-[var(--primary-green)] inline-block ml-1">█</span>
+                    <span id="retro-title">FORMATION EN OPÉRATEUR INFORMATIQUE</span><span id="retro-cursor" class="animate-pixel-cursor text-[var(--primary-green)] inline-block ml-1">█</span>
                 </h1>
 
                 <!-- Retro Mission Briefing Dialogue Box -->
