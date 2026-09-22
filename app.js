@@ -855,6 +855,10 @@ const app = {
                 </a>
             </div>
             `;
+        } else if (currentLesson.status === 'available' && currentLesson.imageUrl) {
+            videoHtml = `
+            <img src="${currentLesson.imageUrl}" alt="${currentLesson.title}" class="w-full h-full object-cover absolute inset-0">
+            `;
         } else {
             videoHtml = `
             <div class="text-center p-8 absolute inset-0 flex flex-col items-center justify-center bg-zinc-950 font-arcade">
