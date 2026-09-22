@@ -316,7 +316,7 @@ const app = {
                                     CURSUS OFFICIEL
                                 </span>
                                 <span class="badge-terminal !border-[var(--border-muted)] !text-[var(--text-muted)] !bg-transparent">
-                                    ${schoolModule.phases.length} STAGE(S)
+                                    ${schoolModule.phases.length} INTITULÉ(S)
                                 </span>
                                 <span class="badge-terminal !border-[var(--border-muted)] !text-[var(--text-muted)] !bg-transparent">
                                     ${schoolStats.total} COURS
@@ -335,8 +335,9 @@ const app = {
                             <!-- Quest Stages Preview -->
                             <div class="flex flex-wrap gap-2 mt-3">
                                 ${schoolModule.phases.map((p, idx) => `
-                                    <div class="px-3 py-1.5 bg-black border border-[var(--border-muted)] text-[var(--text-muted)] font-sans text-xs flex items-center gap-2">
-                                        <span class="text-[var(--primary-green)] font-mono text-[10px]">S0${idx+1}</span>
+                                    <div class="px-3 py-1.5 bg-zinc-950 border border-emerald-800 text-emerald-100 font-sans text-xs flex items-center gap-2 shadow-[2px_2px_0px_rgba(4,120,87,0.3)]">
+                                        ${p.image ? `<img src="${p.image}" class="w-5 h-5 object-cover rounded-sm border border-emerald-900/50">` : ''}
+                                        <span class="text-emerald-400 font-mono text-[10px] font-bold">COURS ${idx+1}</span>
                                         <span>${p.title}</span>
                                     </div>
                                 `).join('')}
@@ -492,10 +493,10 @@ const app = {
                     <span class="flex items-center gap-2">
                         ${RetroIcons.crt('w-4 h-4 text-amber-400')} [ MODULE BRIEFING // IT CAMPUS ]
                     </span>
-                    <span class="text-[var(--primary-green)] font-mono text-[10px]">${mod.phases.length} STAGES</span>
+                    <span class="${mod.id === 'm3' ? 'text-emerald-400' : 'text-[var(--primary-green)]'} font-mono text-[10px]">${mod.phases.length} ${mod.id === 'm3' ? 'INTITULÉS' : 'STAGES'}</span>
                 </div>
                 <h1 class="heading-main text-2xl sm:text-4xl font-bold tracking-wide mb-3 leading-tight">${mod.title}</h1>
-                <p class="paragraph-body">${mod.description || "Sélectionnez une phase d'apprentissage pour continuer l'entraînement."}</p>
+                <p class="paragraph-body">${mod.description || (mod.id === 'm3' ? "Sélectionnez un cours pour commencer." : "Sélectionnez une phase d'apprentissage pour continuer l'entraînement.")}</p>
                 ${progressHeaderHtml}
             </div>
 
@@ -508,12 +509,13 @@ const app = {
             let firstLessonId = phase.lessons.length > 0 ? phase.lessons[0].id : null;
 
             html += `
-                <div class="card-terminal cursor-pointer group" onclick="${firstLessonId ? `app.loadLesson('${firstLessonId}')` : `app.togglePhase('phase-${itCampusData.modules.findIndex(m => m.id === mod.id)}-${pIndex}')`}">
+                <div class="card-terminal cursor-pointer group" onclick="app.renderPhaseIndex('phase-${itCampusData.modules.findIndex(m => m.id === mod.id)}-${pIndex}')">
                     <div class="flex items-start justify-between mb-4">
-                        <span class="badge-terminal">STAGE 0${pIndex + 1}</span>
-                        <span class="badge-terminal !border-[var(--border-muted)] !text-[var(--text-muted)] !bg-transparent">${availableLessons}/${totalLessons} DISPO</span>
+                        <span class="${mod.id === 'm3' ? 'px-3 py-1.5 bg-zinc-950 border border-emerald-800 text-emerald-400 font-mono text-xs font-bold shadow-[2px_2px_0px_rgba(4,120,87,0.3)]' : 'badge-terminal'}">${mod.id === 'm3' ? 'COURS' : 'STAGE'} 0${pIndex + 1}</span>
+                        <span class="badge-terminal !border-[var(--border-muted)] !text-[var(--text-muted)] !bg-transparent">${availableLessons}/${totalLessons} ${mod.id === 'm3' ? 'COURS' : 'DISPO'}</span>
                     </div>
-                    <h3 class="card-terminal-title text-xl mb-2 group-hover:text-[var(--primary-green)] transition-colors">${phase.title}</h3>
+                    ${phase.image ? `<div class="mb-4 overflow-hidden border-2 border-zinc-800 group-hover:${mod.id === 'm3' ? 'border-emerald-600' : 'border-[var(--primary-green)]'} transition-colors"><img src="${phase.image}" alt="${phase.title}" class="w-full h-32 object-cover opacity-75 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"></div>` : ''}
+                    <h3 class="card-terminal-title text-xl mb-2 group-hover:${mod.id === 'm3' ? 'text-emerald-400' : 'text-[var(--primary-green)]'} transition-colors">${phase.title}</h3>
                     <p class="paragraph-muted line-clamp-3 text-xs mb-4">
                         Consultez le cours détaillé, visualisez la vidéo explicative et validez vos compétences par le quiz interactif.
                     </p>
@@ -665,6 +667,104 @@ const app = {
         }
     },
 
+    renderPhaseIndex: function(domPhaseId) {
+        const parts = domPhaseId.split('-');
+        if (parts.length !== 3) return;
+        const mIndex = parseInt(parts[1], 10);
+        const pIndex = parseInt(parts[2], 10);
+        const currentModule = itCampusData.modules[mIndex];
+        const currentPhase = currentModule.phases[pIndex];
+
+        if (!currentPhase) return;
+
+        // Active Nav State Styling for sidebar
+        document.querySelectorAll('.sidebar-lesson-title').forEach(el => {
+            el.parentElement.classList.remove('bg-zinc-800/80', 'text-zinc-200', 'border-l-2', 'border-[var(--primary-green)]', 'pl-1.5');
+            el.parentElement.classList.add('text-zinc-400');
+        });
+
+        const isM3 = currentModule.id === 'm3';
+        const accentColor = isM3 ? 'text-emerald-400' : 'text-[var(--primary-green)]';
+        const borderColor = isM3 ? 'border-emerald-500' : 'border-[var(--primary-green)]';
+        const bgHover = isM3 ? 'hover:bg-emerald-900/30' : 'hover:bg-[var(--primary-green-muted)]';
+        
+        let html = `
+        <article class="max-w-4xl mx-auto p-4 sm:p-8 lg:p-10 pb-24 font-sans text-[var(--text-primary)]">
+            <header class="mb-10 border-b border-zinc-800 pb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="px-2 py-1 bg-black border border-zinc-700 text-zinc-400 font-mono text-[10px] tracking-wider uppercase">
+                        ${isM3 ? 'INDEX DU COURS' : 'INDEX DE LA PHASE'}
+                    </span>
+                    <span class="badge-terminal !border-[var(--border-muted)] !text-emerald-400 !bg-emerald-900/20">
+                        [ ACCÈS AUTORISÉ ]
+                    </span>
+                </div>
+                <h1 class="heading-main text-3xl sm:text-5xl font-bold tracking-wide mb-4 leading-tight flex items-center gap-4">
+                    ${isM3 ? RetroIcons.floppy('w-10 h-10 text-emerald-400') : RetroIcons.floppy('w-10 h-10 text-[var(--primary-green)]')}
+                    <span>${currentPhase.title}</span>
+                </h1>
+                <p class="paragraph-body text-zinc-400">
+                    SÉLECTIONNEZ ${isM3 ? 'UN CHAPITRE' : 'UNE LEÇON'} POUR DÉMARRER.
+                </p>
+                <div class="mt-6">
+                    ${currentPhase.lessons.length > 0 && currentPhase.lessons[0].status === 'available' ? `
+                        <button onclick="app.loadLesson('${currentPhase.lessons[0].id}')" class="pixel-btn px-6 py-3 bg-zinc-950 border-2 ${borderColor} ${accentColor} hover:bg-zinc-900 font-arcade text-xs font-bold flex items-center gap-2">
+                            ${RetroIcons.play('w-4 h-4')} REPRENDRE LA MISSION
+                        </button>
+                    ` : ''}
+                </div>
+            </header>
+
+            <div class="bg-black border border-zinc-800 rounded-sm p-4 font-mono text-sm shadow-[4px_4px_0px_#000]">
+                <div class="text-zinc-500 mb-4 flex items-center gap-2 border-b border-zinc-800 pb-2">
+                    ${RetroIcons.terminal('w-4 h-4')} <span>root@it-campus:~/${currentModule.id}/${currentPhase.id}# ls -l</span>
+                </div>
+                <div class="flex flex-col">
+                    <div class="grid grid-cols-12 text-zinc-600 border-b border-zinc-900 pb-2 mb-2 text-[10px] uppercase tracking-wider">
+                        <div class="col-span-2 sm:col-span-1 text-center">STATUT</div>
+                        <div class="col-span-7 sm:col-span-8">NOM DU FICHIER</div>
+                        <div class="col-span-3 sm:col-span-3 text-right">TAILLE</div>
+                    </div>
+        `;
+
+        currentPhase.lessons.forEach(l => {
+            const isAvail = l.status === 'available';
+            const icon = isAvail ? RetroIcons.cli('w-4 h-4 text-zinc-400') : RetroIcons.lock('w-4 h-4 text-red-500');
+            const rowClass = isAvail ? `cursor-pointer ${bgHover} hover:text-white group` : 'opacity-50 cursor-not-allowed';
+            const clickAction = isAvail ? `onclick="app.loadLesson('${l.id}')"` : '';
+            const statusText = isAvail ? '[ ✓ ]' : '[ X ]';
+            const statusColor = isAvail ? accentColor : 'text-zinc-600';
+            const sizeText = isAvail ? '15 min' : 'LOCKED';
+
+            html += `
+                    <div class="grid grid-cols-12 items-center py-3 border-b border-zinc-900/50 ${rowClass} transition-colors" ${clickAction}>
+                        <div class="col-span-2 sm:col-span-1 text-center ${statusColor} font-bold text-xs">
+                            ${statusText}
+                        </div>
+                        <div class="col-span-7 sm:col-span-8 flex items-center gap-3 pr-4">
+                            <span class="group-hover:text-emerald-300 transition-colors flex-shrink-0">${icon}</span>
+                            <span class="truncate ${isAvail ? 'text-zinc-300 group-hover:text-white font-semibold text-xs sm:text-sm' : 'text-zinc-600 text-xs sm:text-sm'}">${l.title}</span>
+                        </div>
+                        <div class="col-span-3 sm:col-span-3 text-right text-zinc-500 text-xs font-sans">
+                            ${sizeText}
+                        </div>
+                    </div>
+            `;
+        });
+
+        html += `
+                </div>
+                <div class="text-zinc-500 mt-4 pt-2 border-t border-zinc-800 flex items-center gap-2">
+                    Total: ${currentPhase.lessons.length} item(s)
+                </div>
+            </div>
+        </article>
+        `;
+
+        document.getElementById('main-content').innerHTML = html;
+        document.getElementById('main-content').scrollTop = 0;
+    },
+
     togglePhase: function(phaseId) {
         const el = document.getElementById(phaseId);
         const icon = document.getElementById(`icon-${phaseId}`);
@@ -672,6 +772,9 @@ const app = {
             el.classList.remove('hidden');
             el.classList.add('flex');
             icon.classList.add('rotate-180');
+            
+            // Render index page when expanding
+            this.renderPhaseIndex(phaseId);
         } else {
             el.classList.add('hidden');
             el.classList.remove('flex');
