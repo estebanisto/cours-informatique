@@ -251,6 +251,7 @@ const itCampusData = {
         id: "m3-c1-l3",
         title: "3. Gestion des Services (ITSM) et Organisation du Support",
         status: "available",
+        videoUrl: "https://www.youtube.com/embed/ObJol2IyRTQ",
         content: `
             <div class="space-y-6 p-4 sm:p-6 text-[var(--text-primary)] font-sans">
                 <h2 class="text-2xl font-bold text-emerald-400 mb-4 border-b border-emerald-900 pb-2">Module 3 : Gestion des Services (ITSM) et Organisation du Support</h2>
