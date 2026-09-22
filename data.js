@@ -245,7 +245,79 @@ const itCampusData = {
                     </table>
                 </div>
             </div>
-        `
+        `,
+        quiz: [
+            {
+                type: "single",
+                question: "Un administrateur système remplace une barrette de RAM défectueuse dans un serveur de production. Selon les concepts fondamentaux de l'ITAM, comment doit être classée cette nouvelle barrette de RAM ?",
+                options: [
+                    { text: "Comme un élément de la CMDB uniquement.", isCorrect: false, feedback: "Bien que présent dans la CMDB, l'objet physique appartient à une catégorie structurelle spécifique avant d'être une relation de service." },
+                    { text: "Comme une configuration logicielle.", isCorrect: false, feedback: "La configuration concerne l'état technique ou les versions (OS, BIOS), alors que la RAM est un élément matériel physique." },
+                    { text: "Comme un actif informatique indépendant.", isCorrect: false, feedback: "Un actif doit avoir une valeur financière ou opérationnelle propre nécessitant un suivi de cycle de vie complet ; les éléments internes sont généralement gérés comme des parties de l'actif." },
+                    { text: "Comme un composant.", isCorrect: true, feedback: "Le matériel qui est contenu à l'intérieur d'un équipement principal (comme la RAM ou un disque dur) est défini comme un composant, tandis que le serveur lui-même est l'actif." }
+                ]
+            },
+            {
+                type: "single",
+                question: "Vous devez nommer un nouvel ordinateur portable destiné au directeur de l'agence de Namur en suivant la structure standard SITE-TYPE-USAGE-ID. Quel nom est correct ?",
+                options: [
+                    { text: "NAM-LAP-DIR-003", isCorrect: true, feedback: "Cette nomenclature respecte l'ordre : Site (Namur), Type (Laptop), Usage (Direction) et l'identifiant unique." },
+                    { text: "NAM-PC-DIR-003", isCorrect: false, feedback: "Bien que le site et l'usage soient corrects, le code type pour un portable dans la convention est 'LAP' et non 'PC'." },
+                    { text: "LAP-DIR-NAM-003", isCorrect: false, feedback: "L'ordre des segments est incorrect car il commence par le type d'équipement au lieu de la localisation." },
+                    { text: "DIR-NAM-LAP-003", isCorrect: false, feedback: "Cette option place l'usage avant le site et le type, ce qui ne respecte pas la structure standard SITE-TYPE-USAGE-ID." }
+                ]
+            },
+            {
+                type: "multiple",
+                question: "Lors de la création d'une fiche d'actif pour un nouvel employé, quelles données doivent être évitées ou limitées pour respecter le RGPD ?",
+                options: [
+                    { text: "La localisation du bureau professionnel (étage/salle).", isCorrect: false, feedback: "La localisation professionnelle est un attribut obligatoire et légitime pour la gestion physique du parc." },
+                    { text: "Le numéro de matricule interne (ex: u12345).", isCorrect: false, feedback: "L'utilisation d'un identifiant interne est une pratique recommandée car elle permet de lier l'actif sans exposer de données nominatives sensibles." },
+                    { text: "Le nom complet associé à un numéro de téléphone personnel.", isCorrect: true, feedback: "L'association d'identité complète et de coordonnées privées est considérée comme excessive pour une fiche d'inventaire technique." },
+                    { text: "L'adresse personnelle du domicile de l'employé.", isCorrect: true, feedback: "Le RGPD impose la minimisation des données ; les adresses privées ne sont pas nécessaires au suivi opérationnel d'un actif informatique." }
+                ]
+            },
+            {
+                type: "single",
+                question: "Quelle est la principale différence entre l'inventaire technique et la CMDB (Configuration Management Database) ?",
+                options: [
+                    { text: "La CMDB ne contient que des logiciels, alors que l'inventaire ne contient que du matériel.", isCorrect: false, feedback: "Les deux outils peuvent contenir du matériel et du logiciel ; ils diffèrent par la manière dont les données sont interconnectées." },
+                    { text: "L'inventaire est mis à jour en temps réel, alors que la CMDB est un archivage statique.", isCorrect: false, feedback: "C'est souvent l'inverse ou les deux peuvent être dynamiques, mais la CMDB est par définition plus complexe car elle suit les dépendances de service." },
+                    { text: "L'inventaire est financier, tandis que la CMDB est uniquement technique.", isCorrect: false, feedback: "L'inventaire comporte aussi des données techniques (S/N, modèle), la différence ne se situe pas sur la nature de la donnée mais sur la structure de lien." },
+                    { text: "L'inventaire liste l'existence des objets, tandis que la CMDB gère leurs relations et leur rôle dans les services.", isCorrect: true, feedback: "La CMDB apporte une dimension relationnelle et métier que l'inventaire simple (une liste à l'instant T) ne possède pas." }
+                ]
+            },
+            {
+                type: "multiple",
+                question: "Quels éléments composent le TCO (Total Cost of Ownership) d'un ordinateur portable au-delà de son simple prix d'achat ?",
+                options: [
+                    { text: "Le prix d'achat initial HT uniquement.", isCorrect: false, feedback: "Le prix d'achat seul correspond au TCA (Total Cost of Acquisition), pas au TCO." },
+                    { text: "La consommation d'énergie et les consommables.", isCorrect: true, feedback: "Les coûts indirects comme l'électricité ou les accessoires font partie intégrante du coût total de possession." },
+                    { text: "Les frais de support technique et de maintenance durant son utilisation.", isCorrect: true, feedback: "Le support est un coût opérationnel majeur qui s'ajoute au coût initial sur toute la durée de vie de l'appareil." },
+                    { text: "Le coût du recyclage ou de la destruction sécurisée en fin de vie.", isCorrect: true, feedback: "Le TCO englobe toutes les phases, de l'acquisition jusqu'à la sortie définitive (berceau au tombeau)." }
+                ]
+            },
+            {
+                type: "single",
+                question: "Une entreprise achète un PC avec une licence Windows de type OEM. L'ordinateur tombe en panne définitive après un mois. Que devient la licence ?",
+                options: [
+                    { text: "La licence est automatiquement convertie en licence Volume.", isCorrect: false, feedback: "Il n'existe pas de conversion automatique entre les types de contrats de licence." },
+                    { text: "La licence peut être réinstallée sur un nouveau PC de remplacement.", isCorrect: false, feedback: "Ceci est la caractéristique d'une licence Retail (Boîte), pas d'une licence OEM." },
+                    { text: "La licence est perdue car elle est indissociablement liée au matériel d'origine.", isCorrect: true, feedback: "Une licence OEM (Original Equipment Manufacturer) ne peut pas être transférée sur une autre machine ; elle meurt avec le matériel." },
+                    { text: "L'éditeur rembourse la licence au prorata de l'utilisation.", isCorrect: false, feedback: "Les conditions d'utilisation (EULA) des licences OEM ne prévoient pas de remboursement en cas de panne matérielle." }
+                ]
+            },
+            {
+                type: "single",
+                question: "Dans le cadre de la réforme d'un actif (étape 7 du cycle de vie), quelle action est indispensable avant de céder le matériel à un organisme de recyclage ?",
+                options: [
+                    { text: "Changer l'Asset Tag pour masquer l'origine de l'entreprise.", isCorrect: false, feedback: "L'étiquette doit être retirée, mais la priorité absolue reste la destruction des données numériques." },
+                    { text: "Réinitialiser le BIOS avec les paramètres d'usine.", isCorrect: false, feedback: "Bien que recommandé, cela ne traite pas le problème majeur de la présence de données sur les unités de stockage." },
+                    { text: "Simplement formater le disque dur via l'installateur Windows.", isCorrect: false, feedback: "Un formatage standard ne garantit pas l'irrécupérabilité des données sensibles, contrairement à un effacement certifié." },
+                    { text: "Réaliser un effacement certifié des données selon des normes comme NIST 800-88.", isCorrect: true, feedback: "Pour garantir la sécurité et la conformité, les données doivent être effacées de manière irrécupérable avec obtention d'un certificat." }
+                ]
+            }
+        ]
     },
     {
         id: "m3-c1-l3",
@@ -315,7 +387,59 @@ const itCampusData = {
                     <li><strong class="text-white">I (Informed - Informé) :</strong> Les personnes tenues au courant de l'avancement8.</li>
                 </ul>
             </div>
-        `
+        `,
+        quiz: [
+            {
+                type: "single",
+                question: "Un technicien du Service Desk ne parvient pas à résoudre un incident après 25 minutes de recherche et constate qu'aucune procédure n'existe dans la base de connaissances. Quelle est la prochaine étape conforme aux règles d'escalade ?",
+                options: [
+                    { text: "Transférer directement le ticket au Niveau 3 pour une analyse de cause racine.", isCorrect: false, feedback: "Le Niveau 3 traite les modifications d'architecture ou les bugs avérés ; l'escalade doit normalement suivre l'ordre hiérarchique vers le L2 pour une analyse spécialisée." },
+                    { text: "Ouvrir immédiatement un ticket de support auprès du constructeur (Niveau 4).", isCorrect: false, feedback: "Le Niveau 4 est sollicité par le Niveau 3, et non directement par le Niveau 1, pour des expertises externes spécifiques." },
+                    { text: "Escalader l'incident vers le Niveau 2.", isCorrect: true, feedback: "L'escalade vers le L2 est requise si le dépannage dépasse 20-30 minutes ou si une procédure établie fait défaut dans la base de connaissances." },
+                    { text: "Clôturer le ticket et demander à l'utilisateur de consulter le portail Self-Service.", isCorrect: false, feedback: "Le Niveau 0 (Self-Service) est destiné à l'autonomie initiale, pas à la résolution d'incidents déjà pris en charge et non documentés." }
+                ]
+            },
+            {
+                type: "multiple",
+                question: "Parmi les activités suivantes, lesquelles sont spécifiquement rattachées au Niveau 2 (Support Spécialisé) ?",
+                options: [
+                    { text: "Dépannage des environnements M365 et VPN.", isCorrect: true, feedback: "Ces environnements nécessitent une expertise domaine spécifique classée en Niveau 2." },
+                    { text: "Création de scripts PowerShell de correction.", isCorrect: true, feedback: "Le développement de scripts de remédiation technique est une action type du support de second niveau pour automatiser une résolution." },
+                    { text: "Analyse approfondie des logs système.", isCorrect: true, feedback: "L'analyse de logs fait partie de l'analyse approfondie des incidents complexes qui dépasse les procédures standards du L1." },
+                    { text: "Réinitialisation autonome de mot de passe par l'utilisateur.", isCorrect: false, feedback: "Cette action relève du Niveau 0 (Self-Service) car elle est effectuée de manière autonome par l'utilisateur." }
+                ]
+            },
+            {
+                type: "single",
+                question: "Une entreprise constate qu'un incident est récurrent et nécessite une modification de la configuration de l'infrastructure. Vers quel niveau ce problème doit-il être orienté ?",
+                options: [
+                    { text: "Niveau 0 (Self-Service)", isCorrect: false, feedback: "Le Niveau 0 est destiné à l'usage autonome par l'utilisateur final, non à la correction de l'infrastructure technique." },
+                    { text: "Niveau 3 (Ingénierie / Infrastructure)", isCorrect: true, feedback: "Le Niveau 3 est responsable de la gestion des problèmes (cause racine) et des modifications structurelles de l'infrastructure." },
+                    { text: "Niveau 1 (Support Frontal)", isCorrect: false, feedback: "Le Niveau 1 applique des procédures connues pour des résolutions rapides, mais ne modifie pas les schémas d'infrastructure." },
+                    { text: "Niveau 2 (Support Expert Domaine)", isCorrect: false, feedback: "Bien que le Niveau 2 analyse les incidents complexes, la modification de l'architecture ou des configurations de fond relève du Niveau 3." }
+                ]
+            },
+            {
+                type: "single",
+                question: "Quel est l'objectif de performance (SLA) standard pour la prise en charge initiale d'un ticket par le Niveau 1 ?",
+                options: [
+                    { text: "Moins de 5 minutes.", isCorrect: false, feedback: "Bien que souhaitable, le standard défini dans le document pour la prise en charge est de 15 à 30 minutes." },
+                    { text: "24 heures après l'enregistrement.", isCorrect: false, feedback: "Un tel délai ne permettrait pas de respecter les objectifs de résolution rapide (SLA < 1h) attendus pour le premier niveau." },
+                    { text: "Entre 1 et 2 heures.", isCorrect: false, feedback: "Ce délai est trop long pour un support frontal dont l'objectif de résolution totale est déjà fixé à moins d'une heure." },
+                    { text: "Entre 15 et 30 minutes.", isCorrect: true, feedback: "Le support de Niveau 1 vise une réactivité immédiate avec un enregistrement et une prise en charge rapide dans ce créneau horaire." }
+                ]
+            },
+            {
+                type: "multiple",
+                question: "Selon la 'règle d'or' de capitalisation, quelles sont les retombées obligatoires après la résolution d'un incident par le Niveau 2 ou 3 ?",
+                options: [
+                    { text: "La création d'une fiche KB pour le Niveau 1.", isCorrect: true, feedback: "Documenter la solution permet au Niveau 1 de résoudre l'incident par lui-même à l'avenir sans nouvelle escalade." },
+                    { text: "La mise en place d'un script d'automatisation.", isCorrect: true, feedback: "L'automatisation réduit la charge de travail manuelle pour les incidents identifiés et résolus par les experts." },
+                    { text: "L'émission d'une demande de changement (CAB).", isCorrect: true, feedback: "Si la résolution impacte l'infrastructure, elle doit passer par un processus formel de contrôle des changements." },
+                    { text: "L'envoi automatique d'une facture à l'utilisateur.", isCorrect: false, feedback: "La capitalisation concerne le partage de connaissances et l'amélioration technique, pas les processus de facturation." }
+                ]
+            }
+        ]
     }
 ]
                 }
