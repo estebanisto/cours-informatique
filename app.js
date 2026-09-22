@@ -208,19 +208,11 @@ const app = {
     initTypewriter: function() {
         const target = document.getElementById('retro-title');
         if (!target) return;
-        const text = "FORMATION EN OPÉRATEUR INFORMATIQUE";
-        let i = 0;
-        target.textContent = '';
-        if (this._typewriterInterval) clearInterval(this._typewriterInterval);
-        this._typewriterInterval = setInterval(() => {
-            if (i < text.length) {
-                target.textContent += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(this._typewriterInterval);
-                this._typewriterInterval = null;
-            }
-        }, 40);
+        target.textContent = "FORMATION EN OPÉRATEUR INFORMATIQUE";
+        if (this._typewriterInterval) {
+            clearInterval(this._typewriterInterval);
+            this._typewriterInterval = null;
+        }
     },
 
     renderHome: function() {
@@ -271,7 +263,7 @@ const app = {
 
                 <!-- Animated Pixel Typewriter Title -->
                 <h1 class="heading-main text-3xl sm:text-5xl lg:text-6xl font-bold tracking-normal mb-5 leading-tight min-h-[3.6rem] flex items-center justify-center flex-wrap">
-                    <span id="retro-title"></span><span id="retro-cursor" class="animate-pixel-cursor text-[var(--primary-green)] inline-block ml-1">█</span>
+                    <span id="retro-title" class="title-glitch">FORMATION EN OPÉRATEUR INFORMATIQUE</span><span id="retro-cursor" class="animate-pixel-cursor text-[var(--primary-green)] inline-block ml-1">█</span>
                 </h1>
 
                 <!-- Retro Mission Briefing Dialogue Box -->

@@ -943,3 +943,28 @@ aside#sidebar {
   80% { transform: translate(5%, 5%); }
   100% { transform: translate(0, 0); }
 }
+
+/* Effet glitch régulier pour le titre principal */
+@keyframes title-glitch-anim {
+  0%, 93%, 100% {
+    transform: translate(0, 0);
+    text-shadow: none;
+  }
+  94% {
+    transform: translate(-2px, 1px);
+    text-shadow: -2px 0 rgba(255, 0, 85, 0.8), 2px 0 rgba(0, 229, 255, 0.8);
+  }
+  96% {
+    transform: translate(2px, -1px);
+    text-shadow: 2px 0 rgba(255, 0, 85, 0.8), -2px 0 rgba(0, 229, 255, 0.8);
+  }
+  98% {
+    transform: translate(-1px, 0);
+    text-shadow: -1px 0 rgba(255, 0, 85, 0.7), 1px 0 rgba(0, 229, 255, 0.7);
+  }
+}
+
+.title-glitch {
+  display: inline-block;
+  animation: title-glitch-anim 4s infinite;
+}

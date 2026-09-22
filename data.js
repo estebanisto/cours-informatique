@@ -442,6 +442,12 @@ const itCampusData = {
         ]
     }
 ]
+                },
+                {
+                    id: "m3-c2",
+                    title: "DIAGNOSTIQUER ET RESOUDRE UN DYSFONCTIONNEMENT",
+                    image: "images/diag.jpeg",
+                    lessons: []
                 }
             ]
         },
